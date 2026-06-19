@@ -1,0 +1,129 @@
+# PULSE native tuning.
+# Edit while the game is running, then press F5 to reload.
+
+window.width = 1280
+window.height = 720
+
+camera.fov_degrees = 95
+camera.mouse_sensitivity = 0.0014
+camera.pitch_limit_degrees = 42
+camera.fire_impact_recovery = 18
+
+# Screen shake (render-only; does not affect aim). Degrees of view kick.
+camera.shake_fire = 0.72
+camera.shake_kill = 1.10
+camera.shake_hurt = 2.4
+camera.shake_decay = 13.0
+camera.bob_degrees = 0.11
+camera.bob_speed = 9.2
+camera.landing_kick_degrees = 0.95
+camera.strafe_lean_degrees = 0.58
+
+# Distance fog density for the textured world (higher = moodier, deeper).
+render.fog_density = 0.062
+
+# Kill crunch: micro hit-stop + impact burst.
+feel.hitstop_kill = 0.045
+feel.hitstop_scale = 0.08
+feel.kill_burst_seconds = 0.30
+feel.impact_hit_seconds = 0.50
+feel.impact_wall_seconds = 0.62
+# Hit flinch knockback + drone shatter shard speed.
+feel.hit_knockback = 5.0
+feel.debris_speed = 5.5
+
+movement.walk_speed = 5.0
+movement.acceleration = 48.0
+movement.braking = 64.0
+movement.air_control = 0.35
+movement.player_radius = 0.28
+
+player.max_health = 100
+player.start_health = 100
+player.max_shield = 75
+player.start_shield = 25
+
+pickup.spawn_interval = 5.5
+pickup.max_active = 4
+pickup.health_amount = 30
+pickup.shield_amount = 40
+pickup.ammo_amount = 60
+pickup.collect_radius = 0.55
+
+dash.impulse = 11.0
+dash.duration = 0.12
+dash.cooldown = 1.0
+dash.fov_punch = 1.5
+
+# Jump + gravity (heights are fractions of room height; eye rests at eye_height).
+movement.eye_height = 0.5
+movement.jump_velocity = 4.4
+movement.gravity = 27.0
+movement.jump_apex_cap = 0.86
+
+# PULSE carbine feel: heavy ~570 RPM cadence, strong climbing recoil, punchy round.
+weapon.auto_fire = 1
+weapon.fire_rate = 9.7
+weapon.damage = 30.0
+weapon.spread_degrees = 1.05
+weapon.recoil_pitch_degrees = 0.86
+weapon.recoil_yaw_jitter_degrees = 0.22
+weapon.recoil_recovery_rate = 10.5
+weapon.recoil_residual_fraction = 0.16
+weapon.magazine_capacity = 30
+weapon.reserve_ammo = 90
+weapon.reload_duration = 1.35
+weapon.fire_fov_punch = 4.8
+weapon.fire_camera_kick = 4.9
+weapon.viewmodel_sway = 1.0
+# Muzzle origin for the viewmodel flash (screen fractions): on the gun barrel.
+weapon.muzzle_screen_x = 0.57
+weapon.muzzle_screen_y = 0.62
+
+# Slower, tactical roster: fewer, tougher enemies that telegraph every attack.
+enemy.max_health = 120
+enemy.headshot_min_fraction = 0.34
+enemy.rusher_speed = 4.0
+enemy.ranged_speed = 3.0
+
+# Melee strike (rusher/tank): a telegraphed wind-up at contact range, your cue
+# to dash clear. Enemies no longer delete themselves on touch.
+enemy.melee_range = 1.7
+enemy.melee_damage = 28
+enemy.melee_telegraph = 0.45
+enemy.melee_recover = 1.0
+enemy.melee_lunge = 1.4
+
+# Ranged: fires a slow, dodgeable orb instead of an instant hitscan.
+enemy.ranged_damage = 18
+enemy.ranged_cooldown = 2.6
+enemy.ranged_telegraph = 0.8
+enemy.projectile_speed = 8.0
+enemy.projectile_radius = 0.30
+enemy.projectile_life = 5.0
+
+# Soft separation keeps the swarm spread out and individually readable.
+enemy.separation_radius = 1.4
+enemy.separation_strength = 9.0
+
+# Type C tank brute.
+enemy.tank_health_mult = 3.6
+enemy.tank_speed = 2.2
+enemy.tank_melee_damage = 42
+enemy.tank_scale = 0.82
+# Rusher telegraphed lunge.
+enemy.rusher_lunge_range = 6.5
+enemy.rusher_lunge_speed = 11.0
+
+# On-screen directional hit indicator lifetime.
+hud.damage_indicator_seconds = 1.5
+
+spawning.interval = 2.8
+spawning.max_concurrent = 5
+spawning.ring_radius = 14.0
+spawning.ranged_chance = 0.30
+spawning.tank_chance = 0.18
+
+techno.enabled = 1
+techno.bpm = 146
+techno.base_volume = 0.42

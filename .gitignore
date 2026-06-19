@@ -1,0 +1,24 @@
+# Build output
+/build/
+/dist/
+
+# Bundled Blender authoring tool (installed/junctioned locally, never tracked)
+/tools/blender/blender-5.1.2-windows-x64/
+
+# Compiled shader / build artifacts
+*.dxil
+*.cso
+*.pdb
+*.obj
+!assets/**/*.obj
+
+# Headless verify-loop captures
+/captures/
+*.bmp
+*.mp4
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+.vs/
+.vscode/
