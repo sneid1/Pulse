@@ -1,0 +1,233 @@
+PULSE - audio asset credits
+
+Gunshot samples (sfx_fire.wav, sfx_fire_1.wav ... sfx_fire_7.wav)
+  Source:  sks.wav from assets/external/gunshots/extracted/sounds/, plus the
+           AK-74 close source listed below for crack reinforcement.
+  Author:  Vincent Sevedge for sks.wav; FLYSOUND for the AK-74 source.
+  License: sks.wav is Creative Commons Attribution 3.0 Unported.
+           http://creativecommons.org/licenses/by/3.0/
+           AK-74 source uses the Sonniss GameAudioGDC royalty-free
+           media-production license.
+  Notes:   The runtime default bank is authored by
+           tools/audio/pulse_gunshot_producer.py as short, layered mono shots:
+           source body, controlled high-band crack, low thump, and fast tail.
+           This is the fallback/default bank; live weapons use dedicated banks.
+
+AK-47 gunshot samples (sfx_fire_ak47.wav, sfx_fire_ak47_1.wav ... sfx_fire_ak47_7.wav)
+  Source:  Sonniss GameAudioGDC 2020 Part 6 source files:
+           "AKSD0813 AK-74 spot A close burst 03 rounds.wav" from FLYSOUND,
+           "AK 74"; this is the main close muzzle/body/crack source.
+           "AKSD0854 AK-74 spot D far burst 03 rounds.wav" from FLYSOUND,
+           "AK 74", used only as a short low-level room/size layer.
+           "AK0405 AK-74 rear long distance burst 05 rounds.wav" from FLYSOUND,
+           "AK 74", used only as a restrained tail/size layer.
+           Runtime source kept under assets/external/sonniss/gdc2020_ak74/.
+  License: Sonniss GameAudioGDC royalty-free media-production license. The bundle
+           readme states commercial use is allowed without attribution; source files
+           remain copyright FLYSOUND.
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py: close AK-74 bursts provide the
+           muzzle/body/crack, far and rear layers add very short size, and synthetic
+           sub is kept narrow. Variants are 48 kHz / 16-bit mono and peak-targeted
+           for full-auto readability through the shared weapon bus.
+
+Tactical Carbine gunshot samples (sfx_fire_carbine.wav, sfx_fire_carbine_1.wav ... sfx_fire_carbine_7.wav)
+  Source:  sks.wav from assets/external/gunshots/extracted/sounds/, plus the
+           AK-74 close source listed above for crack reinforcement.
+  Author:  Vincent Sevedge for sks.wav; FLYSOUND for the AK-74 source.
+  License: sks.wav is Creative Commons Attribution 3.0 Unported.
+           http://creativecommons.org/licenses/by/3.0/
+           AK-74 source uses the Sonniss GameAudioGDC royalty-free
+           media-production license.
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py into eight short mono variants,
+           trimmed for 3-round burst readability, EQ-shaped, dithered, and kept
+           lower than the AK so bursts do not smear together.
+
+Pistol gunshot samples (sfx_fire_pistol.wav, sfx_fire_pistol_1.wav ... sfx_fire_pistol_5.wav)
+  Source:  Sonniss GameAudioGDC 2020 Part 6 source files:
+           "STSRC_WoWW2_Wep_SMG_M3_GreaseGun_Submachine_Gun_Single_Shot_X10_Comp_Full.wav"
+           from Super Thump, "M3 Grease Gun Recorded Source".
+           "STDSGN_WoWW2_Wep_Pistol_Luger_Shot_X5.wav" from Super Thump,
+           "Weapons of World War II - Designed".
+           "PM_SFG_VOL1_WEAPON_4_4_GUN_GUNSHOT_FUTURISTIC.wav" from PMSFX,
+           "SCI-FI Gunnery", used only as a short high-band crack layer.
+           Runtime source kept under assets/external/sonniss/gdc2020_weapons/.
+  License: Sonniss GameAudioGDC royalty-free media-production license. The bundle
+           readme states commercial use is allowed without attribution; source files
+           remain copyright their listed suppliers.
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py: close recorded source provides
+           muzzle/body, designed Luger source provides pistol weight, and a very short
+           high-band layer provides crack. The bank is shortened for semi-auto
+           readability, resampled/dithered to 48 kHz / 16-bit mono, and peak-targeted
+           before the sidearm's per-weapon SFX trim.
+
+Pulse SMG gunshot samples (sfx_fire_pulse_smg.wav, sfx_fire_pulse_smg_1.wav ... sfx_fire_pulse_smg_7.wav)
+  Source:  Sonniss GameAudioGDC 2020 Part 6 source files:
+           "STSRC_WoWW2_Wep_SMG_M3_GreaseGun_Submachine_Gun_Single_Shot_X10_Comp_Full.wav"
+           from Super Thump, "M3 Grease Gun Recorded Source".
+           "PM_SFG_VOL1_WEAPON_4_4_GUN_GUNSHOT_FUTURISTIC.wav" from PMSFX,
+           "SCI-FI Gunnery", used as a restrained electric high-band layer.
+           Runtime source kept under assets/external/sonniss/gdc2020_weapons/.
+  License: Sonniss GameAudioGDC royalty-free media-production license. The bundle
+           readme states commercial use is allowed without attribution; source files
+           remain copyright their listed suppliers.
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py into eight short, non-silent
+           variants for high-RPM round-robin playback without generic fallback.
+
+Marksman sniper gunshot samples (sfx_fire_marksman.wav, sfx_fire_marksman_1.wav ... sfx_fire_marksman_4.wav)
+  Source:  mosin.wav and sks.wav from assets/external/gunshots/extracted/sounds/,
+           plus the AK-74 close/rear sources listed above for transient and report
+           reinforcement.
+  Author:  Vincent Sevedge for mosin.wav and sks.wav; FLYSOUND for the AK-74
+           source.
+  License: mosin.wav and sks.wav are Creative Commons Attribution 3.0 Unported.
+           http://creativecommons.org/licenses/by/3.0/
+           AK-74 source uses the Sonniss GameAudioGDC royalty-free
+           media-production license.
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py into five heavier sniper variants:
+           long rifle body, high-band crack, delayed sub thump, and controlled
+           report tail. The files are peak-targeted lower than rifle banks because
+           the marksman profile has a much hotter per-weapon fire trim.
+
+Scattergun shotgun samples (sfx_fire_scattergun.wav, sfx_fire_scattergun_1.wav ... sfx_fire_scattergun_7.wav)
+  Source:  shotty.wav, sks.wav, and mosin.wav from
+           assets/external/gunshots/extracted/sounds/, plus the AK-74 close source
+           listed above for transient reinforcement.
+  Author:  Vincent Sevedge for shotty.wav, sks.wav, and mosin.wav; FLYSOUND for
+           the AK-74 source.
+  License: shotty.wav, sks.wav, and mosin.wav are Creative Commons Attribution
+           3.0 Unported.
+           http://creativecommons.org/licenses/by/3.0/
+           AK-74 source uses the Sonniss GameAudioGDC royalty-free
+           media-production license.
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py into eight heavy shotgun variants:
+           close blast body, high-band crack, delayed sub thump, and a short
+           mechanical pump/chamber layer. The files are peak-targeted lower than
+           rifle banks because the scattergun profile has a hot per-weapon fire
+           trim and a longer blast tail.
+
+Machine Pistol gunshot samples (sfx_fire_machine_pistol.wav, sfx_fire_machine_pistol_1.wav ... sfx_fire_machine_pistol_7.wav)
+  Source:  Sonniss GameAudioGDC 2020 Part 6 source files:
+           "STSRC_WoWW2_Wep_SMG_M3_GreaseGun_Submachine_Gun_Single_Shot_X10_Comp_Full.wav"
+           from Super Thump, "M3 Grease Gun Recorded Source".
+           "STDSGN_WoWW2_Wep_Pistol_Luger_Shot_X5.wav" from Super Thump,
+           "Weapons of World War II - Designed", used for pistol weight/crack.
+           "PM_SFG_VOL1_WEAPON_4_4_GUN_GUNSHOT_FUTURISTIC.wav" from PMSFX,
+           "SCI-FI Gunnery", used only as a short high-band layer.
+           Runtime source kept under assets/external/sonniss/gdc2020_weapons/.
+  License: Sonniss GameAudioGDC royalty-free media-production license. The bundle
+           readme states commercial use is allowed without attribution; source files
+           remain copyright their listed suppliers.
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py into eight short, light, bright mono
+           variants: thinned low end, higher pitch, and a fast tail so a high-RPM panic
+           spray reads as a frantic tin-can stutter, never a rifle. Peak-targeted lower
+           than the rifle banks because the sidearm has a hot per-weapon fire trim.
+
+Railbolt gunshot samples (sfx_fire_railbolt.wav, sfx_fire_railbolt_1.wav ... sfx_fire_railbolt_4.wav)
+  Source:  Synthesized energy-weapon discharge (coil charge whine, electric discharge,
+           rail snap, delayed sub boom, energy tail) layered with a short recorded
+           sci-fi grit layer:
+           "PM_SFG_VOL1_WEAPON_4_4_GUN_GUNSHOT_FUTURISTIC.wav" from PMSFX,
+           "SCI-FI Gunnery". Runtime source kept under
+           assets/external/sonniss/gdc2020_weapons/.
+  License: Sonniss GameAudioGDC royalty-free media-production license for the recorded
+           grit layer; the rest is original synthesis (no external rights).
+  Notes:   The runtime bank is authored by
+           tools/audio/pulse_gunshot_producer.py into five charged-launch variants. The
+           charged splash projectile reads as a coil whine snapping into a bright
+           discharge with a delayed boom. Peak-targeted lower than rifle banks because
+           the railbolt has a hot per-weapon fire trim.
+
+Per-weapon reload/action samples
+  Files:   sfx_weapon_<weapon>_dry*.wav,
+           sfx_weapon_<weapon>_equip*.wav,
+           sfx_weapon_<weapon>_reload_start*.wav,
+           sfx_weapon_<weapon>_mag_out*.wav,
+           sfx_weapon_<weapon>_mag_in*.wav,
+           sfx_weapon_<weapon>_reload_end*.wav,
+           sfx_weapon_<weapon>_bolt*.wav,
+           sfx_weapon_<weapon>_shell*.wav
+  Source:  Procedurally produced by tools/audio/pulse_reload_producer.py.
+  Notes:   These are offline-authored foley-style reload banks for every weapon
+           profile: compact pistol slide/magazine handling, stamped AK rock-lock,
+           carbine polymer magazine clicks, pulse/rail servo-cell handling,
+           scattergun shell/pump motion, dry-fire clicks, equip handling, and
+           marksman bolt-action motion. Magazine reloads now use staged
+           reload_start -> mag_out -> mag_in -> reload_end cues; per-shell weapons
+           use reload_start -> repeated shell inserts -> reload_end.
+
+Enemy combat/attack samples
+  Files:   sfx_enemy_<kind>_telegraph*.wav,
+           sfx_enemy_<kind>_shot*.wav,
+           sfx_enemy_<kind>_impact*.wav,
+           sfx_enemy_<kind>_beam*.wav,
+           sfx_enemy_<kind>_lunge*.wav,
+           sfx_enemy_<kind>_melee_hit*.wav,
+           sfx_enemy_<kind>_hurt*.wav,
+           sfx_enemy_<kind>_death*.wav,
+           sfx_enemy_<kind>_boss_burst*.wav
+  Source:  Procedurally produced by tools/audio/pulse_enemy_sfx_producer.py.
+  Notes:   These are offline-authored banks for rusher, ranged, tank, stalker,
+           and boss threats. They cover attack wind-ups, hostile projectile
+           releases/impacts, beams, lunges, melee contact, enemy hurt bodies,
+           enemy deaths, and boss radial-pattern bursts. They intentionally sit
+           under the player hit/kill confirmation sounds instead of replacing
+           those gameplay-feedback cues.
+
+Player-feedback / ability / UI samples (sfx_fb_<event>.wav, sfx_fb_<event>_1.wav, ...)
+  Files:   sfx_fb_hitmarker*, sfx_fb_hit_crit*, sfx_fb_kill*, sfx_fb_kill_elite*,
+           sfx_fb_dash*, sfx_fb_jump*, sfx_fb_ability_tactical*, sfx_fb_ability_ultimate*,
+           sfx_fb_charge_ready*, sfx_fb_explosion*, sfx_fb_shield_absorb*,
+           sfx_fb_shield_break*, sfx_fb_low_health*, sfx_fb_pickup_health*,
+           sfx_fb_pickup_shield*, sfx_fb_pickup_ammo*, sfx_fb_pickup_scrap*,
+           sfx_fb_pickup_powerup*, sfx_fb_ui_move*, sfx_fb_ui_confirm*, sfx_fb_ui_cancel*,
+           sfx_fb_ui_reward*, sfx_fb_run_win*, sfx_fb_run_lose*
+  Source:  Original procedural synthesis (no external recordings) by
+           tools/audio/pulse_player_sfx_producer.py.
+  License: Original work, no third-party rights.
+  Notes:   These are the PLAYER bus: short tactile cues the player reads to confirm
+           their own actions and state (hits, crits, kills, dash/jump, tactical/ultimate
+           abilities, charge-ready, explosions, shield absorb/break, low-health warning,
+           per-kind pickups, menu/reward navigation, run win/lose). The current pass
+           avoids arcade coin/chime/fanfare language and favors filtered transients,
+           body, air, servo, metal, and shield-fracture layers. Authored as deterministic
+           round-robin banks and kept distinct from the weapon/enemy/world banks so a
+           confirm never reads as a threat. The legacy engine one-shots
+           (src/Engine/Audio.cpp) remain as the never-silent fallback when a feedback
+           bank is absent. See docs/PULSE_PLAYER_AUDIO_SPEC.md.
+
+All other utility SFX (hit, kill, dash, dryfire, pickup, hurt) are procedurally
+synthesized by the engine (src/Engine/Audio.cpp) as the fallback layer under the
+authored banks above.
+
+Audio QA / validation
+  tools/audio/pulse_audio_validate.py measures peak / RMS / true-peak / clipping for
+  every bank and full-mix capture and FAILS on any digital clipping; it also emits PNG
+  spectrograms. Build.bat runs it as a zero-clip mix gate on every build.
+
+Adaptive no-composer music v3 bank
+  Files:   assets/audio/music/foundry_<bed|bass|drums|pressure|boss|overpulse>.wav,
+           assets/audio/music/furnace_<bed|bass|drums|pressure|boss|overpulse>.wav,
+           assets/audio/music/reliquary_<bed|bass|drums|pressure|boss|overpulse>.wav,
+           assets/audio/music/hub_bed.wav,
+           assets/audio/music/stinger_<room_clear|reward|boss_intro|overpulse|run_win|run_lose|
+           sector_foundry|sector_furnace|sector_reliquary>.wav
+  Source:  Original procedural synthesis produced by
+           tools/audio/pulse_music_producer.py. Matching source clips and an
+           editable REAPER project are kept under assets/audio/reaper_source/.
+  License: Original work, no third-party rights.
+  Notes:   These are 16-bar, beat-aligned adaptive biome stem banks plus music-bus
+           event stingers. Foundry is cold/electric, Furnace is heavy and
+           heat-scarred, Reliquary is sparse/spatial, overpulse layers are sustained
+           biome-specific pressure beds, and boss layers transform the same antagonist
+           motif per biome. Runtime loops are stereo 48 kHz WAV, 140 BPM, identical
+           frame count, and identical downbeat. Validate with
+           tools/audio/pulse_music_validate.py, inspect tools/audio/pulse_music_report.py
+           output, and run the general zero-clip gate before shipping or replacing
+           them with human-composed stems.

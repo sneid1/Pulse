@@ -2,14 +2,17 @@ import math
 import os
 from pathlib import Path
 
+import bmesh
 import bpy
-from mathutils import Vector
+from mathutils import Matrix, Vector
 
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = ROOT / "assets" / "blender"
 MODEL_DIR = ROOT / "assets" / "models"
 RENDER_DIR = ROOT / "build" / "blender"
+AK_SOURCE_OBJ = ROOT / "assets" / "Untextured_3D_Weapons" / "OBJ" / "AK-47.obj"
+FPS_ARMS_BLEND = ROOT / "assets" / "FPS_Arms" / "Fps_Arms.blend"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 RENDER_DIR.mkdir(parents=True, exist_ok=True)
@@ -186,6 +189,88 @@ def add_text(name, text, loc, size, mat, rot=(math.radians(80), 0, math.radians(
 def look_at(obj, target):
     direction = Vector(target) - obj.location
     obj.rotation_euler = direction.to_track_quat("-Z", "Y").to_euler()
+
+
+def import_source_ak47():
+    if not AK_SOURCE_OBJ.exists():
+        raise FileNotFoundError(f"AK source model missing: {AK_SOURCE_OBJ}")
+
+    before = set(bpy.data.objects)
+    try:
+        bpy.ops.wm.obj_import(filepath=str(AK_SOURCE_OBJ))
+    except Exception:
+        bpy.ops.import_scene.obj(filepath=str(AK_SOURCE_OBJ))
+
+    imported = [obj for obj in bpy.data.objects if obj not in before and obj.type == "MESH"]
+    if not imported:
+        raise RuntimeError(f"No mesh objects imported from {AK_SOURCE_OBJ}")
+
+    mins = Vector((1.0e9, 1.0e9, 1.0e9))
+    maxs = Vector((-1.0e9, -1.0e9, -1.0e9))
+    for obj in imported:
+        for vertex in obj.data.vertices:
+            p = obj.matrix_world @ vertex.co
+            mins.x = min(mins.x, p.x)
+            mins.y = min(mins.y, p.y)
+            mins.z = min(mins.z, p.z)
+            maxs.x = max(maxs.x, p.x)
+            maxs.y = max(maxs.y, p.y)
+            maxs.z = max(maxs.z, p.z)
+
+    # Blender's OBJ importer maps this AK to X thickness, Y muzzle-to-stock,
+    # and Z up. The muzzle sits at max Y, so flip Y into the PULSE authoring
+    # X axis where the muzzle is negative X and the stock is positive X.
+    source_len = max(maxs.y - mins.y, 0.001)
+    target_muzzle_x = -2.26
+    target_stock_x = 1.90
+    scale = (target_stock_x - target_muzzle_x) / source_len
+    x_offset = target_muzzle_x + maxs.y * scale
+    width_scale = 1.85
+    y_offset = 0.0
+    z_offset = 0.0
+
+    def material_for_point(p):
+        if p.x > 0.90 and -0.18 < p.z < 0.36:
+            return 1  # wood stock
+        if -1.34 < p.x < -0.50 and -0.10 < p.z < 0.42:
+            return 1  # wood handguard
+        if 0.34 < p.x < 0.86 and p.z < -0.08:
+            return 1  # wood pistol grip
+        if -0.34 < p.x < 0.42 and p.z < -0.18:
+            return 2  # magazine
+        if p.x < -1.56 or p.z > 0.38:
+            return 4  # muzzle, barrel, and sight highlights
+        if p.z < -0.52:
+            return 3  # darkest undersides
+        return 0
+
+    for obj in imported:
+        obj.name = "source AK-47 viewmodel"
+        original_world = obj.matrix_world.copy()
+        for vertex in obj.data.vertices:
+            src = original_world @ vertex.co
+            vertex.co = Vector((
+                -src.y * scale + x_offset,
+                src.x * scale * width_scale + y_offset,
+                src.z * scale + z_offset,
+            ))
+        obj.matrix_world = Matrix.Identity(4)
+
+        obj.data.materials.clear()
+        for mat in (MAT_BLUED, MAT_WOOD, MAT_MAG, MAT_DARK, MAT_EDGE):
+            obj.data.materials.append(mat)
+
+        for poly in obj.data.polygons:
+            center = Vector((0.0, 0.0, 0.0))
+            for vi in poly.vertices:
+                center += obj.data.vertices[vi].co
+            center /= max(1, len(poly.vertices))
+            poly.material_index = material_for_point(center)
+
+        obj.data.update()
+        obj.modifiers.new("AK weighted normals", "WEIGHTED_NORMAL")
+
+    return imported
 
 
 def build_weapon():
@@ -499,10 +584,10 @@ def setup_scene():
 
 
 def export_assets():
-    blend_path = OUT_DIR / "pulse_carbine_viewmodel.blend"
-    render_path = RENDER_DIR / "pulse_carbine_full.png"
-    viewmodel_path = RENDER_DIR / "pulse_carbine_viewmodel.png"
-    obj_path = MODEL_DIR / "pulse_carbine_viewmodel.obj"
+    blend_path = OUT_DIR / "pulse_ak47_viewmodel.blend"
+    render_path = RENDER_DIR / "pulse_ak47_full.png"
+    viewmodel_path = RENDER_DIR / "pulse_ak47_viewmodel.png"
+    obj_path = MODEL_DIR / "pulse_ak47_viewmodel.obj"
     left_hand_path = MODEL_DIR / "pulse_left_hand_viewmodel.obj"
     right_hand_path = MODEL_DIR / "pulse_right_hand_viewmodel.obj"
 
@@ -679,6 +764,43 @@ def build_ak_hands():
              0.045, 3, rot=(0, math.radians(-12), math.radians(6)))
 
 
+def build_imported_ak_hands():
+    # The bundled AK is much thinner than the old procedural gun. These hands
+    # use broad glove masses that overlap the real mesh so contact survives the
+    # final game camera and the small on-screen footprint.
+    rgr = math.radians(14)
+    lgr = math.radians(-10)
+
+    cyl_between("right sleeve heavy upper", (0.86, 0.50, -0.88), (0.66, 0.16, -0.58), 0.095, MAT_SLEEVE, 28)
+    cyl_between("right sleeve heavy lower", (0.76, 0.44, -0.96), (0.58, 0.12, -0.62), 0.070, MAT_SLEEVE, 24)
+    ellipsoid_obj("right wrist cuff broad", (0.60, 0.10, -0.58), (0.145, 0.095, 0.120), MAT_SLEEVE,
+                  rot=(math.radians(-10), rgr, math.radians(-8)))
+    ellipsoid_obj("right palm wrapped on grip", (0.54, 0.050, -0.430), (0.185, 0.108, 0.225), MAT_GLOVE,
+                  rot=(math.radians(-4), rgr, math.radians(-8)))
+    cube_obj("right glove outside knuckles", (0.48, 0.145, -0.375), (0.265, 0.060, 0.205), MAT_GLOVE_PAD,
+             0.024, 3, rot=(0, rgr, math.radians(-7)))
+    cube_obj("right fingers clamped around grip", (0.46, -0.010, -0.450), (0.185, 0.210, 0.235), MAT_GLOVE,
+             0.052, 4, rot=(0, rgr, math.radians(-4)))
+    cyl_between("right thumb locked over grip", (0.66, 0.065, -0.350), (0.49, -0.060, -0.290), 0.035, MAT_GLOVE, 20)
+    cyl_between("right index on trigger", (0.44, 0.130, -0.265), (0.355, -0.010, -0.300), 0.026, MAT_GLOVE, 18)
+
+    cyl_between("left sleeve heavy upper", (-0.70, 0.50, -0.46), (-0.91, 0.14, -0.235), 0.095, MAT_SLEEVE, 28)
+    cyl_between("left sleeve heavy lower", (-0.58, 0.43, -0.53), (-0.86, 0.105, -0.275), 0.070, MAT_SLEEVE, 24)
+    ellipsoid_obj("left wrist cuff broad", (-0.90, 0.095, -0.220), (0.155, 0.100, 0.120), MAT_SLEEVE,
+                  rot=(math.radians(-8), lgr, math.radians(8)))
+    ellipsoid_obj("left palm under handguard", (-1.02, 0.045, -0.070), (0.310, 0.125, 0.170), MAT_GLOVE,
+                  rot=(math.radians(2), lgr, math.radians(5)))
+    cube_obj("left glove back on handguard", (-1.04, 0.135, 0.015), (0.390, 0.066, 0.155), MAT_GLOVE_PAD,
+             0.024, 3, rot=(0, lgr, math.radians(-2)))
+    cube_obj("left fingers curled over handguard", (-1.02, -0.020, 0.070), (0.430, 0.185, 0.130), MAT_GLOVE,
+             0.052, 4, rot=(0, lgr, math.radians(-5)))
+    for i, x in enumerate((-1.18, -1.06, -0.94, -0.82)):
+        cube_obj("left knuckle pad imported %d" % i, (x, 0.145, 0.100), (0.072, 0.044, 0.046),
+                 MAT_GLOVE_PAD, 0.012, 2, rot=(0, lgr, 0))
+    cyl_between("left thumb braced along fore stock", (-0.82, 0.110, -0.055), (-0.66, -0.030, 0.020),
+                0.038, MAT_GLOVE, 20)
+
+
 def build_fps_carbine():
     # Purpose-built first-person viewmodel, not a side-on world rifle. Keep the
     # rear short so the closest geometry is the player's hands, while the barrel
@@ -843,15 +965,248 @@ def translate_hand_group(prefix, delta):
             obj.location += delta
 
 
+def sanitize_mtl_name(name):
+    out = []
+    for ch in name:
+        out.append(ch if ch.isalnum() or ch in ("_", "-") else "_")
+    return "".join(out) or "material"
+
+
+def mtl_color(name):
+    lower = name.lower()
+    if "skin" in lower:
+        return (0.736, 0.470, 0.298)
+    if "matte" in lower or "balaclava" in lower:
+        return (0.110, 0.120, 0.126)
+    if "ak47" in lower:
+        return (0.588, 0.588, 0.588)
+    return (0.62, 0.62, 0.62)
+
+
+def world_to_runtime_obj(p):
+    # FPS_Arms is authored as +X right, +Y forward, +Z up. Pulse's OBJ loader
+    # turns OBJ (x,y,z) into GPU (z,y,-x), so this writes exact camera-space axes.
+    return Vector((-p.y, p.z, p.x))
+
+
+def write_runtime_obj(path, objects):
+    deps = bpy.context.evaluated_depsgraph_get()
+    path = Path(path)
+    mtl_path = path.with_suffix(".mtl")
+    vertex_offset = 1
+    material_colors = {}
+    face_blocks = []
+    vertex_lines = []
+
+    for obj in objects:
+        eval_obj = obj.evaluated_get(deps)
+        mesh = bpy.data.meshes.new_from_object(eval_obj, depsgraph=deps)
+        mesh.calc_loop_triangles()
+        world = eval_obj.matrix_world
+        local_material_names = []
+        for slot in mesh.materials:
+            name = sanitize_mtl_name(slot.name if slot else "material")
+            local_material_names.append(name)
+            material_colors.setdefault(name, mtl_color(name))
+        if not local_material_names:
+            local_material_names.append("material")
+            material_colors.setdefault("material", (0.62, 0.62, 0.62))
+
+        runtime_points = [world_to_runtime_obj(world @ vertex.co) for vertex in mesh.vertices]
+        for p in runtime_points:
+            vertex_lines.append(f"v {p.x:.6f} {p.y:.6f} {p.z:.6f}\n")
+
+        current_mtl = None
+        for tri in mesh.loop_triangles:
+            poly = mesh.polygons[tri.polygon_index]
+            mat_index = min(max(poly.material_index, 0), len(local_material_names) - 1)
+            mat_name = local_material_names[mat_index]
+            if mat_name != current_mtl:
+                face_blocks.append(f"usemtl {mat_name}\n")
+                current_mtl = mat_name
+            a = tri.vertices[0] + vertex_offset
+            b = tri.vertices[1] + vertex_offset
+            c = tri.vertices[2] + vertex_offset
+            face_blocks.append(f"f {a} {b} {c}\n")
+
+        vertex_offset += len(mesh.vertices)
+        bpy.data.meshes.remove(mesh)
+
+    with path.open("w", encoding="ascii", newline="\n") as out:
+        out.write(f"mtllib {mtl_path.name}\n")
+        out.write(f"o {path.stem}\n")
+        out.writelines(vertex_lines)
+        out.writelines(face_blocks)
+
+    with mtl_path.open("w", encoding="ascii", newline="\n") as out:
+        for index, (name, color) in enumerate(material_colors.items()):
+            if index:
+                out.write("\n")
+            out.write(f"newmtl {name}\n")
+            out.write("Ka 1.000000 1.000000 1.000000\n")
+            out.write(f"Kd {color[0]:.6f} {color[1]:.6f} {color[2]:.6f}\n")
+            out.write("Ks 0.000000 0.000000 0.000000\n")
+            out.write("Ke 0.000000 0.000000 0.000000\n")
+            out.write("d 1.000000\n")
+            out.write("illum 2\n")
+    print(f"EXPORTED_ASSET_OBJ={path}")
+
+
+def set_pose_control(armature, name, loc):
+    pb = armature.pose.bones.get(name)
+    if pb:
+        pb.matrix = Matrix.Translation(Vector(loc))
+
+
+def pose_fps_arms_asset():
+    armature = next((obj for obj in bpy.data.objects if obj.type == "ARMATURE"), None)
+    if not armature:
+        raise RuntimeError("FPS arms armature missing")
+
+    for pb in armature.pose.bones:
+        pb.rotation_mode = "XYZ"
+        pb.rotation_euler = (0.0, 0.0, 0.0)
+        pb.location = (0.0, 0.0, 0.0)
+    bpy.context.view_layer.update()
+
+    controls = {
+        "R.HandIk": (0.18, 0.44, -0.39),
+        "L.HandIk": (-0.04, 0.76, -0.32),
+        "R.ForearmIK": (0.52, -0.18, -0.78),
+        "L.ForearmIK": (-0.40, -0.04, -0.82),
+    }
+    for name, loc in controls.items():
+        set_pose_control(armature, name, loc)
+
+    fingers = [
+        "pinky1", "pinky1.001", "pinky2", "pinky2.001",
+        "ring1", "ring1.001", "ring2", "ring2.001",
+        "middle1", "middle1.001", "middle2", "middle2.001",
+        "index1", "index1.001", "index2", "index2.001",
+    ]
+    for side in ("L", "R"):
+        for finger in fingers:
+            pb = armature.pose.bones.get(f"{side}.{finger}")
+            if pb:
+                pb.rotation_mode = "XYZ"
+                pb.rotation_euler = (math.radians(-58), 0.0, 0.0)
+        for thumb in ("thumb1", "thumb2", "thumb3"):
+            pb = armature.pose.bones.get(f"{side}.{thumb}")
+            if pb:
+                pb.rotation_mode = "XYZ"
+                pb.rotation_euler = (math.radians(-36), 0.0, 0.0)
+    bpy.context.view_layer.update()
+
+
+def import_and_place_ak_asset():
+    if not AK_SOURCE_OBJ.exists():
+        raise FileNotFoundError(f"AK source model missing: {AK_SOURCE_OBJ}")
+
+    before = set(bpy.data.objects)
+    bpy.ops.wm.obj_import(filepath=str(AK_SOURCE_OBJ))
+    imported = [obj for obj in bpy.data.objects if obj not in before and obj.type == "MESH"]
+    if not imported:
+        raise RuntimeError("AK import produced no mesh objects")
+
+    mins = Vector((1.0e9, 1.0e9, 1.0e9))
+    maxs = Vector((-1.0e9, -1.0e9, -1.0e9))
+    for obj in imported:
+        for vertex in obj.data.vertices:
+            p = obj.matrix_world @ vertex.co
+            mins.x = min(mins.x, p.x)
+            mins.y = min(mins.y, p.y)
+            mins.z = min(mins.z, p.z)
+            maxs.x = max(maxs.x, p.x)
+            maxs.y = max(maxs.y, p.y)
+            maxs.z = max(maxs.z, p.z)
+
+    # Imported AK axes in Blender are length-on-Y and up-on-Z, but its front/back
+    # is opposite the FPS arms hold. Bake the evaluated vertices into the arms
+    # coordinate frame and flip Y so the muzzle points forward.
+    target_len = 1.34
+    source_len = max(maxs.y - mins.y, 0.001)
+    scale = target_len / source_len
+    target_muzzle_y = 1.22
+    x_offset = 0.02 - ((mins.x + maxs.x) * 0.5 * scale)
+    y_offset = target_muzzle_y + mins.y * scale
+    z_offset = -0.25 - ((mins.z + maxs.z) * 0.5 * scale)
+    for obj in imported:
+        obj.name = "asset AK-47"
+        original_world = obj.matrix_world.copy()
+        for vertex in obj.data.vertices:
+            p = original_world @ vertex.co
+            vertex.co = Vector((
+                p.x * scale + x_offset,
+                -p.y * scale + y_offset,
+                p.z * scale + z_offset,
+            ))
+        obj.matrix_world = Matrix.Identity(4)
+        bpy.context.view_layer.objects.active = obj
+        obj.select_set(True)
+        obj.modifiers.new("asset AK weighted normals", "WEIGHTED_NORMAL")
+    bpy.context.view_layer.update()
+    return imported
+
+
+def make_viewmodel_sleeve(name, cut_y):
+    deps = bpy.context.evaluated_depsgraph_get()
+    source = bpy.data.objects[name]
+    eval_obj = source.evaluated_get(deps)
+    mesh = bpy.data.meshes.new_from_object(eval_obj, depsgraph=deps)
+    world = eval_obj.matrix_world.copy()
+
+    for vertex in mesh.vertices:
+        vertex.co = world @ vertex.co
+
+    bm = bmesh.new()
+    bm.from_mesh(mesh)
+    geom = list(bm.verts) + list(bm.edges) + list(bm.faces)
+    # Keep the wrist/forearm side of the sleeve and remove the oversized
+    # upper-arm cuff that would sit inside the first-person camera.
+    bmesh.ops.bisect_plane(
+        bm,
+        geom=geom,
+        plane_co=(0.0, cut_y, 0.0),
+        plane_no=(0.0, 1.0, 0.0),
+        clear_inner=True,
+        clear_outer=False,
+    )
+    bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+    bm.to_mesh(mesh)
+    bm.free()
+    mesh.update()
+
+    sleeve = bpy.data.objects.new(name.replace(".001", "_viewmodel_cut"), mesh)
+    sleeve.matrix_world = Matrix.Identity(4)
+    bpy.context.scene.collection.objects.link(sleeve)
+    sleeve.modifiers.new("viewmodel sleeve normals", "WEIGHTED_NORMAL")
+
+    source.hide_viewport = True
+    source.hide_render = True
+    return sleeve
+
+
+def export_asset_viewmodel():
+    if not FPS_ARMS_BLEND.exists():
+        raise FileNotFoundError(f"FPS arms blend missing: {FPS_ARMS_BLEND}")
+
+    bpy.ops.wm.open_mainfile(filepath=str(FPS_ARMS_BLEND))
+    pose_fps_arms_asset()
+    ak_objects = import_and_place_ak_asset()
+    left_sleeve = make_viewmodel_sleeve("LeftSleeve.001", 0.30)
+    right_sleeve = make_viewmodel_sleeve("RightSleeve.001", 0.24)
+
+    bpy.ops.wm.save_as_mainfile(filepath=str(OUT_DIR / "pulse_ak47_viewmodel.blend"))
+
+    left = [bpy.data.objects["LeftHand.001"], left_sleeve]
+    right = [bpy.data.objects["RightHand.001"], right_sleeve]
+    write_runtime_obj(MODEL_DIR / "pulse_left_hand_viewmodel.obj", left)
+    write_runtime_obj(MODEL_DIR / "pulse_right_hand_viewmodel.obj", right)
+    write_runtime_obj(MODEL_DIR / "pulse_ak47_viewmodel.obj", ak_objects)
+
+
 def main():
-    clear_scene()
-    build_fps_carbine()
-    build_fps_hands()
-    scale_hand_group("left ", (-0.90, 0.205, -0.155), 1.30)
-    scale_hand_group("right ", (0.64, -0.245, -0.52), 1.25)
-    translate_hand_group("left ", (0.12, -0.035, -0.125))
-    setup_scene()
-    export_assets()
+    export_asset_viewmodel()
 
 
 if __name__ == "__main__":

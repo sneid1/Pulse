@@ -1,0 +1,245 @@
+[
+  {
+    "id": 1,
+    "asset_name": "Foundry coolant junction tower",
+    "image_file": "generated_images/001_foundry_coolant_junction_tower.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 2,
+    "asset_name": "Foundry wall oxygen scrubber module",
+    "image_file": "generated_images/002_foundry_wall_oxygen_scrubber_module.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 3,
+    "asset_name": "Foundry magnetic cargo lock",
+    "image_file": "generated_images/003_foundry_magnetic_cargo_lock.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "complete",
+    "bytes": 5684476
+  },
+  {
+    "id": 4,
+    "asset_name": "Foundry ceiling cable drop pod",
+    "image_file": "generated_images/004_foundry_ceiling_cable_drop_pod.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "complete",
+    "bytes": 4980905
+  },
+  {
+    "id": 5,
+    "asset_name": "Foundry conveyor diverter block",
+    "image_file": "generated_images/005_foundry_conveyor_diverter_block.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "complete",
+    "bytes": 5201942
+  },
+  {
+    "id": 6,
+    "asset_name": "Foundry service stair side cheek",
+    "image_file": "generated_images/006_foundry_service_stair_side_cheek.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 7,
+    "asset_name": "Furnace slag overflow valve",
+    "image_file": "generated_images/007_furnace_slag_overflow_valve.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 8,
+    "asset_name": "Furnace refractory brick power block",
+    "image_file": "generated_images/008_furnace_refractory_brick_power_block.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 9,
+    "asset_name": "Furnace ash extractor drum",
+    "image_file": "generated_images/009_furnace_ash_extractor_drum.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 10,
+    "asset_name": "Furnace pressure gauge shrine",
+    "image_file": "generated_images/010_furnace_pressure_gauge_shrine.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 11,
+    "asset_name": "Furnace heat curtain emitter",
+    "image_file": "generated_images/011_furnace_heat_curtain_emitter.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 12,
+    "asset_name": "Furnace cracked crucible pedestal",
+    "image_file": "generated_images/012_furnace_cracked_crucible_pedestal.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 13,
+    "asset_name": "Reliquary sealed reliquary coffer",
+    "image_file": "generated_images/013_reliquary_sealed_reliquary_coffer.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 14,
+    "asset_name": "Reliquary hymn resonator column",
+    "image_file": "generated_images/014_reliquary_hymn_resonator_column.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 15,
+    "asset_name": "Reliquary broken saint-engine fragment",
+    "image_file": "generated_images/015_reliquary_broken_saint_engine_fragment.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 16,
+    "asset_name": "Reliquary wall censer vent",
+    "image_file": "generated_images/016_reliquary_wall_censer_vent.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 17,
+    "asset_name": "Reliquary floor offering socket",
+    "image_file": "generated_images/017_reliquary_floor_offering_socket.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 18,
+    "asset_name": "Reliquary guardian buttress cap",
+    "image_file": "generated_images/018_reliquary_guardian_buttress_cap.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 19,
+    "asset_name": "Arena revive beacon base",
+    "image_file": "generated_images/019_arena_revive_beacon_base.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 20,
+    "asset_name": "Arena loot cache pedestal",
+    "image_file": "generated_images/020_arena_loot_cache_pedestal.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 21,
+    "asset_name": "Arena lockdown pylon",
+    "image_file": "generated_images/021_arena_lockdown_pylon.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 22,
+    "asset_name": "Arena portable barricade block",
+    "image_file": "generated_images/022_arena_portable_barricade_block.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 23,
+    "asset_name": "Arena floor hazard projector",
+    "image_file": "generated_images/023_arena_floor_hazard_projector.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  },
+  {
+    "id": 24,
+    "asset_name": "Arena elevator call pedestal",
+    "image_file": "generated_images/024_arena_elevator_call_pedestal.png",
+    "source_prompt": "C:\\Users\\rq27\\Pulse\\New Models\\Asset kits\\round_3_prompt_set.md",
+    "model": "gpt-image-2",
+    "size": "2048x2048",
+    "quality": "high",
+    "status": "pending"
+  }
+]

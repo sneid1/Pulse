@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_010_furnace_slag_trough_orange",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa25-e984-7d9b-8d2d-2539f5885015",
+    "submitted_at":  "2026-06-25T01:00:52.1638046+10:00",
+    "image":  "base_env_010_furnace_slag_trough_orange.png"
+}

@@ -1,0 +1,153 @@
+# pulse.style - Neon Ink Brutalism LOCKED style library (workstream W5).
+# See docs/Plan_PULSE_neon_ink_brutalism.md and the art-direction bible.
+#
+# This is the single source of truth for the approved palette, master-material
+# roughness/emission ranges, shading-band thresholds, and outline widths. Every
+# imported asset (including Meshy-generated geometry) is converted to these shared
+# materials and clamped to these ranges; AI assets do NOT define their own look.
+#
+# ASCII only (see CLAUDE.md). Format: key = value, or key = r, g, b for colors.
+# Colors are sRGB 0..1 (hex shown in comments); the engine converts as needed.
+# Phase 0 ships this as DATA + a loader; rendering consumption lands in later phases.
+
+# --- Approved palette (doc section 2) ---------------------------------------
+# Neutral shadows: very dark indigo (#090D22 .. #151936)
+palette.shadow_indigo      = 0.035, 0.051, 0.133
+palette.shadow_indigo_hi   = 0.082, 0.098, 0.212
+# Environment base: slate violet / blue-gray (#34365E .. #65577C)
+palette.env_base           = 0.204, 0.212, 0.369
+palette.env_base_hi        = 0.396, 0.341, 0.486
+# Light concrete: dusty lavender (#807092 .. #A18CAA)
+palette.light_concrete     = 0.502, 0.439, 0.573
+palette.light_concrete_hi  = 0.631, 0.549, 0.667
+# Enemy corruption: saturated magenta (#FF249F .. #FF3BC8); _hot = white-hot core push
+palette.enemy_magenta      = 1.000, 0.141, 0.624
+palette.enemy_magenta_hot  = 1.000, 0.231, 0.784
+# Friendly tech / interaction: electric cyan (#35E8ED .. #69FFFF)
+palette.friendly_cyan      = 0.208, 0.910, 0.929
+palette.friendly_cyan_hot  = 0.412, 1.000, 1.000
+# Navigation / narrative warmth: amber / peach (#F3A06F .. #FFC394)
+palette.nav_amber          = 0.953, 0.627, 0.435
+palette.nav_amber_hot      = 1.000, 0.765, 0.580
+# Neutral UI text: pale cyan-white (#D9F8FF)
+palette.ui_text            = 0.851, 0.973, 1.000
+# Ink / outlines: blue-black, not pure black (#060A19 .. #12152A)
+palette.ink_outline        = 0.012, 0.017, 0.040
+
+# --- Sky / atmosphere (doc section 7; consumed by W4) -----------------------
+# Deep indigo overhead, peach/coral at the horizon.
+sky.zenith                 = 0.060, 0.063, 0.180
+sky.horizon                = 0.960, 0.700, 0.545
+# Distance fog tone: blue-violet (separates depth without hiding enemies).
+sky.fog_tint               = 0.180, 0.165, 0.300
+
+# --- Stylized shading bands (doc section 5; consumed by W1) ------------------
+# Quantize DIRECT diffuse into 3 soft regions: deep shadow / midtone / lit.
+# Thresholds on NdotL; softness = smoothstep transition width. Specular stays smooth.
+shading.band_shadow        = 0.35
+shading.band_lit           = 0.68
+shading.band_softness      = 0.03
+
+# --- Ink outline widths in pixels at 1080p (doc section 5; consumed by W2) ---
+# Scale with resolution and distance at runtime. Internal lines thinner than silhouette.
+outline.env_px             = 3.00
+outline.prop_px            = 3.25
+outline.enemy_px           = 3.75
+outline.internal_scale     = 0.50
+# Viewmodel (hero weapon) ink boldness vs the environment: thickness + alpha multiplier
+# applied to camera-space pixels so the weapon reads as a hand-inked hero prop (doc 5).
+outline.hero_scale         = 1.60
+
+# --- Ink hatching in shadow + contact bands (doc section 5; consumed by W1) -----
+# Sparse WORLD-ANCHORED diagonal strokes (cross-hatched in the deepest shadow) that
+# darken the shadow + crevice regions like a hand-inked panel. Anchored to world space
+# so they do NOT swim with the camera; faded by view distance to kill moire/shimmer.
+# strength = 0 disables hatching. Keep it restrained (doc 15: hatching must stay sparse).
+hatch.strength             = 0.00
+hatch.scale                = 7.00
+hatch.width                = 0.15
+hatch.fade                 = 24.00
+
+# --- Master materials (doc section 4; consumed by W5 material build) ---------
+# Each preset: roughness clamp range, metallic, emissive scale, reflection importance
+# (0 = never reflect, 1 = hero reflective). Imported assets are clamped into these.
+# matte architectural: covers most of the world.
+mat.matte.rough_min        = 0.75
+mat.matte.rough_max        = 0.95
+mat.matte.metallic         = 0.00
+mat.matte.emissive         = 0.00
+mat.matte.reflect          = 0.00
+# painted / coated metal: weapons, machinery, doors, structural accents.
+mat.metal.rough_min        = 0.35
+mat.metal.rough_max        = 0.70
+mat.metal.metallic         = 0.90
+mat.metal.emissive         = 0.00
+mat.metal.reflect          = 0.40
+# polished obsidian: premium accent only (<= 10-15% of frame).
+mat.obsidian.rough_min     = 0.06
+mat.obsidian.rough_max     = 0.18
+mat.obsidian.metallic      = 0.10
+mat.obsidian.emissive      = 0.00
+mat.obsidian.reflect       = 1.00
+# emissive cyan: player / friendly / interactive tech.
+mat.emissive_cyan.rough_min = 0.20
+mat.emissive_cyan.rough_max = 0.40
+mat.emissive_cyan.metallic  = 0.00
+mat.emissive_cyan.emissive  = 2.50
+mat.emissive_cyan.reflect   = 0.20
+# emissive magenta: enemy energy / corruption (cores, cracks).
+mat.emissive_magenta.rough_min = 0.20
+mat.emissive_magenta.rough_max = 0.40
+mat.emissive_magenta.metallic  = 0.00
+mat.emissive_magenta.emissive  = 2.50
+mat.emissive_magenta.reflect   = 0.20
+
+# --- Interface system (Neon Ink Brutalism UI redesign) ----------------------
+# In-game menus + combat HUD palette + metrics. Colours mirror the pal:: role
+# namespace in src/Game/PulseGame.cpp (the live draw colours). Metrics are
+# consumed live by the HUD/menus, so spacing/stroke/corner/glow retune on F5.
+# Design space is 1920x1080; screens scale metrics by min(w/1920, h/1080).
+# ASCII only (see CLAUDE.md). Cyan is reserved for player focus / selection /
+# navigation / active interaction only.
+
+# UI palette (role-locked).
+ui.cyan              = 0.208, 0.910, 0.929   # 35E8ED  player / interaction / selection
+ui.cyan_hot          = 0.412, 1.000, 1.000   # 69FFFF  selection glow / ready highlight
+ui.magenta           = 1.000, 0.180, 0.624   # FF2E9F  threat / damage / intensity
+ui.magenta_soft      = 1.000, 0.455, 0.753   # FF74C0  intensity value / boss / curse
+ui.orange            = 0.953, 0.627, 0.435   # F3A06F  elite / special / warning / destructive
+ui.orange_hot        = 1.000, 0.753, 0.541   # FFC08A  elite titles / icons
+ui.slate             = 0.541, 0.592, 0.690   # 8A97B0  secondary info
+ui.slate_dim         = 0.345, 0.376, 0.475   # 586079  tertiary labels / metadata
+ui.faint             = 0.227, 0.259, 0.349   # 3A4259  disabled / empty / separators
+ui.text_hi           = 0.902, 0.965, 1.000   # E6F6FF  headings / primary labels
+ui.text_hero         = 0.918, 0.988, 1.000   # EAFCFF  hero values (HP / ammo)
+ui.text_mid          = 0.761, 0.824, 0.894   # C2D2E4  body copy / neutral values
+ui.navy              = 0.047, 0.063, 0.125   # 0C1020  solid panel fill over the world
+ui.deep              = 0.027, 0.031, 0.063   # 070810  front-end / overlay base
+ui.border            = 0.102, 0.133, 0.212   # 1A2236  hairline border
+ui.ink_stroke        = 0.667, 0.722, 0.816   # AAB8D0  HUD module frame line (~0.32 alpha)
+
+# Loot tiers (deliberately off-cyan).
+ui.tier_common       = 0.541, 0.592, 0.690   # 8A97B0 slate
+ui.tier_uncommon     = 0.337, 0.667, 0.980   # 56AAFA blue
+ui.tier_rare         = 0.953, 0.627, 0.435   # F3A06F orange
+
+# Room types.
+ui.room_combat       = 0.902, 0.965, 1.000   # E6F6FF steel/white (NOT cyan)
+ui.room_elite        = 1.000, 0.753, 0.541   # FFC08A orange
+ui.room_cache        = 0.549, 0.776, 1.000   # 8CC6FF blue
+ui.room_boss         = 1.000, 0.455, 0.753   # FF74C0 magenta
+
+# UI metrics (design-space px @1920x1080; scaled to the back-buffer at runtime).
+ui.margin_px         = 64.0    # screen-safe margin
+ui.grid_px           = 8.0     # spacing unit (8/16/24/32/48/64)
+ui.corner_px         = 12.0    # chamfer on panels/cards (top-left + bottom-right)
+ui.corner_small_px   = 10.0    # chamfer on small controls
+ui.corner_large_px   = 14.0    # chamfer on large panels/buttons
+ui.stroke_px         = 1.5     # default border
+ui.stroke_focus_px   = 2.0     # selected/focused element border
+ui.spine_px          = 3.0     # accent spine (single coloured panel edge); 4.0 on menu focus
+ui.bar_px            = 8.0     # default bar height (HP); shield 4, sliders 6
+ui.glow_radius_px    = 18.0    # soft outer glow (active/danger/luminous ONLY)
+ui.waveform_stroke_px = 2.4    # pulse waveform (intensity meter + Start Run button only)

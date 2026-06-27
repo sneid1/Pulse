@@ -1,0 +1,314 @@
+[
+  {
+    "id": "001",
+    "category": "round_3_environment",
+    "name": "foundry_coolant_junction_tower",
+    "display_name": "Foundry coolant junction tower",
+    "source": "generated_images/001_foundry_coolant_junction_tower.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/001_foundry_coolant_junction_tower.png",
+    "mesh_ready_size": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "id": "002",
+    "category": "round_3_environment",
+    "name": "foundry_wall_oxygen_scrubber_module",
+    "display_name": "Foundry wall oxygen scrubber module",
+    "source": "generated_images/002_foundry_wall_oxygen_scrubber_module.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/002_foundry_wall_oxygen_scrubber_module.png",
+    "mesh_ready_size": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "id": "003",
+    "category": "round_3_environment",
+    "name": "foundry_magnetic_cargo_lock",
+    "display_name": "Foundry magnetic cargo lock",
+    "source": "generated_images/003_foundry_magnetic_cargo_lock.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/003_foundry_magnetic_cargo_lock.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "004",
+    "category": "round_3_environment",
+    "name": "foundry_ceiling_cable_drop_pod",
+    "display_name": "Foundry ceiling cable drop pod",
+    "source": "generated_images/004_foundry_ceiling_cable_drop_pod.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/004_foundry_ceiling_cable_drop_pod.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "005",
+    "category": "round_3_environment",
+    "name": "foundry_conveyor_diverter_block",
+    "display_name": "Foundry conveyor diverter block",
+    "source": "generated_images/005_foundry_conveyor_diverter_block.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/005_foundry_conveyor_diverter_block.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "006",
+    "category": "round_3_environment",
+    "name": "foundry_service_stair_side_cheek",
+    "display_name": "Foundry service stair side cheek",
+    "source": "generated_images/006_foundry_service_stair_side_cheek.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/006_foundry_service_stair_side_cheek.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "007",
+    "category": "round_3_environment",
+    "name": "furnace_slag_overflow_valve",
+    "display_name": "Furnace slag overflow valve",
+    "source": "generated_images/007_furnace_slag_overflow_valve.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/007_furnace_slag_overflow_valve.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "008",
+    "category": "round_3_environment",
+    "name": "furnace_refractory_brick_power_block",
+    "display_name": "Furnace refractory brick power block",
+    "source": "generated_images/008_furnace_refractory_brick_power_block.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/008_furnace_refractory_brick_power_block.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "009",
+    "category": "round_3_environment",
+    "name": "furnace_ash_extractor_drum",
+    "display_name": "Furnace ash extractor drum",
+    "source": "generated_images/009_furnace_ash_extractor_drum.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/009_furnace_ash_extractor_drum.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "010",
+    "category": "round_3_environment",
+    "name": "furnace_pressure_gauge_shrine",
+    "display_name": "Furnace pressure gauge shrine",
+    "source": "generated_images/010_furnace_pressure_gauge_shrine.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/010_furnace_pressure_gauge_shrine.png",
+    "mesh_ready_size": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "id": "011",
+    "category": "round_3_environment",
+    "name": "furnace_heat_curtain_emitter",
+    "display_name": "Furnace heat curtain emitter",
+    "source": "generated_images/011_furnace_heat_curtain_emitter.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/011_furnace_heat_curtain_emitter.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "012",
+    "category": "round_3_environment",
+    "name": "furnace_cracked_crucible_pedestal",
+    "display_name": "Furnace cracked crucible pedestal",
+    "source": "generated_images/012_furnace_cracked_crucible_pedestal.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/012_furnace_cracked_crucible_pedestal.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "013",
+    "category": "round_3_environment",
+    "name": "reliquary_sealed_reliquary_coffer",
+    "display_name": "Reliquary sealed reliquary coffer",
+    "source": "generated_images/013_reliquary_sealed_reliquary_coffer.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/013_reliquary_sealed_reliquary_coffer.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "014",
+    "category": "round_3_environment",
+    "name": "reliquary_hymn_resonator_column",
+    "display_name": "Reliquary hymn resonator column",
+    "source": "generated_images/014_reliquary_hymn_resonator_column.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/014_reliquary_hymn_resonator_column.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "015",
+    "category": "round_3_environment",
+    "name": "reliquary_broken_saint_engine_fragment",
+    "display_name": "Reliquary broken saint-engine fragment",
+    "source": "generated_images/015_reliquary_broken_saint_engine_fragment.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/015_reliquary_broken_saint_engine_fragment.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "016",
+    "category": "round_3_environment",
+    "name": "reliquary_wall_censer_vent",
+    "display_name": "Reliquary wall censer vent",
+    "source": "generated_images/016_reliquary_wall_censer_vent.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/016_reliquary_wall_censer_vent.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "017",
+    "category": "round_3_environment",
+    "name": "reliquary_floor_offering_socket",
+    "display_name": "Reliquary floor offering socket",
+    "source": "generated_images/017_reliquary_floor_offering_socket.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/017_reliquary_floor_offering_socket.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "018",
+    "category": "round_3_environment",
+    "name": "reliquary_guardian_buttress_cap",
+    "display_name": "Reliquary guardian buttress cap",
+    "source": "generated_images/018_reliquary_guardian_buttress_cap.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/018_reliquary_guardian_buttress_cap.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "019",
+    "category": "round_3_environment",
+    "name": "arena_revive_beacon_base",
+    "display_name": "Arena revive beacon base",
+    "source": "generated_images/019_arena_revive_beacon_base.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/019_arena_revive_beacon_base.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "020",
+    "category": "round_3_environment",
+    "name": "arena_loot_cache_pedestal",
+    "display_name": "Arena loot cache pedestal",
+    "source": "generated_images/020_arena_loot_cache_pedestal.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/020_arena_loot_cache_pedestal.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "021",
+    "category": "round_3_environment",
+    "name": "arena_lockdown_pylon",
+    "display_name": "Arena lockdown pylon",
+    "source": "generated_images/021_arena_lockdown_pylon.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/021_arena_lockdown_pylon.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "022",
+    "category": "round_3_environment",
+    "name": "arena_portable_barricade_block",
+    "display_name": "Arena portable barricade block",
+    "source": "generated_images/022_arena_portable_barricade_block.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/022_arena_portable_barricade_block.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "023",
+    "category": "round_3_environment",
+    "name": "arena_floor_hazard_projector",
+    "display_name": "Arena floor hazard projector",
+    "source": "generated_images/023_arena_floor_hazard_projector.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/023_arena_floor_hazard_projector.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  },
+  {
+    "id": "024",
+    "category": "round_3_environment",
+    "name": "arena_elevator_call_pedestal",
+    "display_name": "Arena elevator call pedestal",
+    "source": "generated_images/024_arena_elevator_call_pedestal.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "generated_images/024_arena_elevator_call_pedestal.png",
+    "mesh_ready_size": [
+      2048,
+      2048
+    ]
+  }
+]

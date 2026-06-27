@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_013_platform_support_truss",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa26-2596-7069-b9c0-2e72115beed9",
+    "submitted_at":  "2026-06-25T01:01:07.1681022+10:00",
+    "image":  "base_env_013_platform_support_truss.png"
+}

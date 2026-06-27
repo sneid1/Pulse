@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_005_reliquary_wall_buttress_violet",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa25-4749-7d70-8184-78f80f296aa4",
+    "submitted_at":  "2026-06-25T01:00:14.2596223+10:00",
+    "image":  "base_env_005_reliquary_wall_buttress_violet.png"
+}

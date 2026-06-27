@@ -6,7 +6,7 @@ from mathutils import Vector
 
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "build" / "blender" / "pulse_carbine_hands_near_side.png"
+OUT = ROOT / "build" / "blender" / "pulse_ak47_hands_near_side.png"
 OUT.parent.mkdir(parents=True, exist_ok=True)
 
 

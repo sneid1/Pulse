@@ -1,0 +1,258 @@
+PULSE weapon reload producer
+work_sr=96000 out_sr=48000
+[pistol:dry] stem=sfx_weapon_pistol_dry variants=3 length=0.212s targetPeak=-7.2dBFS
+sfx_weapon_pistol_dry.wav: peak=-10.00dBFS rms=-32.11dBFS low80-350=-43.32dB mid0.5-3.5k=-36.55dB high4.5-14k=-37.25dB
+sfx_weapon_pistol_dry_1.wav: peak=-10.00dBFS rms=-30.98dBFS low80-350=-41.36dB mid0.5-3.5k=-35.29dB high4.5-14k=-36.60dB
+sfx_weapon_pistol_dry_2.wav: peak=-10.00dBFS rms=-32.79dBFS low80-350=-43.35dB mid0.5-3.5k=-37.02dB high4.5-14k=-38.35dB
+[pistol:equip] stem=sfx_weapon_pistol_equip variants=3 length=0.340s targetPeak=-7.2dBFS
+sfx_weapon_pistol_equip.wav: peak=-8.40dBFS rms=-30.39dBFS low80-350=-32.52dB mid0.5-3.5k=-38.81dB high4.5-14k=-37.86dB
+sfx_weapon_pistol_equip_1.wav: peak=-8.40dBFS rms=-30.82dBFS low80-350=-32.94dB mid0.5-3.5k=-39.23dB high4.5-14k=-38.30dB
+sfx_weapon_pistol_equip_2.wav: peak=-8.40dBFS rms=-30.54dBFS low80-350=-32.68dB mid0.5-3.5k=-38.84dB high4.5-14k=-37.94dB
+[pistol:reload_start] stem=sfx_weapon_pistol_reload_start variants=3 length=0.440s targetPeak=-7.2dBFS
+sfx_weapon_pistol_reload_start.wav: peak=-8.70dBFS rms=-31.82dBFS low80-350=-35.62dB mid0.5-3.5k=-38.25dB high4.5-14k=-38.98dB
+sfx_weapon_pistol_reload_start_1.wav: peak=-8.70dBFS rms=-30.92dBFS low80-350=-34.34dB mid0.5-3.5k=-37.32dB high4.5-14k=-39.22dB
+sfx_weapon_pistol_reload_start_2.wav: peak=-8.70dBFS rms=-30.48dBFS low80-350=-34.00dB mid0.5-3.5k=-36.81dB high4.5-14k=-38.48dB
+[pistol:mag_out] stem=sfx_weapon_pistol_mag_out variants=3 length=0.320s targetPeak=-7.2dBFS
+sfx_weapon_pistol_mag_out.wav: peak=-7.40dBFS rms=-27.42dBFS low80-350=-29.92dB mid0.5-3.5k=-35.04dB high4.5-14k=-34.79dB
+sfx_weapon_pistol_mag_out_1.wav: peak=-7.40dBFS rms=-27.36dBFS low80-350=-29.57dB mid0.5-3.5k=-35.22dB high4.5-14k=-35.42dB
+sfx_weapon_pistol_mag_out_2.wav: peak=-7.40dBFS rms=-27.28dBFS low80-350=-29.80dB mid0.5-3.5k=-34.77dB high4.5-14k=-34.81dB
+[pistol:mag_in] stem=sfx_weapon_pistol_mag_in variants=3 length=0.340s targetPeak=-7.2dBFS
+sfx_weapon_pistol_mag_in.wav: peak=-7.20dBFS rms=-26.58dBFS low80-350=-28.25dB mid0.5-3.5k=-35.62dB high4.5-14k=-36.76dB
+sfx_weapon_pistol_mag_in_1.wav: peak=-7.20dBFS rms=-25.58dBFS low80-350=-27.23dB mid0.5-3.5k=-34.84dB high4.5-14k=-35.70dB
+sfx_weapon_pistol_mag_in_2.wav: peak=-7.20dBFS rms=-26.29dBFS low80-350=-27.97dB mid0.5-3.5k=-34.94dB high4.5-14k=-37.06dB
+[pistol:reload_end] stem=sfx_weapon_pistol_reload_end variants=3 length=0.380s targetPeak=-7.2dBFS
+sfx_weapon_pistol_reload_end.wav: peak=-7.40dBFS rms=-29.13dBFS low80-350=-31.05dB mid0.5-3.5k=-38.42dB high4.5-14k=-36.47dB
+sfx_weapon_pistol_reload_end_1.wav: peak=-7.40dBFS rms=-29.00dBFS low80-350=-30.72dB mid0.5-3.5k=-38.48dB high4.5-14k=-36.85dB
+sfx_weapon_pistol_reload_end_2.wav: peak=-7.40dBFS rms=-28.39dBFS low80-350=-30.10dB mid0.5-3.5k=-38.04dB high4.5-14k=-36.35dB
+[pistol:bolt] stem=sfx_weapon_pistol_bolt variants=3 length=0.340s targetPeak=-7.2dBFS
+sfx_weapon_pistol_bolt.wav: peak=-7.50dBFS rms=-28.28dBFS low80-350=-30.18dB mid0.5-3.5k=-38.02dB high4.5-14k=-35.51dB
+sfx_weapon_pistol_bolt_1.wav: peak=-7.50dBFS rms=-29.16dBFS low80-350=-31.21dB mid0.5-3.5k=-38.87dB high4.5-14k=-35.96dB
+sfx_weapon_pistol_bolt_2.wav: peak=-7.50dBFS rms=-28.10dBFS low80-350=-30.11dB mid0.5-3.5k=-37.61dB high4.5-14k=-35.16dB
+[pistol:shell] stem=sfx_weapon_pistol_shell variants=3 length=0.340s targetPeak=-7.2dBFS
+sfx_weapon_pistol_shell.wav: peak=-7.20dBFS rms=-26.58dBFS low80-350=-28.25dB mid0.5-3.5k=-35.62dB high4.5-14k=-36.76dB
+sfx_weapon_pistol_shell_1.wav: peak=-7.20dBFS rms=-25.58dBFS low80-350=-27.23dB mid0.5-3.5k=-34.84dB high4.5-14k=-35.70dB
+sfx_weapon_pistol_shell_2.wav: peak=-7.20dBFS rms=-26.29dBFS low80-350=-27.97dB mid0.5-3.5k=-34.94dB high4.5-14k=-37.06dB
+[ak47:dry] stem=sfx_weapon_ak47_dry variants=3 length=0.235s targetPeak=-6.0dBFS
+sfx_weapon_ak47_dry.wav: peak=-8.80dBFS rms=-28.90dBFS low80-350=-30.59dB mid0.5-3.5k=-36.55dB high4.5-14k=-39.10dB
+sfx_weapon_ak47_dry_1.wav: peak=-8.80dBFS rms=-28.90dBFS low80-350=-30.53dB mid0.5-3.5k=-36.89dB high4.5-14k=-39.37dB
+sfx_weapon_ak47_dry_2.wav: peak=-8.80dBFS rms=-27.68dBFS low80-350=-29.41dB mid0.5-3.5k=-35.55dB high4.5-14k=-37.62dB
+[ak47:equip] stem=sfx_weapon_ak47_equip variants=3 length=0.429s targetPeak=-6.0dBFS
+sfx_weapon_ak47_equip.wav: peak=-7.20dBFS rms=-25.34dBFS low80-350=-26.15dB mid0.5-3.5k=-37.13dB high4.5-14k=-37.40dB
+sfx_weapon_ak47_equip_1.wav: peak=-7.20dBFS rms=-25.09dBFS low80-350=-25.88dB mid0.5-3.5k=-36.99dB high4.5-14k=-37.71dB
+sfx_weapon_ak47_equip_2.wav: peak=-7.20dBFS rms=-25.03dBFS low80-350=-25.76dB mid0.5-3.5k=-37.36dB high4.5-14k=-37.37dB
+[ak47:reload_start] stem=sfx_weapon_ak47_reload_start variants=3 length=0.580s targetPeak=-6.0dBFS
+sfx_weapon_ak47_reload_start.wav: peak=-7.50dBFS rms=-24.55dBFS low80-350=-25.51dB mid0.5-3.5k=-35.62dB high4.5-14k=-36.51dB
+sfx_weapon_ak47_reload_start_1.wav: peak=-7.50dBFS rms=-25.95dBFS low80-350=-26.91dB mid0.5-3.5k=-37.21dB high4.5-14k=-38.22dB
+sfx_weapon_ak47_reload_start_2.wav: peak=-7.50dBFS rms=-24.58dBFS low80-350=-25.55dB mid0.5-3.5k=-35.61dB high4.5-14k=-36.53dB
+[ak47:mag_out] stem=sfx_weapon_ak47_mag_out variants=3 length=0.360s targetPeak=-6.0dBFS
+sfx_weapon_ak47_mag_out.wav: peak=-6.20dBFS rms=-24.93dBFS low80-350=-26.14dB mid0.5-3.5k=-36.01dB high4.5-14k=-36.21dB
+sfx_weapon_ak47_mag_out_1.wav: peak=-6.20dBFS rms=-23.52dBFS low80-350=-24.66dB mid0.5-3.5k=-35.11dB high4.5-14k=-35.44dB
+sfx_weapon_ak47_mag_out_2.wav: peak=-6.20dBFS rms=-24.71dBFS low80-350=-25.89dB mid0.5-3.5k=-35.80dB high4.5-14k=-36.21dB
+[ak47:mag_in] stem=sfx_weapon_ak47_mag_in variants=3 length=0.460s targetPeak=-6.0dBFS
+sfx_weapon_ak47_mag_in.wav: peak=-6.00dBFS rms=-21.97dBFS low80-350=-22.91dB mid0.5-3.5k=-38.25dB high4.5-14k=-39.63dB
+sfx_weapon_ak47_mag_in_1.wav: peak=-6.00dBFS rms=-21.52dBFS low80-350=-22.56dB mid0.5-3.5k=-38.31dB high4.5-14k=-38.92dB
+sfx_weapon_ak47_mag_in_2.wav: peak=-6.00dBFS rms=-21.03dBFS low80-350=-21.89dB mid0.5-3.5k=-37.66dB high4.5-14k=-39.49dB
+[ak47:reload_end] stem=sfx_weapon_ak47_reload_end variants=3 length=0.500s targetPeak=-6.0dBFS
+sfx_weapon_ak47_reload_end.wav: peak=-6.20dBFS rms=-22.73dBFS low80-350=-24.72dB mid0.5-3.5k=-36.56dB high4.5-14k=-36.27dB
+sfx_weapon_ak47_reload_end_1.wav: peak=-6.20dBFS rms=-23.49dBFS low80-350=-25.71dB mid0.5-3.5k=-37.19dB high4.5-14k=-36.55dB
+sfx_weapon_ak47_reload_end_2.wav: peak=-6.20dBFS rms=-23.03dBFS low80-350=-24.97dB mid0.5-3.5k=-36.91dB high4.5-14k=-36.58dB
+[ak47:bolt] stem=sfx_weapon_ak47_bolt variants=3 length=0.390s targetPeak=-6.0dBFS
+sfx_weapon_ak47_bolt.wav: peak=-6.30dBFS rms=-23.42dBFS low80-350=-24.97dB mid0.5-3.5k=-37.09dB high4.5-14k=-36.18dB
+sfx_weapon_ak47_bolt_1.wav: peak=-6.30dBFS rms=-24.10dBFS low80-350=-25.72dB mid0.5-3.5k=-37.75dB high4.5-14k=-37.34dB
+sfx_weapon_ak47_bolt_2.wav: peak=-6.30dBFS rms=-23.30dBFS low80-350=-24.76dB mid0.5-3.5k=-37.06dB high4.5-14k=-37.02dB
+[ak47:shell] stem=sfx_weapon_ak47_shell variants=3 length=0.460s targetPeak=-6.0dBFS
+sfx_weapon_ak47_shell.wav: peak=-6.00dBFS rms=-21.97dBFS low80-350=-22.91dB mid0.5-3.5k=-38.25dB high4.5-14k=-39.63dB
+sfx_weapon_ak47_shell_1.wav: peak=-6.00dBFS rms=-21.52dBFS low80-350=-22.56dB mid0.5-3.5k=-38.31dB high4.5-14k=-38.92dB
+sfx_weapon_ak47_shell_2.wav: peak=-6.00dBFS rms=-21.03dBFS low80-350=-21.89dB mid0.5-3.5k=-37.66dB high4.5-14k=-39.49dB
+[carbine:dry] stem=sfx_weapon_carbine_dry variants=3 length=0.223s targetPeak=-6.6dBFS
+sfx_weapon_carbine_dry.wav: peak=-9.40dBFS rms=-31.94dBFS low80-350=-43.25dB mid0.5-3.5k=-35.74dB high4.5-14k=-37.97dB
+sfx_weapon_carbine_dry_1.wav: peak=-9.40dBFS rms=-33.17dBFS low80-350=-43.72dB mid0.5-3.5k=-37.13dB high4.5-14k=-39.53dB
+sfx_weapon_carbine_dry_2.wav: peak=-9.40dBFS rms=-30.91dBFS low80-350=-41.94dB mid0.5-3.5k=-34.80dB high4.5-14k=-36.79dB
+[carbine:equip] stem=sfx_weapon_carbine_equip variants=3 length=0.370s targetPeak=-6.6dBFS
+sfx_weapon_carbine_equip.wav: peak=-7.80dBFS rms=-29.40dBFS low80-350=-31.23dB mid0.5-3.5k=-38.34dB high4.5-14k=-37.33dB
+sfx_weapon_carbine_equip_1.wav: peak=-7.80dBFS rms=-29.17dBFS low80-350=-30.87dB mid0.5-3.5k=-38.16dB high4.5-14k=-37.48dB
+sfx_weapon_carbine_equip_2.wav: peak=-7.80dBFS rms=-30.26dBFS low80-350=-32.04dB mid0.5-3.5k=-39.08dB high4.5-14k=-38.56dB
+[carbine:reload_start] stem=sfx_weapon_carbine_reload_start variants=3 length=0.500s targetPeak=-6.6dBFS
+sfx_weapon_carbine_reload_start.wav: peak=-8.10dBFS rms=-28.29dBFS low80-350=-30.31dB mid0.5-3.5k=-37.08dB high4.5-14k=-37.28dB
+sfx_weapon_carbine_reload_start_1.wav: peak=-8.10dBFS rms=-29.15dBFS low80-350=-31.06dB mid0.5-3.5k=-37.91dB high4.5-14k=-38.60dB
+sfx_weapon_carbine_reload_start_2.wav: peak=-8.10dBFS rms=-28.88dBFS low80-350=-30.99dB mid0.5-3.5k=-37.39dB high4.5-14k=-37.83dB
+[carbine:mag_out] stem=sfx_weapon_carbine_mag_out variants=3 length=0.320s targetPeak=-6.6dBFS
+sfx_weapon_carbine_mag_out.wav: peak=-6.80dBFS rms=-26.63dBFS low80-350=-28.67dB mid0.5-3.5k=-34.60dB high4.5-14k=-35.13dB
+sfx_weapon_carbine_mag_out_1.wav: peak=-6.80dBFS rms=-27.24dBFS low80-350=-29.27dB mid0.5-3.5k=-35.22dB high4.5-14k=-35.79dB
+sfx_weapon_carbine_mag_out_2.wav: peak=-6.80dBFS rms=-26.47dBFS low80-350=-28.54dB mid0.5-3.5k=-34.73dB high4.5-14k=-34.66dB
+[carbine:mag_in] stem=sfx_weapon_carbine_mag_in variants=3 length=0.380s targetPeak=-6.6dBFS
+sfx_weapon_carbine_mag_in.wav: peak=-6.60dBFS rms=-25.46dBFS low80-350=-26.56dB mid0.5-3.5k=-36.46dB high4.5-14k=-37.09dB
+sfx_weapon_carbine_mag_in_1.wav: peak=-6.60dBFS rms=-26.42dBFS low80-350=-27.59dB mid0.5-3.5k=-37.17dB high4.5-14k=-38.24dB
+sfx_weapon_carbine_mag_in_2.wav: peak=-6.60dBFS rms=-26.28dBFS low80-350=-27.39dB mid0.5-3.5k=-36.60dB high4.5-14k=-38.76dB
+[carbine:reload_end] stem=sfx_weapon_carbine_reload_end variants=3 length=0.420s targetPeak=-6.6dBFS
+sfx_weapon_carbine_reload_end.wav: peak=-6.80dBFS rms=-26.03dBFS low80-350=-27.23dB mid0.5-3.5k=-37.58dB high4.5-14k=-36.85dB
+sfx_weapon_carbine_reload_end_1.wav: peak=-6.80dBFS rms=-25.16dBFS low80-350=-26.36dB mid0.5-3.5k=-36.84dB high4.5-14k=-35.94dB
+sfx_weapon_carbine_reload_end_2.wav: peak=-6.80dBFS rms=-25.74dBFS low80-350=-26.81dB mid0.5-3.5k=-37.77dB high4.5-14k=-36.95dB
+[carbine:bolt] stem=sfx_weapon_carbine_bolt variants=3 length=0.340s targetPeak=-6.6dBFS
+sfx_weapon_carbine_bolt.wav: peak=-6.90dBFS rms=-27.99dBFS low80-350=-29.70dB mid0.5-3.5k=-37.60dB high4.5-14k=-35.97dB
+sfx_weapon_carbine_bolt_1.wav: peak=-6.90dBFS rms=-27.62dBFS low80-350=-29.22dB mid0.5-3.5k=-37.68dB high4.5-14k=-35.56dB
+sfx_weapon_carbine_bolt_2.wav: peak=-6.90dBFS rms=-28.28dBFS low80-350=-30.03dB mid0.5-3.5k=-38.12dB high4.5-14k=-35.81dB
+[carbine:shell] stem=sfx_weapon_carbine_shell variants=3 length=0.380s targetPeak=-6.6dBFS
+sfx_weapon_carbine_shell.wav: peak=-6.60dBFS rms=-25.46dBFS low80-350=-26.56dB mid0.5-3.5k=-36.46dB high4.5-14k=-37.09dB
+sfx_weapon_carbine_shell_1.wav: peak=-6.60dBFS rms=-26.42dBFS low80-350=-27.59dB mid0.5-3.5k=-37.17dB high4.5-14k=-38.24dB
+sfx_weapon_carbine_shell_2.wav: peak=-6.60dBFS rms=-26.28dBFS low80-350=-27.39dB mid0.5-3.5k=-36.60dB high4.5-14k=-38.76dB
+[pulse_smg:dry] stem=sfx_weapon_pulse_smg_dry variants=3 length=0.210s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_dry.wav: peak=-10.60dBFS rms=-31.72dBFS low80-350=-52.21dB mid0.5-3.5k=-32.73dB high4.5-14k=-40.34dB
+sfx_weapon_pulse_smg_dry_1.wav: peak=-10.60dBFS rms=-31.48dBFS low80-350=-51.30dB mid0.5-3.5k=-32.60dB high4.5-14k=-39.57dB
+sfx_weapon_pulse_smg_dry_2.wav: peak=-10.60dBFS rms=-32.47dBFS low80-350=-52.04dB mid0.5-3.5k=-33.52dB high4.5-14k=-40.81dB
+[pulse_smg:equip] stem=sfx_weapon_pulse_smg_equip variants=3 length=0.340s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_equip.wav: peak=-9.00dBFS rms=-29.25dBFS low80-350=-35.07dB mid0.5-3.5k=-31.75dB high4.5-14k=-38.17dB
+sfx_weapon_pulse_smg_equip_1.wav: peak=-9.00dBFS rms=-30.14dBFS low80-350=-36.23dB mid0.5-3.5k=-32.46dB high4.5-14k=-39.44dB
+sfx_weapon_pulse_smg_equip_2.wav: peak=-9.00dBFS rms=-30.23dBFS low80-350=-36.40dB mid0.5-3.5k=-32.74dB high4.5-14k=-38.52dB
+[pulse_smg:reload_start] stem=sfx_weapon_pulse_smg_reload_start variants=3 length=0.400s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_reload_start.wav: peak=-9.30dBFS rms=-29.68dBFS low80-350=-38.66dB mid0.5-3.5k=-31.37dB high4.5-14k=-38.66dB
+sfx_weapon_pulse_smg_reload_start_1.wav: peak=-9.30dBFS rms=-29.71dBFS low80-350=-39.13dB mid0.5-3.5k=-31.36dB high4.5-14k=-38.26dB
+sfx_weapon_pulse_smg_reload_start_2.wav: peak=-9.30dBFS rms=-28.99dBFS low80-350=-37.71dB mid0.5-3.5k=-30.72dB high4.5-14k=-37.82dB
+[pulse_smg:mag_out] stem=sfx_weapon_pulse_smg_mag_out variants=3 length=0.320s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_mag_out.wav: peak=-8.00dBFS rms=-29.40dBFS low80-350=-33.58dB mid0.5-3.5k=-35.03dB high4.5-14k=-35.41dB
+sfx_weapon_pulse_smg_mag_out_1.wav: peak=-8.00dBFS rms=-28.56dBFS low80-350=-32.70dB mid0.5-3.5k=-34.64dB high4.5-14k=-34.26dB
+sfx_weapon_pulse_smg_mag_out_2.wav: peak=-8.00dBFS rms=-29.22dBFS low80-350=-33.04dB mid0.5-3.5k=-35.20dB high4.5-14k=-35.36dB
+[pulse_smg:mag_in] stem=sfx_weapon_pulse_smg_mag_in variants=3 length=0.320s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_mag_in.wav: peak=-7.80dBFS rms=-28.07dBFS low80-350=-33.78dB mid0.5-3.5k=-30.41dB high4.5-14k=-37.65dB
+sfx_weapon_pulse_smg_mag_in_1.wav: peak=-7.80dBFS rms=-28.18dBFS low80-350=-33.71dB mid0.5-3.5k=-30.64dB high4.5-14k=-37.71dB
+sfx_weapon_pulse_smg_mag_in_2.wav: peak=-7.80dBFS rms=-29.08dBFS low80-350=-34.48dB mid0.5-3.5k=-31.45dB high4.5-14k=-39.23dB
+[pulse_smg:reload_end] stem=sfx_weapon_pulse_smg_reload_end variants=3 length=0.360s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_reload_end.wav: peak=-8.00dBFS rms=-28.51dBFS low80-350=-34.95dB mid0.5-3.5k=-30.44dB high4.5-14k=-38.75dB
+sfx_weapon_pulse_smg_reload_end_1.wav: peak=-8.00dBFS rms=-28.63dBFS low80-350=-34.79dB mid0.5-3.5k=-30.82dB high4.5-14k=-37.75dB
+sfx_weapon_pulse_smg_reload_end_2.wav: peak=-8.00dBFS rms=-28.54dBFS low80-350=-34.58dB mid0.5-3.5k=-30.87dB high4.5-14k=-37.55dB
+[pulse_smg:bolt] stem=sfx_weapon_pulse_smg_bolt variants=3 length=0.340s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_bolt.wav: peak=-8.10dBFS rms=-26.13dBFS low80-350=-33.42dB mid0.5-3.5k=-27.75dB high4.5-14k=-36.73dB
+sfx_weapon_pulse_smg_bolt_1.wav: peak=-8.10dBFS rms=-26.79dBFS low80-350=-34.21dB mid0.5-3.5k=-28.33dB high4.5-14k=-37.49dB
+sfx_weapon_pulse_smg_bolt_2.wav: peak=-8.10dBFS rms=-27.93dBFS low80-350=-35.10dB mid0.5-3.5k=-29.63dB high4.5-14k=-37.92dB
+[pulse_smg:shell] stem=sfx_weapon_pulse_smg_shell variants=3 length=0.320s targetPeak=-7.8dBFS
+sfx_weapon_pulse_smg_shell.wav: peak=-7.80dBFS rms=-28.07dBFS low80-350=-33.78dB mid0.5-3.5k=-30.41dB high4.5-14k=-37.65dB
+sfx_weapon_pulse_smg_shell_1.wav: peak=-7.80dBFS rms=-28.18dBFS low80-350=-33.71dB mid0.5-3.5k=-30.64dB high4.5-14k=-37.71dB
+sfx_weapon_pulse_smg_shell_2.wav: peak=-7.80dBFS rms=-29.08dBFS low80-350=-34.48dB mid0.5-3.5k=-31.45dB high4.5-14k=-39.23dB
+[machine_pistol:dry] stem=sfx_weapon_machine_pistol_dry variants=3 length=0.206s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_dry.wav: peak=-10.60dBFS rms=-32.62dBFS low80-350=-43.03dB mid0.5-3.5k=-36.94dB high4.5-14k=-38.30dB
+sfx_weapon_machine_pistol_dry_1.wav: peak=-10.60dBFS rms=-32.70dBFS low80-350=-44.00dB mid0.5-3.5k=-37.05dB high4.5-14k=-37.84dB
+sfx_weapon_machine_pistol_dry_2.wav: peak=-10.60dBFS rms=-32.84dBFS low80-350=-43.58dB mid0.5-3.5k=-37.24dB high4.5-14k=-38.38dB
+[machine_pistol:equip] stem=sfx_weapon_machine_pistol_equip variants=3 length=0.340s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_equip.wav: peak=-9.00dBFS rms=-31.70dBFS low80-350=-33.91dB mid0.5-3.5k=-40.14dB high4.5-14k=-38.65dB
+sfx_weapon_machine_pistol_equip_1.wav: peak=-9.00dBFS rms=-32.47dBFS low80-350=-34.88dB mid0.5-3.5k=-40.71dB high4.5-14k=-39.24dB
+sfx_weapon_machine_pistol_equip_2.wav: peak=-9.00dBFS rms=-29.83dBFS low80-350=-31.98dB mid0.5-3.5k=-38.17dB high4.5-14k=-37.29dB
+[machine_pistol:reload_start] stem=sfx_weapon_machine_pistol_reload_start variants=3 length=0.380s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_reload_start.wav: peak=-9.30dBFS rms=-31.14dBFS low80-350=-34.80dB mid0.5-3.5k=-37.75dB high4.5-14k=-38.33dB
+sfx_weapon_machine_pistol_reload_start_1.wav: peak=-9.30dBFS rms=-31.49dBFS low80-350=-35.24dB mid0.5-3.5k=-37.89dB high4.5-14k=-38.69dB
+sfx_weapon_machine_pistol_reload_start_2.wav: peak=-9.30dBFS rms=-32.52dBFS low80-350=-36.46dB mid0.5-3.5k=-39.07dB high4.5-14k=-39.37dB
+[machine_pistol:mag_out] stem=sfx_weapon_machine_pistol_mag_out variants=3 length=0.320s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_mag_out.wav: peak=-8.00dBFS rms=-27.67dBFS low80-350=-30.38dB mid0.5-3.5k=-34.95dB high4.5-14k=-34.84dB
+sfx_weapon_machine_pistol_mag_out_1.wav: peak=-8.00dBFS rms=-29.73dBFS low80-350=-32.31dB mid0.5-3.5k=-37.22dB high4.5-14k=-36.99dB
+sfx_weapon_machine_pistol_mag_out_2.wav: peak=-8.00dBFS rms=-28.25dBFS low80-350=-30.80dB mid0.5-3.5k=-35.68dB high4.5-14k=-35.69dB
+[machine_pistol:mag_in] stem=sfx_weapon_machine_pistol_mag_in variants=3 length=0.300s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_mag_in.wav: peak=-7.80dBFS rms=-26.48dBFS low80-350=-28.03dB mid0.5-3.5k=-35.81dB high4.5-14k=-36.98dB
+sfx_weapon_machine_pistol_mag_in_1.wav: peak=-7.80dBFS rms=-26.22dBFS low80-350=-27.98dB mid0.5-3.5k=-35.27dB high4.5-14k=-35.75dB
+sfx_weapon_machine_pistol_mag_in_2.wav: peak=-7.80dBFS rms=-25.79dBFS low80-350=-27.32dB mid0.5-3.5k=-34.94dB high4.5-14k=-36.51dB
+[machine_pistol:reload_end] stem=sfx_weapon_machine_pistol_reload_end variants=3 length=0.340s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_reload_end.wav: peak=-8.00dBFS rms=-30.39dBFS low80-350=-32.25dB mid0.5-3.5k=-40.07dB high4.5-14k=-37.75dB
+sfx_weapon_machine_pistol_reload_end_1.wav: peak=-8.00dBFS rms=-28.52dBFS low80-350=-30.68dB mid0.5-3.5k=-37.65dB high4.5-14k=-35.21dB
+sfx_weapon_machine_pistol_reload_end_2.wav: peak=-8.00dBFS rms=-29.37dBFS low80-350=-31.28dB mid0.5-3.5k=-38.59dB high4.5-14k=-36.77dB
+[machine_pistol:bolt] stem=sfx_weapon_machine_pistol_bolt variants=3 length=0.340s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_bolt.wav: peak=-8.10dBFS rms=-31.27dBFS low80-350=-33.35dB mid0.5-3.5k=-40.78dB high4.5-14k=-38.15dB
+sfx_weapon_machine_pistol_bolt_1.wav: peak=-8.10dBFS rms=-29.57dBFS low80-350=-31.89dB mid0.5-3.5k=-38.55dB high4.5-14k=-36.11dB
+sfx_weapon_machine_pistol_bolt_2.wav: peak=-8.10dBFS rms=-29.26dBFS low80-350=-31.39dB mid0.5-3.5k=-38.90dB high4.5-14k=-35.85dB
+[machine_pistol:shell] stem=sfx_weapon_machine_pistol_shell variants=3 length=0.300s targetPeak=-7.8dBFS
+sfx_weapon_machine_pistol_shell.wav: peak=-7.80dBFS rms=-26.48dBFS low80-350=-28.03dB mid0.5-3.5k=-35.81dB high4.5-14k=-36.98dB
+sfx_weapon_machine_pistol_shell_1.wav: peak=-7.80dBFS rms=-26.22dBFS low80-350=-27.98dB mid0.5-3.5k=-35.27dB high4.5-14k=-35.75dB
+sfx_weapon_machine_pistol_shell_2.wav: peak=-7.80dBFS rms=-25.79dBFS low80-350=-27.32dB mid0.5-3.5k=-34.94dB high4.5-14k=-36.51dB
+[scattergun:dry] stem=sfx_weapon_scattergun_dry variants=3 length=0.238s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_dry.wav: peak=-8.60dBFS rms=-28.44dBFS low80-350=-30.10dB mid0.5-3.5k=-36.39dB high4.5-14k=-38.41dB
+sfx_weapon_scattergun_dry_1.wav: peak=-8.60dBFS rms=-27.47dBFS low80-350=-29.04dB mid0.5-3.5k=-35.39dB high4.5-14k=-38.20dB
+sfx_weapon_scattergun_dry_2.wav: peak=-8.60dBFS rms=-28.90dBFS low80-350=-30.45dB mid0.5-3.5k=-37.11dB high4.5-14k=-39.07dB
+[scattergun:equip] stem=sfx_weapon_scattergun_equip variants=3 length=0.459s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_equip.wav: peak=-7.00dBFS rms=-24.68dBFS low80-350=-25.70dB mid0.5-3.5k=-37.40dB high4.5-14k=-37.57dB
+sfx_weapon_scattergun_equip_1.wav: peak=-7.00dBFS rms=-24.09dBFS low80-350=-25.30dB mid0.5-3.5k=-36.12dB high4.5-14k=-36.50dB
+sfx_weapon_scattergun_equip_2.wav: peak=-7.00dBFS rms=-24.13dBFS low80-350=-25.14dB mid0.5-3.5k=-36.81dB high4.5-14k=-37.27dB
+[scattergun:reload_start] stem=sfx_weapon_scattergun_reload_start variants=3 length=0.620s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_reload_start.wav: peak=-7.30dBFS rms=-23.63dBFS low80-350=-24.68dB mid0.5-3.5k=-35.17dB high4.5-14k=-36.01dB
+sfx_weapon_scattergun_reload_start_1.wav: peak=-7.30dBFS rms=-22.98dBFS low80-350=-24.17dB mid0.5-3.5k=-34.15dB high4.5-14k=-35.29dB
+sfx_weapon_scattergun_reload_start_2.wav: peak=-7.30dBFS rms=-23.25dBFS low80-350=-24.33dB mid0.5-3.5k=-34.69dB high4.5-14k=-35.47dB
+[scattergun:mag_out] stem=sfx_weapon_scattergun_mag_out variants=3 length=0.384s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_mag_out.wav: peak=-6.00dBFS rms=-25.43dBFS low80-350=-26.57dB mid0.5-3.5k=-36.84dB high4.5-14k=-37.18dB
+sfx_weapon_scattergun_mag_out_1.wav: peak=-6.00dBFS rms=-23.00dBFS low80-350=-24.16dB mid0.5-3.5k=-34.57dB high4.5-14k=-34.87dB
+sfx_weapon_scattergun_mag_out_2.wav: peak=-6.00dBFS rms=-23.67dBFS low80-350=-24.75dB mid0.5-3.5k=-35.45dB high4.5-14k=-35.67dB
+[scattergun:mag_in] stem=sfx_weapon_scattergun_mag_in variants=3 length=0.340s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_mag_in.wav: peak=-5.80dBFS rms=-22.28dBFS low80-350=-22.78dB mid0.5-3.5k=-37.34dB high4.5-14k=-41.55dB
+sfx_weapon_scattergun_mag_in_1.wav: peak=-5.80dBFS rms=-22.12dBFS low80-350=-22.65dB mid0.5-3.5k=-37.20dB high4.5-14k=-40.49dB
+sfx_weapon_scattergun_mag_in_2.wav: peak=-5.80dBFS rms=-22.10dBFS low80-350=-22.63dB mid0.5-3.5k=-36.16dB high4.5-14k=-39.82dB
+[scattergun:reload_end] stem=sfx_weapon_scattergun_reload_end variants=3 length=0.580s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_reload_end.wav: peak=-6.00dBFS rms=-23.52dBFS low80-350=-26.95dB mid0.5-3.5k=-35.38dB high4.5-14k=-36.07dB
+sfx_weapon_scattergun_reload_end_1.wav: peak=-6.00dBFS rms=-22.83dBFS low80-350=-26.60dB mid0.5-3.5k=-34.85dB high4.5-14k=-35.31dB
+sfx_weapon_scattergun_reload_end_2.wav: peak=-6.00dBFS rms=-23.15dBFS low80-350=-26.54dB mid0.5-3.5k=-35.13dB high4.5-14k=-35.89dB
+[scattergun:bolt] stem=sfx_weapon_scattergun_bolt variants=3 length=0.452s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_bolt.wav: peak=-6.10dBFS rms=-23.12dBFS low80-350=-25.60dB mid0.5-3.5k=-36.08dB high4.5-14k=-35.83dB
+sfx_weapon_scattergun_bolt_1.wav: peak=-6.10dBFS rms=-22.56dBFS low80-350=-25.34dB mid0.5-3.5k=-35.35dB high4.5-14k=-35.50dB
+sfx_weapon_scattergun_bolt_2.wav: peak=-6.10dBFS rms=-22.49dBFS low80-350=-24.88dB mid0.5-3.5k=-35.50dB high4.5-14k=-35.76dB
+[scattergun:shell] stem=sfx_weapon_scattergun_shell variants=3 length=0.340s targetPeak=-5.8dBFS
+sfx_weapon_scattergun_shell.wav: peak=-5.80dBFS rms=-21.65dBFS low80-350=-22.29dB mid0.5-3.5k=-36.18dB high4.5-14k=-39.36dB
+sfx_weapon_scattergun_shell_1.wav: peak=-5.80dBFS rms=-21.27dBFS low80-350=-21.92dB mid0.5-3.5k=-36.49dB high4.5-14k=-39.21dB
+sfx_weapon_scattergun_shell_2.wav: peak=-5.80dBFS rms=-21.98dBFS low80-350=-22.62dB mid0.5-3.5k=-36.79dB high4.5-14k=-39.13dB
+[marksman:dry] stem=sfx_weapon_marksman_dry variants=3 length=0.241s targetPeak=-6.2dBFS
+sfx_weapon_marksman_dry.wav: peak=-9.00dBFS rms=-28.51dBFS low80-350=-30.12dB mid0.5-3.5k=-36.39dB high4.5-14k=-39.16dB
+sfx_weapon_marksman_dry_1.wav: peak=-9.00dBFS rms=-29.06dBFS low80-350=-30.57dB mid0.5-3.5k=-37.44dB high4.5-14k=-39.79dB
+sfx_weapon_marksman_dry_2.wav: peak=-9.00dBFS rms=-28.84dBFS low80-350=-30.46dB mid0.5-3.5k=-36.97dB high4.5-14k=-39.12dB
+[marksman:equip] stem=sfx_weapon_marksman_equip variants=3 length=0.474s targetPeak=-6.2dBFS
+sfx_weapon_marksman_equip.wav: peak=-7.40dBFS rms=-25.05dBFS low80-350=-26.08dB mid0.5-3.5k=-37.49dB high4.5-14k=-37.87dB
+sfx_weapon_marksman_equip_1.wav: peak=-7.40dBFS rms=-25.94dBFS low80-350=-27.00dB mid0.5-3.5k=-38.61dB high4.5-14k=-39.19dB
+sfx_weapon_marksman_equip_2.wav: peak=-7.40dBFS rms=-25.94dBFS low80-350=-27.00dB mid0.5-3.5k=-38.05dB high4.5-14k=-38.79dB
+[marksman:reload_start] stem=sfx_weapon_marksman_reload_start variants=3 length=0.640s targetPeak=-6.2dBFS
+sfx_weapon_marksman_reload_start.wav: peak=-7.70dBFS rms=-24.67dBFS low80-350=-25.85dB mid0.5-3.5k=-36.67dB high4.5-14k=-36.50dB
+sfx_weapon_marksman_reload_start_1.wav: peak=-7.70dBFS rms=-24.72dBFS low80-350=-25.99dB mid0.5-3.5k=-36.40dB high4.5-14k=-36.88dB
+sfx_weapon_marksman_reload_start_2.wav: peak=-7.70dBFS rms=-23.87dBFS low80-350=-25.03dB mid0.5-3.5k=-35.83dB high4.5-14k=-35.95dB
+[marksman:mag_out] stem=sfx_weapon_marksman_mag_out variants=3 length=0.397s targetPeak=-6.2dBFS
+sfx_weapon_marksman_mag_out.wav: peak=-6.40dBFS rms=-24.04dBFS low80-350=-25.22dB mid0.5-3.5k=-35.28dB high4.5-14k=-35.69dB
+sfx_weapon_marksman_mag_out_1.wav: peak=-6.40dBFS rms=-24.45dBFS low80-350=-25.63dB mid0.5-3.5k=-35.56dB high4.5-14k=-36.36dB
+sfx_weapon_marksman_mag_out_2.wav: peak=-6.40dBFS rms=-24.60dBFS low80-350=-25.77dB mid0.5-3.5k=-35.76dB high4.5-14k=-36.05dB
+[marksman:mag_in] stem=sfx_weapon_marksman_mag_in variants=3 length=0.420s targetPeak=-6.2dBFS
+sfx_weapon_marksman_mag_in.wav: peak=-6.20dBFS rms=-22.22dBFS low80-350=-22.82dB mid0.5-3.5k=-35.64dB high4.5-14k=-38.87dB
+sfx_weapon_marksman_mag_in_1.wav: peak=-6.20dBFS rms=-22.72dBFS low80-350=-23.35dB mid0.5-3.5k=-36.12dB high4.5-14k=-38.96dB
+sfx_weapon_marksman_mag_in_2.wav: peak=-6.20dBFS rms=-23.15dBFS low80-350=-23.77dB mid0.5-3.5k=-36.23dB high4.5-14k=-39.91dB
+[marksman:reload_end] stem=sfx_weapon_marksman_reload_end variants=3 length=0.620s targetPeak=-6.2dBFS
+sfx_weapon_marksman_reload_end.wav: peak=-6.40dBFS rms=-23.60dBFS low80-350=-26.02dB mid0.5-3.5k=-34.42dB high4.5-14k=-34.66dB
+sfx_weapon_marksman_reload_end_1.wav: peak=-6.40dBFS rms=-23.77dBFS low80-350=-26.37dB mid0.5-3.5k=-34.61dB high4.5-14k=-34.49dB
+sfx_weapon_marksman_reload_end_2.wav: peak=-6.40dBFS rms=-23.46dBFS low80-350=-25.80dB mid0.5-3.5k=-34.42dB high4.5-14k=-34.28dB
+[marksman:bolt] stem=sfx_weapon_marksman_bolt variants=3 length=0.484s targetPeak=-6.2dBFS
+sfx_weapon_marksman_bolt.wav: peak=-6.50dBFS rms=-23.39dBFS low80-350=-25.88dB mid0.5-3.5k=-36.03dB high4.5-14k=-36.49dB
+sfx_weapon_marksman_bolt_1.wav: peak=-6.50dBFS rms=-24.33dBFS low80-350=-27.01dB mid0.5-3.5k=-36.90dB high4.5-14k=-36.99dB
+sfx_weapon_marksman_bolt_2.wav: peak=-6.50dBFS rms=-22.61dBFS low80-350=-25.05dB mid0.5-3.5k=-35.30dB high4.5-14k=-35.51dB
+[marksman:shell] stem=sfx_weapon_marksman_shell variants=3 length=0.420s targetPeak=-6.2dBFS
+sfx_weapon_marksman_shell.wav: peak=-6.20dBFS rms=-24.34dBFS low80-350=-24.95dB mid0.5-3.5k=-37.26dB high4.5-14k=-40.15dB
+sfx_weapon_marksman_shell_1.wav: peak=-6.20dBFS rms=-24.43dBFS low80-350=-25.06dB mid0.5-3.5k=-37.73dB high4.5-14k=-41.17dB
+sfx_weapon_marksman_shell_2.wav: peak=-6.20dBFS rms=-23.82dBFS low80-350=-24.40dB mid0.5-3.5k=-37.12dB high4.5-14k=-40.85dB
+[railbolt:dry] stem=sfx_weapon_railbolt_dry variants=3 length=0.221s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_dry.wav: peak=-10.00dBFS rms=-32.45dBFS low80-350=-52.04dB mid0.5-3.5k=-33.53dB high4.5-14k=-40.57dB
+sfx_weapon_railbolt_dry_1.wav: peak=-10.00dBFS rms=-30.58dBFS low80-350=-50.52dB mid0.5-3.5k=-31.52dB high4.5-14k=-39.58dB
+sfx_weapon_railbolt_dry_2.wav: peak=-10.00dBFS rms=-31.10dBFS low80-350=-50.85dB mid0.5-3.5k=-32.24dB high4.5-14k=-39.03dB
+[railbolt:equip] stem=sfx_weapon_railbolt_equip variants=3 length=0.400s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_equip.wav: peak=-8.40dBFS rms=-29.27dBFS low80-350=-35.05dB mid0.5-3.5k=-31.65dB high4.5-14k=-38.69dB
+sfx_weapon_railbolt_equip_1.wav: peak=-8.40dBFS rms=-30.54dBFS low80-350=-36.40dB mid0.5-3.5k=-33.03dB high4.5-14k=-39.55dB
+sfx_weapon_railbolt_equip_2.wav: peak=-8.40dBFS rms=-29.76dBFS low80-350=-35.46dB mid0.5-3.5k=-32.26dB high4.5-14k=-38.99dB
+[railbolt:reload_start] stem=sfx_weapon_railbolt_reload_start variants=3 length=0.540s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_reload_start.wav: peak=-8.70dBFS rms=-29.35dBFS low80-350=-36.31dB mid0.5-3.5k=-31.44dB high4.5-14k=-39.99dB
+sfx_weapon_railbolt_reload_start_1.wav: peak=-8.70dBFS rms=-27.95dBFS low80-350=-34.79dB mid0.5-3.5k=-30.14dB high4.5-14k=-37.99dB
+sfx_weapon_railbolt_reload_start_2.wav: peak=-8.70dBFS rms=-28.33dBFS low80-350=-35.10dB mid0.5-3.5k=-30.52dB high4.5-14k=-38.48dB
+[railbolt:mag_out] stem=sfx_weapon_railbolt_mag_out variants=3 length=0.335s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_mag_out.wav: peak=-7.40dBFS rms=-27.79dBFS low80-350=-31.24dB mid0.5-3.5k=-33.73dB high4.5-14k=-34.71dB
+sfx_weapon_railbolt_mag_out_1.wav: peak=-7.40dBFS rms=-29.13dBFS low80-350=-32.85dB mid0.5-3.5k=-35.03dB high4.5-14k=-35.43dB
+sfx_weapon_railbolt_mag_out_2.wav: peak=-7.40dBFS rms=-29.57dBFS low80-350=-33.41dB mid0.5-3.5k=-35.30dB high4.5-14k=-35.83dB
+[railbolt:mag_in] stem=sfx_weapon_railbolt_mag_in variants=3 length=0.420s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_mag_in.wav: peak=-7.20dBFS rms=-27.31dBFS low80-350=-31.59dB mid0.5-3.5k=-30.20dB high4.5-14k=-37.94dB
+sfx_weapon_railbolt_mag_in_1.wav: peak=-7.20dBFS rms=-27.04dBFS low80-350=-31.35dB mid0.5-3.5k=-29.83dB high4.5-14k=-38.15dB
+sfx_weapon_railbolt_mag_in_2.wav: peak=-7.20dBFS rms=-28.76dBFS low80-350=-33.36dB mid0.5-3.5k=-31.47dB high4.5-14k=-39.32dB
+[railbolt:reload_end] stem=sfx_weapon_railbolt_reload_end variants=3 length=0.500s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_reload_end.wav: peak=-7.40dBFS rms=-26.70dBFS low80-350=-31.09dB mid0.5-3.5k=-29.54dB high4.5-14k=-37.91dB
+sfx_weapon_railbolt_reload_end_1.wav: peak=-7.40dBFS rms=-27.09dBFS low80-350=-31.66dB mid0.5-3.5k=-29.83dB high4.5-14k=-38.36dB
+sfx_weapon_railbolt_reload_end_2.wav: peak=-7.40dBFS rms=-27.52dBFS low80-350=-31.91dB mid0.5-3.5k=-30.36dB high4.5-14k=-39.04dB
+[railbolt:bolt] stem=sfx_weapon_railbolt_bolt variants=3 length=0.390s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_bolt.wav: peak=-7.50dBFS rms=-28.97dBFS low80-350=-35.66dB mid0.5-3.5k=-30.86dB high4.5-14k=-38.57dB
+sfx_weapon_railbolt_bolt_1.wav: peak=-7.50dBFS rms=-26.91dBFS low80-350=-33.86dB mid0.5-3.5k=-28.64dB high4.5-14k=-37.05dB
+sfx_weapon_railbolt_bolt_2.wav: peak=-7.50dBFS rms=-26.53dBFS low80-350=-33.25dB mid0.5-3.5k=-28.30dB high4.5-14k=-36.94dB
+[railbolt:shell] stem=sfx_weapon_railbolt_shell variants=3 length=0.420s targetPeak=-7.2dBFS
+sfx_weapon_railbolt_shell.wav: peak=-7.20dBFS rms=-27.31dBFS low80-350=-31.59dB mid0.5-3.5k=-30.20dB high4.5-14k=-37.94dB
+sfx_weapon_railbolt_shell_1.wav: peak=-7.20dBFS rms=-27.04dBFS low80-350=-31.35dB mid0.5-3.5k=-29.83dB high4.5-14k=-38.15dB
+sfx_weapon_railbolt_shell_2.wav: peak=-7.20dBFS rms=-28.76dBFS low80-350=-33.36dB mid0.5-3.5k=-31.47dB high4.5-14k=-39.32dB

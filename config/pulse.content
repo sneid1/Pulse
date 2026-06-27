@@ -1,0 +1,29 @@
+# Pulse content table (Phase B/D data-driven pools). Loaded over the built-in
+# catalog at startup and on F5 (hot-reload). An entry whose id matches a built-in
+# record OVERRIDES it (retune numbers without recompiling); a new id ADDS content.
+#
+# Only recombinations of the FIXED effect vocabulary are data here - a genuinely new
+# effect *type* still needs a C++ hook in PulseGame. Lines are pipe-delimited; '#'
+# starts a comment. Whitespace around fields is ignored.
+#
+# Passive:  passive | id | tier | Name | Blurb | EffectKey:value EffectKey:value ...
+#   tier        = common | uncommon | rare
+#   EffectKey   = DamagePct FireRatePct ReloadSpeedPct MoveSpeedPct DashCooldownPct
+#                 CritChance CritDamagePct MaxHealthFlat MaxShieldFlat
+#                 DamageReductionPct KnockbackPct HealOnKill LifeLeechPct ShieldOnKill AmmoOnKill
+#                 ExplodeOnKill ChainOnHit ExplodeOnHit
+#
+# Weapon:   weapon | id | Archetype | tier | Name | Blurb | key:value key:value ...
+#   Archetype   = HitscanAuto | Burst | Spread | Projectile | Beam
+#   keys        = damage fireRate pellets burst spreadDeg magazine reload
+#                 projectileSpeed splashRadius automatic   (automatic:0 = semi-auto)
+
+# --- new passives (recombinations -> the pool grows without a recompile) ---
+passive | scope_kit  | uncommon | Scope Kit       | +6% crit, +6% damage      | CritChance:0.06 DamagePct:0.06
+passive | juggernaut | rare     | Juggernaut Core | +40 HP, -6% incoming, +20% knockback | MaxHealthFlat:40 DamageReductionPct:0.06 KnockbackPct:0.2
+
+# --- a retune of a built-in (override by id; here trauma plates give a bit more) ---
+passive | trauma_plates | uncommon | Trauma Plates | +40 max shield | MaxShieldFlat:40
+
+# --- a new weapon (data-only; uses the shared viewmodel until art is authored) ---
+weapon | machine_pistol | HitscanAuto | common | Machine Pistol | full-auto sidearm | damage:15 fireRate:11 magazine:24 reload:1.1 automatic:1

@@ -1,0 +1,745 @@
+Plan, PULSE clean-sheet engine + asset pipeline (one doc, designed for the best final result)
+
+This is the canonical plan for the clean-sheet `Pulse` repo. Engine (Part I/II) and
+the content pipeline that feeds it (Part III) live in one doc. This repo inherits no
+prior engine code and no prebuilt assets, both are built fresh here, from scratch,
+against the design below. See SEED_NOTES.md for what the seed contains.
+
+CONTENTS
+  PART I  , ENGINE (clean-sheet design, milestones, risks)
+  PART II , M0 FOUNDATION INTERFACE (the concrete C++ the game submits frames through)
+  PART III, ASSET PIPELINE (the content contract, reconciled to the RT/raster tiers)
+
+
+================================================================================
+PART I, ENGINE
+================================================================================
+
+DESIGN PRINCIPLE (read first)
+This plan does not retrofit the current engine. It designs the engine PULSE would
+have if nothing were written yet, then ports the GAME onto it. The renderer, the
+presenter, the audio backend and the CPU rasterizer are not refactored, they are
+deleted and replaced by a clean core built backward from one question: "what
+produces the best-looking, AI-verifiable, contained atmospheric arena?"
+
+There is no inherit-or-replace test anymore, because nothing is inherited for the
+sake of being already written. Two goals rank every decision:
+  1. The best premium atmospheric look for one contained arena, beyond DOOM-2016-
+     tier raster, with hardware ray tracing available where the GPU supports it;
+     the dark, moody mood of Returnal at lower effect density (spec section 3e).
+  2. An AI build/run/verify loop that can validate that look, all-text source,
+     seconds-long incremental builds, headless capture, vision-model critique
+     (spec section 3c). This is a GOAL, not a constraint that caps the look, and the
+     architecture below is what lets goals 1 and 2 hold at the same time.
+
+ENGINE vs GAME (what "from scratch" means, precisely)
+  - FROM SCRATCH: everything below the game/engine line, RHI, render graph,
+    pipeline, materials, lighting, post, audio backend, platform/present, asset
+    runtime, the headless-capture path. The old GpuSceneRenderer, D3D11Presenter,
+    Renderer (CPU rasterizer), GpuMeshRenderer and the waveOut/synth audio are
+    DELETED, not ported.
+  - PRESERVED: the game itself, movement, combat, enemies, spawning, the bot
+    test, tunables, arena layout intent, currently ~2300 lines of gameplay in
+    src/Game/PulseGame.cpp. Gameplay logic stays; only its render/audio SUBMISSION
+    layer is rewritten to talk to the new engine (see Part II for the exact
+    old->new mapping). The content and contract in Part III are what the new engine
+    satisfies.
+  - The game/engine boundary is the one piece of real design discipline here: the
+    game emits a description of the frame (camera, lights, mesh instances,
+    materials, fog, post params, UI); the engine owns everything about how that
+    becomes pixels. The game never sees a barrier, a descriptor heap or a PSO.
+
+THE PIVOTAL DECISION, graphics API, and why it does NOT kill the AI loop
+  Decision: Direct3D 12, Shader Model 6.6 bindless, DXR ray tracing as a
+  capability-gated path, all behind a RENDER-GRAPH RHI. dxc (DXIL) for shaders.
+  DirectX Agility SDK for current D3D12 features. Windows-only (the game is, and
+  cross-platform is not a goal, Vulkan would add complexity with no payoff here).
+
+  The old plan kept D3D11 specifically to protect the AI loop from D3D12's manual
+  barrier / PSO / descriptor complexity. With "no limitations" that trade is off:
+  D3D11 forecloses exactly one thing, hardware ray tracing, and RT is the single
+  biggest remaining lever for an ATMOSPHERIC look (accurate reflections, soft
+  contact shadows with zero acne/peter-panning, ray-traced AO and GI). The
+  reconciliation that makes D3D12 compatible with the AI loop is architectural, not
+  a compromise on the look:
+    - A RENDER GRAPH (frame graph) auto-inserts resource barriers, aliases
+      transient memory, and culls unused passes. The AI and the developer add a
+      pass as DATA (declare reads/writes, bind a shader); they never hand-write a
+      barrier. The complexity is paid once, in the graph, then amortized across
+      every pass forever.
+    - BINDLESS (SM6.6 ResourceDescriptorHeap) removes slot limits entirely:
+      materials, lights and textures are array indices. No descriptor-table
+      choreography per draw.
+    - HEADLESS is first-class: the device renders to offscreen targets and reads
+      back the final tonemapped LDR target; a swapchain is created ONLY when a
+      window exists.
+    - RT is ADDITIVE, not a fork: it layers onto a fully shippable raster pipeline.
+      On a non-RT GPU (or in CI without one) the raster fallback is itself DOOM-
+      2016-tier and ships. RT never becomes a hard dependency.
+
+  Net: D3D12 buys the ceiling; the render graph + bindless + headless split keep
+  the AI loop exactly as fast as the old plan wanted, on cleaner foundations.
+
+ENGINE CORE (build this first; everything downstream rides on it, see Part II)
+  1. RHI (thin D3D12 abstraction). Device, three queues (graphics / async compute /
+     copy), command-list allocators with a frame ring + fences, a global bindless
+     CBV/SRV/UAV heap + sampler heap, a PSO + root-signature cache keyed by state,
+     and resource creation with explicit usage flags. Debug layer + GPU-based
+     validation ON in debug/CI, automatic-barrier bugs surface here, not as silent
+     flicker.
+  2. RENDER GRAPH. Passes declare resource reads/writes by handle; the graph
+     computes barriers, transient-resource lifetimes (memory aliasing) and
+     execution order, then records command lists. Pass kinds: raster, compute, and
+     ray (DXR; skipped on the raster tier). Every named graph resource is dumpable ,
+     which is exactly the --render-pass verification hook, for free.
+  3. PRESENT / HEADLESS SPLIT. The render target of record is an offscreen
+     R16G16B16A16_FLOAT HDR target; the final tonemap writes an R8G8B8A8 LDR target.
+       Windowed: a FLIP_DISCARD swapchain copies the LDR target to the backbuffer
+         and presents.
+       Headless (--pose / --bot-test / --record-dir / --capture): no swapchain, no
+         window; read back the LDR target and save. The swapchain is never a
+         dependency of rendering, so the verify loop has nothing to present to and
+         needs nothing to.
+  4. SHADER PIPELINE. dxc compiles HLSL (SM6.6 + RT shaders) from assets/shaders/.
+     Offline-compiled to DXIL for ship + a cached fast path; compile-at-load in dev
+     for fast iteration. Day-one --gpu-info prints feature level, SM6.6 support,
+     wave intrinsics, and DXR tier so the spike proves the toolchain before any
+     look work (the load-bearing "verify, don't assume" gate).
+  5. DATA MODEL. Static vertex layout (pos / normal / tangent+sign / uv0 / uv1-
+     lightmap / color); skinned layout adds bone idx/weights, separate, so a wall
+     vertex never carries bone data. Material = bindless texture indices (base /
+     normal / ORM / emissive) + scalar factors, metallic-roughness PBR. Frame
+     constants (b0): camera, jittered proj + prev-frame proj (TAA), clustered light
+     list, IBL/DDGI handles, sun + shadow data, fog params, exposure, post params.
+     Draw constants (b1): transform, prev transform (per-object motion vectors),
+     material index.
+
+RENDERING PIPELINE (the look, best-result shape, RT-or-raster behind one gbuffer)
+  Color management spine: everything works in linear HDR; AgX (filmic) tonemap +
+  exposure (auto-exposure histogram, manual override for captures) at the end. This
+  alone removes ~half of indie "jank" and is non-negotiable and early.
+
+  Frame shape:
+    a. Depth pre-pass + GBUFFER (albedo, normal, metallic-roughness, AO, emissive,
+       velocity). A gbuffer (not pure forward+) because RT reflections / RTAO / RTGI
+       and TAA all want screen-space normal+roughness+velocity to launch and
+       denoise from. This is the modern atmospheric shape (Returnal-era), not a
+       retro forward renderer.
+    b. CLUSTERED light culling (compute): froxel/cluster light lists so the room can
+       carry many moody local lights + emissive surfaces, the actual substance of
+       "atmospheric." Bindless light array.
+    c. SHADOWS:
+         RT tier     , ray-traced sun + local shadows: soft contact, no acne, no
+                        peter-panning (kills the CSM artifact class outright).
+         Raster tier , CSM for the sun (cascade fit + normal-offset bias), tuned
+                        mainly for dynamic enemies; the static room leans on GI below.
+    d. AMBIENT OCCLUSION:
+         RT tier, RTAO (denoised).  Raster, GTAO (compute, depth+normal), bilateral
+         blur, into ambient. Grounds objects; kills the "floating" look (section 3a.4).
+    e. GLOBAL ILLUMINATION (the biggest flat-vs-atmospheric lever):
+         RT tier    , DDGI / RTGI irradiance probes (real-time, dynamic, responds to
+                       moving lights and enemies; no bake step, no lightmap UVs).
+         Raster tier, DDGI probes relit without RT, OR Blender-Cycles-baked
+                       irradiance/lightmaps on the static room (uses the uv1 lightmap
+                       set in the asset contract, Part III). Baking is done in Blender
+                       (a production path tracer we already bundle), never a
+                       hand-rolled solver.
+    f. LIGHTING resolve: Cook-Torrance metallic-roughness, IBL specular (prefiltered
+       cubemap or RT reflections) so metal reads as metal, plus GI diffuse, local +
+       sun direct, emissive.
+    g. REFLECTIONS:
+         RT tier, ray-traced reflections (denoised), off-screen-aware.
+         Raster , SSR + a few reflection probes.
+    h. VOLUMETRIC FOG (the section 3e identity feature, in the slice): compute froxel march,
+       shadowed by the sun (RT or CSM), lit by the local lights, the dark, moody
+       depth that defines the game's look.
+    i. TAA (PRIMARY anti-aliasing): camera jitter + velocity buffer + history
+       resolve, with PER-OBJECT motion vectors INCLUDING the first-person weapon.
+       This is the AA the look targets (DOOM 2016, Returnal) actually use; the
+       weapon-smear objection is solved by the weapon's own motion vectors, not by
+       avoiding TAA. No MSAA: it fights every screen-space/compute pass above and
+       does not coexist cleanly with a gbuffer + RT pipeline.
+    j. POST: bloom (compute down/up-sample chain), exposure, color-grade LUT, subtle
+       vignette/grain for mood. GPU particle system (compute sim): muzzle flash,
+       impacts, debris, ambient motes, motes carry a lot of atmosphere.
+    k. UI / HUD: GPU from day one (SDF or atlas glyphs + textured quads). There is
+       NO CPU rasterizer in this engine, ever, so the HUD cannot be a late port; it
+       is part of the core present path.
+
+  Capability tiers, selected at runtime by --gpu-info / Device::caps():
+    - TIER RT     (DXR 1.1 capable): RT shadows + RTAO + RT reflections + RTGI/DDGI.
+    - TIER RASTER (no DXR): CSM + GTAO + SSR/probes + baked/relit DDGI. Ships as-is,
+      DOOM-2016-tier. Both tiers share the same gbuffer, clustering, volumetrics,
+      TAA and post, RT swaps in at four well-defined seams (shadows, AO, GI,
+      reflections), nothing forks wholesale.
+
+AUDIO (clean backend, the "feel" pillar; human-judged, runs parallel to the look)
+  - WASAPI shared-mode, event-driven, low latency, for "COD-crisp, instant-trigger"
+    gunplay the backend latency IS part of the feel (spec section 3d).
+  - Real stereo mixer with per-voice resampling + a decode-ahead thread. SampleBank =
+    fully-decoded PCM for SFX (RT-safe; zero decode in the audio callback).
+  - Music bed: fully-decoded adaptive techno stems (WAV, or OGG via stb_vorbis,
+    never MP3: encoder/decoder delay padding gaps the loop point, fatal for a
+    seamless bed). The runtime method is documented in docs/PULSE_MUSIC_SYSTEM.md:
+    short beat-locked layers, phase-owned sections, and intensity-owned layer gain.
+  - Fire/Reload/Hit/Kill play recorded samples; the synth is demoted to fallback.
+  - Validated by HUMAN playtest, not the vision loop (the loop owns the look only) ,
+    so it lands in parallel and never blocks the look proof. Verify offline with
+    --render-sfx / --render-music.
+
+VERIFICATION (the AI loop, spec section 3c, clean, no parity-to-deleted-code gate)
+  - There is NO bit-exact parity gate against the old renderer. The old image is not
+    a quality reference, it is the thing being replaced. Correctness is judged
+    against the PREMIUM TARGET via the vision loop, plus determinism for diffability
+    (fixed seed, fixed camera poses) and the D3D12 debug / GPU-validation layer in CI.
+  - Flags in src/main.cpp: --gpu-info (feature level / SM6.6 / wave / DXR tier, run
+    day one), --render-pass <name> (dump ANY graph resource: depth / normal /
+    velocity / ao / shadow / gi / reflection / fog / bloom), param overrides
+    (--exposure, --fog-density, --light-*, --taa on/off) for sweeps. Reuse the
+    existing capture flags: --pose, --bot-test, --record-dir, --screenshot,
+    --render-sfx / --render-music.
+  - Per-phase gate: capture --pose (+ a --record-dir sequence) -> BMP->PNG -> vision
+    critique prompted with the exact failure mode ("reads plastic / no IBL",
+    "floating / no AO", "shadow detached / acne", "fog flat / no depth",
+    "double-sRGB"). Fix -> recapture until it passes. (Part III section 6 has the per-asset
+    prompts.)
+  - KNOWN LOOP BLIND SPOTS, scoped to the human: (1) TEMPORAL, TAA convergence,
+    shadow swim, fog/particle animation, RT-denoiser ghosting; (2) SPATIAL SUBTLETY
+   , "is the RT/IBL/GI actually correct" vs "is it obviously broken." The loop is a
+    strong regression catcher for gross breakage and a weak judge of subtle
+    correctness; the developer owns feel, motion, and the subtle/temporal calls.
+  - Build/run each phase with Build-Pulse.ps1 (MSVC + Ninja, C++20, seconds) and
+    the headless exe; Test-Pulse.ps1 is the full gate; Package-Pulse.ps1
+    ships assets/ (audio / shaders / textures) automatically. (Test/Package are M0
+    deliverables; Build-Pulse.ps1 is the configure+build scaffold.)
+
+MILESTONES (proof-first; the proof is the look, not a feature checklist)
+  M0, FOUNDATION (the thing the whole engine rides on; no look yet). Concrete
+       interface in Part II.
+    - RHI over D3D12 (queues, bindless heap, PSO cache, fences).
+    - Render graph (auto-barriers, transient aliasing, pass culling, resource dump).
+    - Present/headless split: offscreen HDR + LDR targets; swapchain only with a
+      window; headless readback -> BMP. --gpu-info. dxc shader pipeline.
+    - Port the game's render submission to the new SceneFrame; GPU HUD.
+    - Gate: a textured mesh + GPU HUD renders identically windowed and headless, the
+      debug layer is clean, and --render-pass dumps a named target. (Gate is "the
+      new pipeline is correct," not "it matches the old one.")
+  M1, THE PREMIUM SLICE (the proof): ONE dressed arena that reads as intentional,
+       atmospheric and near-AAA in a still, with real audio.
+    - HDR + AgX + exposure; metallic-roughness PBR (normal/ORM/emissive, BC7/BC5,
+      tangents, mips); IBL/DDGI so metal reads as metal.
+    - Clustered local lights + emissive surfaces; sun shadows (RT, or CSM on raster);
+      AO (RTAO or GTAO) grounding; volumetric froxel fog (the section 3e identity, IN the
+      slice); bloom + LUT grade; TAA with weapon motion vectors.
+    - RT reflections where DXR is present; SSR/probes where not. Both off the same
+      gbuffer, the slice looks premium on either tier.
+    - Audio (parallel): WASAPI stereo mixer, decode-ahead, sample-based SFX, looping
+      techno bed.
+    - Asset (parallel, Part III): cgltf + BCn DDS loader; --import-asset transcode;
+      coherence lock, then dress ONE arena.
+    - Gate: the vision loop says the still reads as a coherent, atmospheric, near-AAA
+      place (the spec section 9 "stop to screenshot it" bar).
+  M2, BREADTH & REFINEMENT (ROI-ordered, on the proven pipeline)
+    - Full RT reflections/GI quality + denoisers (ReBLUR/SVGF-class).
+    - Decals (bullet marks, scorch), expanded GPU particles, screen-space niceties.
+    - Content breadth: enemy/prop variety, a second dressed arena, material library.
+  M3, CEILING (optional, in budget because the base is D3D12/DXR)
+    - Reference path-traced capture mode for hero stills / look targets.
+    - Fuller RTGI; SDF/voxel GI for the raster tier's dynamic bounce.
+
+RISKS (ranked, fix the constraint, don't shrink the feature)
+  1. The render graph + RHI are the big up-front build. Mitigation: build M0 FIRST
+     and prove it (textured mesh + HUD, headless == windowed, clean debug layer)
+     before any look work, the graph is what makes every later pass cheap.
+  2. dxc / SM6.6 bindless / DXR shader-table plumbing is more moving parts than
+     d3dcompiler. Mitigation: --gpu-info spike day one; verify SM6.6 + DXR tier on
+     the dev/CI GPU before committing to the RT seams.
+  3. DXR availability + perf varies by GPU, and CI may have none. Mitigation: the
+     raster tier is a first-class, shippable path (DOOM 2016 had no RT); RT is
+     additive at four seams. Select by caps, test BOTH tiers in the loop.
+  4. RT denoising (reflections/GI/AO/shadows) is temporal and hard, exactly the
+     vision loop's blind spot. Mitigation: lean on the human for temporal/subtle RT
+     judgments; ship the raster fallback if a denoiser isn't converged.
+  5. Automatic-barrier / aliasing bugs in the graph cause flicker/corruption.
+     Mitigation: D3D12 debug layer + GPU-based validation ON in CI; deterministic
+     captures diff frame-to-frame.
+  6. Vertex-layout split (static / skinned) + tangent + uv1 fanout silently breaking
+     mesh builders. Mitigation: update all builders in one pass; verify each --pose.
+  7. Asset licensing + size (Megascans/Fab). Mitigation: BCn transcode + texel-
+     density budget; license check before committing source to the tree (Part III).
+
+FILES (new engine tree; the old engine is retired)
+  DELETE: src/Engine/GpuSceneRenderer.{hpp,cpp}, D3D11Presenter.{hpp,cpp},
+    Renderer.{hpp,cpp} (CPU rasterizer), GpuMeshRenderer.{hpp,cpp}, the
+    waveOut/synth Audio.{hpp,cpp}.
+  NEW (engine core): src/Engine/RHI/* (Device, Queue, DescriptorHeap, Pipeline,
+    Resource, Swapchain), src/Engine/RenderGraph/*, src/Engine/Render/* (GBuffer,
+    Clustered, Shadows, AO, GI, Reflections, Volumetrics, TAA, Post, Particles, UI),
+    src/Engine/Assets/* (GltfLoader, TextureLoader/DDS, MaterialModel),
+    src/Engine/Audio/* (WASAPI backend, Mixer, SampleBank, decode-ahead).
+  NEW (tools): an offline --import-asset transcoder (texconv-wrapped); Blender bake
+    scripts for the raster-tier GI fallback.
+  CHANGED: src/Game/PulseGame.cpp (render/audio submission rewritten to SceneFrame;
+    gameplay preserved), src/main.cpp (new flags), CMakeLists.txt (default MSVC +
+    Ninja, C++20, link d3d12/dxgi/dxguid + dxc; drop -march=native for portability;
+    Agility SDK), assets/shaders/* (HLSL, SM6.6 + RT).
+  third_party/: cgltf.h, stb_vorbis.c, DirectXTex (offline), DirectX Agility SDK,
+    dxc. assets/{audio,shaders,textures}/.
+
+
+================================================================================
+PART II, M0 FOUNDATION INTERFACE
+================================================================================
+
+This is the concrete C++ surface M0 delivers: the game/engine boundary (what the
+game submits), the render-graph pass-authoring API (how the AI/dev add passes as
+data), and a sketch of the RHI beneath. Types are illustrative, not final, but the
+SHAPE is the contract: the game describes a frame; the engine owns the pixels.
+
+----------------------------------------------------------------
+II.1  The game/engine boundary, opaque handles + resource creation
+----------------------------------------------------------------
+  // Opaque handles. Under the hood these are bindless heap indices; the game
+  // treats them as values. 0 == Invalid, so a zero-init is never a valid resource.
+  enum class MeshHandle        : uint32_t { Invalid = 0 };
+  enum class MaterialHandle    : uint32_t { Invalid = 0 };
+  enum class TextureHandle     : uint32_t { Invalid = 0 };
+  enum class EnvironmentHandle : uint32_t { Invalid = 0 };  // IBL/DDGI set for an arena
+
+  struct StaticVertex  { Vec3 pos; Vec3 nrm; Vec4 tangent; Vec2 uv0; Vec2 uv1; Vec4 color; };
+  struct SkinnedVertex { StaticVertex base; uint16_t bone[4]; float weight[4]; };
+
+  struct MeshData {                 // CPU authoring input; engine uploads to GPU
+      std::span<const StaticVertex>  staticVerts;   // exactly one of these is set
+      std::span<const SkinnedVertex> skinnedVerts;
+      std::span<const uint32_t>      indices;
+  };
+  struct TextureData { const void* dds; size_t ddsBytes; };  // BC7/BC5 DDS w/ mips, uploaded as-is
+  struct MaterialDesc {
+      TextureHandle baseColor, normal, orm, emissive;        // bindless indices
+      float metallic = 1.0f, roughness = 1.0f, emissiveStrength = 0.0f;
+      Vec4  baseColorFactor = {1,1,1,1};
+  };
+
+  // Created once at load. Missing required assets fail loud (PROJECT_RULES.md).
+  class Engine {
+  public:
+      MeshHandle        createMesh(const MeshData&);
+      TextureHandle     createTexture(const TextureData&);
+      MaterialHandle    createMaterial(const MaterialDesc&);
+      EnvironmentHandle createEnvironment(/* prefiltered cubemap + SH, or DDGI volume */);
+      // ...
+  };
+
+----------------------------------------------------------------
+II.2  The per-frame description, the WHOLE contract is one struct + one call
+----------------------------------------------------------------
+  struct Camera {
+      Vec3 position; float yaw, pitch, roll;
+      float fovDeg = 70, nearZ = 0.04f, farZ = 80;
+      // Engine adds the TAA jitter and keeps prev-frame view/proj. The game does not.
+  };
+  struct SunLight   { Vec3 direction, color; float intensity; bool castsShadows = true; };
+  struct LocalLight { Vec3 position, color; float intensity, radius; Vec3 spotDir; float spotCos; };
+  struct FogParams  { float density, height; Vec3 color; float scattering; };
+  struct PostParams { float exposure; bool autoExposure = true; float bloom; TextureHandle lut; };
+
+  struct MeshInstance {
+      uint64_t       id;            // stable across frames -> engine derives prevTransform
+      MeshHandle     mesh;          //                        for per-object motion vectors
+      MaterialHandle material;
+      Mat4           transform;
+      bool           cameraSpace = false;     // first-person weapon/hands
+      std::span<const Mat4> bones;            // empty for static meshes
+  };
+
+  struct SceneFrame {
+      Camera                        camera;
+      SunLight                      sun;
+      std::span<const LocalLight>   lights;        // clustered by the engine
+      std::span<const MeshInstance> instances;
+      FogParams                     fog;
+      PostParams                    post;
+      EnvironmentHandle             environment;   // arena IBL/DDGI
+      UiDrawList                    ui;            // GPU HUD: textured quads + glyph runs
+  };
+
+  // Windowed: builds the graph, executes, presents.
+  void Engine::renderFrame(const SceneFrame&);
+  // Headless: same graph, no swapchain; reads back the final LDR target.
+  bool Engine::captureFrame(const SceneFrame&, Image& outLdr);
+  // Dump one named graph resource instead of/with the final target (--render-pass).
+  bool Engine::capturePass(const SceneFrame&, std::string_view passResource, Image& out);
+
+  // Old -> new port map (game submission layer rewrite, gameplay untouched):
+  //   GpuDrawCommand            -> MeshInstance (+ stable id, + prevTransform handled by engine)
+  //   GpuSceneFrame             -> SceneFrame   (gains lights[], fog, post, environment, ui)
+  //   renderToPixels()+saveBmp  -> captureFrame()        (single readback, capture-only)
+  //   D3D11Presenter::present   -> renderFrame()         (no CPU round-trip)
+  //   Renderer::drawText/HUD    -> SceneFrame::ui        (GPU glyphs; no CPU rasterizer)
+
+----------------------------------------------------------------
+II.3  The render graph, how a pass is added as DATA (the AI-facing surface)
+----------------------------------------------------------------
+  using RGTexture = RenderGraph::TextureHandle;
+  using RGBuffer  = RenderGraph::BufferHandle;
+  struct RGTexDesc { uint32_t w, h; Format format; uint32_t mips = 1; };
+
+  class PassBuilder {                 // setup phase: declare dependencies only
+  public:
+      void reads (RGTexture, ShaderStage);
+      void writes(RGTexture);
+      void readsBuffer (RGBuffer, ShaderStage);
+      void writesBuffer(RGBuffer);
+  };
+
+  class RenderGraph {
+  public:
+      RGTexture create(const char* name, const RGTexDesc&);   // transient, auto-aliased
+      RGTexture import(const char* name, Texture* external);  // e.g. the LDR/backbuffer
+
+      void addRasterPass (const char* name,
+          std::function<void(PassBuilder&)> setup,
+          std::function<void(RasterContext&)> execute);
+      void addComputePass(const char* name,
+          std::function<void(PassBuilder&)> setup,
+          std::function<void(ComputeContext&)> execute);
+      void addRayPass    (const char* name,                   // DXR; skipped on raster tier
+          std::function<void(PassBuilder&)> setup,
+          std::function<void(RayContext&)> execute);
+  };
+
+  // Example, GTAO as data. The author writes reads()/writes() + a dispatch.
+  // Declaring reads(depth)+writes(ao) is what makes the graph transition depth->SRV
+  // and ao->UAV. No barrier is hand-written. "ao" is now dumpable via --render-pass ao.
+  RGTexture ao = rg.create("ao", { w, h, Format::R8_UNORM });
+  rg.addComputePass("gtao",
+      [&](PassBuilder& b){ b.reads(depth, CS); b.reads(gbufferNormal, CS); b.writes(ao); },
+      [=](ComputeContext& c){
+          c.setPipeline(gtaoPso);
+          c.bind("Depth", depth); c.bind("Normal", gbufferNormal); c.bind("AO", ao);
+          c.dispatch(divUp(w,8), divUp(h,8), 1);
+      });
+
+----------------------------------------------------------------
+II.4  Capability tiers, RT swaps in at four seams off one gbuffer
+----------------------------------------------------------------
+  enum class Tier { Raster, RT };
+  Tier chooseTier(const Caps& c, bool forceRaster) {
+      return (!forceRaster && c.dxrTier >= DxrTier::_1_1) ? Tier::RT : Tier::Raster;
+  }
+
+  // The frame builder picks the four tier-specific passes; everything else is shared.
+  void buildFrameGraph(RenderGraph& rg, const GBuffer& g, Tier tier) {
+      addGBufferPasses(rg, g);              // shared
+      addClusteredLightCulling(rg, g);      // shared
+      RGTexture shadow = (tier == Tier::RT) ? addRtShadows(rg, g)   : addCsm(rg, g);
+      RGTexture ao     = (tier == Tier::RT) ? addRtao(rg, g)        : addGtao(rg, g);
+      RGTexture gi     = (tier == Tier::RT) ? addRtgi(rg, g)        : addDdgiRaster(rg, g);
+      RGTexture refl   = (tier == Tier::RT) ? addRtReflections(rg,g): addSsr(rg, g);
+      addLightingResolve(rg, g, shadow, ao, gi, refl);   // shared
+      addVolumetricFog(rg, g, shadow);                   // shared
+      addTaa(rg, g);                                     // shared (per-object motion vectors)
+      addPost(rg);                                       // shared: bloom, AgX, LUT
+      addUi(rg);                                         // shared: GPU HUD
+  }
+
+----------------------------------------------------------------
+II.5  RHI sketch + present/headless + the --render-pass hook
+----------------------------------------------------------------
+  class Device {
+  public:
+      static Device create(const DeviceConfig&);   // headless when cfg.hwnd == nullptr
+      Caps     caps() const;                        // featureLevel, sm66, waves, dxrTier
+      Buffer   createBuffer(const BufferDesc&);
+      Texture  createTexture(const TexDesc&);
+      Pipeline createGraphicsPipeline(const GraphicsPipelineDesc&);  // PSO cache
+      Pipeline createComputePipeline(const ComputePipelineDesc&);    // PSO cache
+      RtPipeline createRtPipeline(const RtPipelineDesc&);            // DXR, tier-gated
+      uint32_t bindless(const Texture&);            // ResourceDescriptorHeap index
+      FrameContext begin();                         // ring allocator + fence wait
+      void submit(FrameContext&&);
+  };
+
+  // Present is just a copy of the LDR target; headless skips it entirely.
+  void  presentWindowed(Device&, Swapchain&, const Texture& ldr);   // copy + Present
+  Image readbackLdr   (Device&, const Texture& ldr);                // -> save BMP/PNG
+
+  // --render-pass <name>: every graph resource is named, so the hook is one path ,
+  // find the resource, read it back instead of / alongside the final LDR target.
+  // depth/normal/velocity/ao/shadow/gi/reflection/fog/bloom all fall out for free.
+
+  // M0 acceptance gate (restated, concrete):
+  //  - createMesh/createTexture/createMaterial round-trip; a textured mesh + GPU HUD
+  //    render correctly.
+  //  - renderFrame() (windowed) and captureFrame() (headless) produce the SAME image.
+  //  - D3D12 debug + GPU-based validation report zero errors across a bot-test run.
+  //  - capturePass(frame, "depth", img) writes a sane depth visualization.
+
+
+================================================================================
+PART III, ASSET PIPELINE
+================================================================================
+
+The actionable method for producing the best possible assets for PULSE. The engine
+(Parts I-II) builds a glTF + PBR + IBL/GI renderer with RT and raster tiers; this
+part builds the content that feeds it.
+
+THE ONE RULE: AI is an accelerator, not the final judge. An asset is done only when
+it reads correctly in the NATIVE game renderer under the headless-capture + vision-
+critique loop, never on the strength of a generator preview or a Blender viewport.
+Quality is decided in-engine, in the dark arena, under the real lighting.
+
+----------------------------------------------------------------
+III.0  How this aligns with the engine
+----------------------------------------------------------------
+The runtime content spine is glTF geometry + BC7/BC5 ORM PBR sets + an environment
+(IBL/DDGI). Two goals drive every choice:
+  1. Premium, coherent, atmospheric look, material competence + art-direction
+     coherence, the #1 premium-vs-jank lever (more than polycount or any single map).
+  2. AI-verifiable, every asset validated by the same headless renderer the AI loop
+     drives (--pose, --render-pass, vision critique).
+
+TIER NOTE (reconciled): the engine has an RT tier and a raster tier (Part I).
+  - The RT tier needs NO baked lighting and NO lightmap UVs, DDGI/RTGI and RT
+    reflections light the room dynamically.
+  - The raster tier uses a uv1 lightmap set + Blender-Cycles-baked irradiance on the
+    STATIC room. So author uv1 lightmap UVs on static geometry as cheap insurance for
+    the raster fallback, required there, ignored on the RT tier. Dynamic assets
+    (weapon, hands, enemies, props that move) never need lightmap UVs.
+
+Author to the contract below now, even while the glTF/PBR loader is still landing
+(section 8 Transition), authoring to the contract is what lets the slice look premium the
+moment the loader ships.
+
+----------------------------------------------------------------
+III.1  The asset contract (what "done" is)
+----------------------------------------------------------------
+Every shippable asset is a glTF 2.0 binary (.glb) + a PBR texture set, the same
+content UE/Unity consume, so Megascans/marketplace assets drop in next to authored.
+
+Geometry (inside the .glb)
+  - Format: .glb (binary glTF 2.0), one logical asset per file.
+  - Orientation/scale: real-world metric scale (1 Blender unit = 1 m) so texel
+    density is consistent across every asset. Export +Y up (glTF standard); the
+    loader applies PULSE's axis convention (prototype OBJ convention was front = -X,
+    up = +Z, the importer normalizes to this).
+  - Topology: triangulated, watertight where it matters, no n-gons, no inverted
+    normals, no zero-area faces. Clean enough that --pose shows no shading artifacts.
+  - Tangents: export tangents (export_tangents=True), the PBR pass needs per-vertex
+    tangent + sign for normal mapping. Do NOT rely on runtime tangent generation for
+    hero assets.
+  - UVs: one non-overlapping UV set (uv0) for albedo/normal/ORM. A second set (uv1),
+    or a separate unwrap, reserved for BAKED LIGHTMAPS on static arena geometry, for
+    the RASTER tier only (see Tier note in section 0).
+  - Triangle budgets (fast-FPS, keep lean):
+      First-person weapon + hands (hero, fills screen): ~8k-25k tris.
+      Enemies (read at gameplay distance, in motion):  ~2k-8k tris.
+      Arena props / cover blocks:                       ~300-4k tris.
+      Modular wall/floor pieces: as low as silhouette allows; lean on normal maps.
+
+PBR texture set (one set per material)
+  | Map        | Content                              | Color space | Target format    |
+  |------------|--------------------------------------|-------------|------------------|
+  | Base color | albedo, no baked lighting/AO         | sRGB        | BC7_UNORM_SRGB   |
+  | Normal     | tangent-space, OpenGL/glTF (+Y green) | linear      | BC5_UNORM (RG)   |
+  | ORM        | R=AO, G=Roughness, B=Metallic packed | linear      | BC7_UNORM        |
+  | Emissive   | self-illumination (HDR via factor)   | sRGB        | BC7_UNORM_SRGB   |
+
+  - Normal convention gotcha: glTF = OpenGL (+Y). If lighting looks inverted on
+    slopes in --render-pass normal, the green channel is flipped, fix at
+    bake/export, not in the shader. (Blender 5.1 exposes the GL/DirectX toggle on the
+    Normal Map node.)
+  - Resolution by role: hero weapon 2K-4K; enemies/props 1K-2K; modular environment
+    1K-2K tiling. Always generate full mip chains at transcode time.
+  - Emissive matters here: in a dark arena, emissive surfaces + bloom are a primary
+    mood and readability tool (enemy weak points, telegraph cues, ambient signage).
+
+Transcode to BCn (the --import-asset offline step)
+  Source PNG/EXR maps are transcoded to GPU block-compressed .dds OFFLINE, never
+  shipped uncompressed. Use texconv (DirectXTex) for DDS/BCn. (No KTX2/Basis: for a
+  single desktop D3D12 target BC7/BC5 is the native GPU format, so a universal-
+  transcode layer is pure runtime overhead with no quality upside.)
+      texconv -f BC7_UNORM_SRGB -m 0 basecolor.png      # albedo (sRGB, full mips)
+      texconv -f BC5_UNORM      -m 0 normal.png         # tangent normal (RG)
+      texconv -f BC7_UNORM      -m 0 orm.png            # AO/Rough/Metal packed
+      texconv -f BC7_UNORM_SRGB -m 0 emissive.png       # emissive (sRGB)
+
+Coherence values (don't skip, this is the jank lever)
+  - Texel density tiers (pick by how much screen the asset owns, then hold the line):
+    ~1024 px/m for the first-person weapon + hands, ~512 px/m for enemies/hero props,
+    ~256 px/m for environment surfaces (tileable). Neighbours within +/-1 tier, a
+    1024-px crate against a 256-px wall is a coherence failure even if each is clean.
+    Author at metric scale so density is automatic.
+  - Albedo discipline: no pure black (< ~30 sRGB) or pure white (> ~240) albedo;
+    metals carry color in albedo AND read metallic=1; dielectrics metallic=0. Keep
+    metallic effectively binary, partial metalness is almost always an authoring error.
+  - Naming: pulse_<category>_<name> (e.g. pulse_prop_crate_a), maps suffixed
+    _basecolor / _normal / _orm / _emissive.
+  - Where files live (keep editable source OUT of the runtime tree):
+      assets/models/<asset>.glb                        , runtime geometry
+      assets/textures/<asset>/<asset>_<map>.dds        , runtime BCn sets (+ mips)
+      assets/source/<asset>/                           , editable .blend, source PNG/EXR
+      assets/external/<pack>/                          , sourced kits + license files
+      tools/blender/build_*.py                         , deterministic authoring scripts
+    Never ship raw 4K source or .blend in the runtime tree.
+
+----------------------------------------------------------------
+III.2  The coherence lock (do this BEFORE bulk-dressing)
+----------------------------------------------------------------
+Per spec section 3b/section 9.3, art-direction coherence beats every individual asset. Lock these
+once, write them down, hold every asset to them:
+  - Palette + mood: the dark, moody, atmospheric target (section 3e). A tight reference
+    board: 3-5 surface families (concrete, painted metal, rubber/grime, emissive
+    accent), a value range, an accent-color budget.
+  - Material language: how surfaces wear, how edges read, grime level, how much
+    emissive is "allowed." Sourced Megascans get regraded toward this, not dropped in
+    raw.
+  - Texel density + scale: section 1 numbers.
+  - Fog/atmosphere assumption: assets are judged IN FOG, IN THE DARK, author
+    contrast and emissive so they survive volumetric fog and low light, not under a
+    neutral studio HDRI.
+This lock is the difference between "a room full of nice assets" and "a coherent place."
+
+----------------------------------------------------------------
+III.3  Track A, Environment & props (the arena's premium payoff)
+----------------------------------------------------------------
+Fastest route to a near-AAA arena: film-grade scanned assets, regraded to the
+coherence lock. Lowest-risk premium win.
+  Primary source: Quixel Megascans / Fab (scanned surfaces + props); Sketchfab and
+  photogrammetry for hero set-pieces.
+  Steps:
+    1. Pick a COHERENT set (one surface family + a few props sharing grime/era), not
+       a grab-bag. Coherence > quantity.
+    2. Download highest sensible resolution; check the license for non-UE commercial
+       use and redistribution before committing source maps to the repo (Megascans is
+       Fab/Epic-account gated).
+    3. Transcode maps to BCn and convert geometry to .glb via the offline importer (section 1).
+    4. Assemble the arena in Blender at metric scale, layout, cover, elevation, and
+       (raster tier) clean uv1 lightmap UVs on static geometry, export dressed room
+       or modular pieces as .glb.
+    5. Regrade toward the palette/mood lock (don't ship raw scan colors).
+    6. Verify in-engine (section 6): does it read atmospheric under the real fog + lighting,
+       not just in a Blender render?
+  Loader smoke-test: before the first dressed arena, author one trivial .glb (a
+  single BC7-textured block at metric scale) to exercise the glTF + PBR loader path
+  end to end. There is no pre-supplied test content, the smoke asset is authored,
+  not inherited.
+
+----------------------------------------------------------------
+III.4  Track B, Bespoke hero assets (weapon, hands, enemies)
+----------------------------------------------------------------
+For pieces that can't be sourced, first-person weapon, hands/arms, the 2-3 enemies ,
+author in Blender (bundled at tools/blender/), using AI generation for BLOCKOUT only.
+The first-person weapon is authored fresh to the section 1 contract (glTF + full PBR set) for
+the exact camera and renderer, there is no inherited weapon mesh to start from or
+preserve.
+  Steps (high->low PBR pipeline):
+    1. Concept, references / target silhouettes (2D image gen, style sheets).
+    2. Blockout, text/image->3D for a ROUGH base only (Blender MCP generators:
+       generate_hyper3d_model_via_text, generate_hunyuan3d_model, image variants).
+       Treat output as clay, never a final mesh.
+    3. Retopo + clean in Blender, sane topology, correct scale, real dimensions,
+       game-ready tri budget (section 1). Mandatory for first-person weapons/arms: built for
+       the exact camera and renderer.
+    4. UV unwrap, non-overlapping, density-matched; lightmap UVs not needed for
+       dynamic assets.
+    5. Bake high->low: normal + AO (+ curvature for texturing masks).
+    6. Texture (PBR), base color / normal / ORM / emissive (substance-3d-texturing
+       skill / Substance-style), graded to the coherence lock. Metal reads metal,
+       rubber reads rubber.
+    7. Export .glb with tangents (bpy.ops.export_scene.gltf(..., export_format='GLB',
+       export_tangents=True, export_yup=True)) + transcode maps (section 1).
+    8. Verify in-engine (section 6). Iterate on the SCREENSHOT, not the viewport.
+  Prefer deterministic Blender Python (tools/blender/build_pulse_*.py) so any asset
+  regenerates repeatably, build_pulse_weapon.py / build_pulse_enemies.py are the
+  pattern to extend.
+  Never ship a raw generated mesh as a final gameplay asset. Generators are for
+  blockouts, references, and props at distance, not first-person hero geometry.
+
+----------------------------------------------------------------
+III.5  Tooling reference
+----------------------------------------------------------------
+  - Blender 5.1 (bundled): tools\blender\blender-5.1.2-windows-x64\blender.exe ,
+    headless authoring (-b --python <script>), glTF export (io_scene_gltf2), baking,
+    geometry/rigging/shader skills.
+  - Blender MCP (blender server): in-Blender automation + AI mesh generators
+    (Hyper3D/Rodin, Hunyuan3D), PolyHaven/Sketchfab search, viewport screenshots.
+  - AI mesh-gen (blockout only): Hyper3D Rodin, Hunyuan3D/TRELLIS-style, Meshy, Tripo,
+    Luma-style scans. Always retopo/clean before use (section 4).
+  - 2D / texture gen: ComfyUI/Flux/SDXL-style for references, decals, masks, trim;
+    substance-3d-texturing skill for PBR map authoring.
+  - Transcode: texconv (DirectXTex, DDS/BCn), wrapped by the engine's --import-asset.
+  - Skills: sneidgame-asset-forge (PULSE-specific asset creation + QA), the GameForge
+    art-direction skill for the coherence lock, the Blender skill suite.
+  - Licensing: any sourced/generated asset meant to survive prototyping needs a
+    commercial-use + redistribution check before it enters the repo.
+
+----------------------------------------------------------------
+III.6  The verify loop (acceptance happens in-engine)
+----------------------------------------------------------------
+Author -> build -> capture in the native renderer -> vision-critique -> fix -> recapture.
+Use the renderer's own intermediate dumps so the critique is specific.
+
+  # Author (example: author/clean the weapon deterministically in Blender)
+  .\tools\blender\blender-5.1.2-windows-x64\blender.exe -b --python .\tools\blender\build_pulse_weapon.py
+  # Build (MSVC + Ninja)
+  .\Build-Pulse.ps1
+  # Capture the asset under real lighting + intermediates
+  .\build\pulse.exe --pose --screenshot ".\build\asset-check.bmp" --capture-label asset-check
+  .\build\pulse.exe --pose --render-pass normal --screenshot ".\build\asset-normal.bmp"
+  .\build\pulse.exe --pose --render-pass ao     --screenshot ".\build\asset-ao.bmp"
+  # Full packaged test before calling it done
+  .\Test-Pulse.ps1
+
+Vision-critique prompts (tie each to a renderer failure mode):
+  - "Material reads flat plastic / no specular" -> wrong ORM, or no environment
+    contribution (metal needs IBL/RT reflections).
+  - "Object looks like it's floating" -> AO/contact missing; check --render-pass ao.
+  - "Lighting inverted on slopes" -> normal map green-channel convention (section 1).
+  - "Asset disappears in fog / no contrast in the dark" -> coherence-lock contrast/
+    emissive failure (section 2), authored for a studio HDRI, not the arena.
+  - "Double-sRGB / washed or crushed albedo" -> color-space tagging on base color.
+
+----------------------------------------------------------------
+III.7  Acceptance criteria
+----------------------------------------------------------------
+First-person weapon & hands
+  - Reads immediately as a weapon; hands read as hands (no sticks/rods/slabs).
+  - Materials read correctly under IBL/RT, metal as metal, polymer as polymer.
+  - Muzzle flash / tracer originate from the weapon; weapon doesn't cover the aim
+    lane or HUD.
+  - Holds up across --pose, tracer, movement, aim captures, in the dark + fog.
+Props & enemies
+  - Silhouette reads at gameplay distance and in motion.
+  - Grounded by AO/contact shadow, nothing floats.
+  - Enough contrast/emissive against the dark arena to stay readable under fog.
+  - Shapes simple enough for fast movement; gameplay/collision role clear.
+Environment
+  - Texel density matches the lock; sourced + authored surfaces sit together, no clash.
+  - (Raster tier) static geometry has clean uv1 lightmap UVs and reads correctly after
+    the offline Cycles bake; (RT tier) needs none.
+  - The dressed room reads as a coherent, intentional PLACE under real lighting + fog ,
+    the slice's "stop to screenshot it" bar (spec section 9).
+
+----------------------------------------------------------------
+III.8  Starting point (clean slate)
+----------------------------------------------------------------
+  - Today: zero runtime assets by design. assets/{models,textures,shaders,source}/
+    are empty targets; nothing is inherited.
+  - Path to first content: M0 stands up the engine and the glTF loader (cgltf),
+    tangents/mips, PBR materials, BCn textures, and the environment (IBL/DDGI;
+    raster-tier Cycles lightmaps). M1's dressed arena + first-person weapon are the
+    first assets, authored directly to the section 1 contract.
+  - What to do first: stand up the coherence lock (section 2) before authoring anything, it
+    costs nothing and gates everything downstream. Then author the section 3 loader smoke
+    asset, then the arena and hero weapon. A missing required asset fails loud, no
+    silent fallback (PROJECT_RULES.md).
+
+----------------------------------------------------------------
+III.9  Final validation
+----------------------------------------------------------------
+  .\Test-Pulse.ps1
+Then show the relevant native-renderer screenshot in chat. If the screenshot looks
+wrong, the asset is not done, the generator preview and the Blender viewport do not
+get a vote.

@@ -2,8 +2,38 @@
 /build/
 /dist/
 
+# CMake/native build byproducts that can escape the build dir
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+compile_commands.json
+*.ilk
+*.idb
+*.iobj
+*.ipdb
+*.tlog
+*.lastbuildstate
+*.vcxproj.user
+*.suo
+*.user
+
+# Vendored deps: provisioned by tools/Provision-ThirdParty.ps1 (pinned, re-creatable).
+# Keep the manifest tracked; ignore the heavy binaries/headers.
+/third_party/*
+!/third_party/README.md
+
 # Bundled Blender authoring tool (installed/junctioned locally, never tracked)
 /tools/blender/blender-5.1.2-windows-x64/
+
+# Python cache artifacts
+__pycache__/
+*.py[cod]
+
+# Blender scratch/backups and local workbench exports
+*.blend[0-9]*
+/tools/blender/*.blend
+/tools/blender/*.glb
+/tools/blender/*_report.txt
 
 # Compiled shader / build artifacts
 *.dxil
@@ -12,13 +42,146 @@
 *.obj
 !assets/**/*.obj
 
-# Headless verify-loop captures
+# Headless verify-loop captures and generated review media
 /captures/
+/_uireview/
+/_uiwork/
 *.bmp
 *.mp4
+
+# Local design/marketing/export workspaces
+/Design Guide/
+/Environment designed/
+/Marketing/
+/New Models/
+/Pulse Menus Design/
+/Pulse Beam VFX.dc.html
+/enemies_sheet.png
 
 # OS / editor cruft
 Thumbs.db
 .DS_Store
 .vs/
 .vscode/
+*.tmp
+*.bak
+*.orig
+
+# Large local references / authoring sources not loaded by the game runtime
+/ideal_audio.mp3
+/assets/external/firearm_lib/
+/assets/external/gunshots/
+/assets/external/pulse/
+/assets/external/sketchfab/
+/assets/external/sonniss/
+/assets/audio/soniss/
+/assets/audio/reaper_source/
+/assets/blender/
+/assets/FPS_Arms/
+/tools/reports/
+/tools/dev/*.png
+/tools/dev/*.txt
+/tools/dev/rec/
+
+# Asset authoring/source leftovers that Package.bat does not copy to dist.
+/assets/source/
+/assets/models/_procedural_backup/
+/assets/models/bumstrum_ak47_viewmodel.glb
+/assets/models/bumstrum_carbine_viewmodel.glb
+/assets/models/bumstrum_pistol_viewmodel.glb
+/assets/models/pulse_ak47_viewmodel.*
+/assets/models/pulse_left_hand_viewmodel.*
+/assets/models/pulse_right_hand_viewmodel.*
+/assets/models/pulse_pistol_viewmodel.*
+/assets/meshy/enemies/colossus/
+/assets/meshy/enemies/conduit/
+/assets/meshy/enemies/demon_brute/
+/assets/meshy/enemies/demon_husk/
+/assets/meshy/enemies/demon_wraith/
+/assets/meshy/enemies/husk/
+/assets/meshy/enemies/husk_mx/
+/assets/meshy/enemies/stalker/
+/assets/meshy/enemy_inputs/Bosses/
+/assets/meshy/enemy_inputs/Enemies/
+/assets/meshy/enemy_inputs/manifest.json
+/assets/meshy/enemy_inputs/meshy_status.csv
+/assets/meshy/enemy_inputs/meshy_tasks.json
+/assets/meshy/mixamo/
+
+# Package.bat ships only these authored first-person weapon rigs.
+/assets/bumstrum/*
+!/assets/bumstrum/fps_pistol_animated/
+!/assets/bumstrum/fps_pistol_animated/**
+!/assets/bumstrum/fps_ak_animated/
+!/assets/bumstrum/fps_ak_animated/**
+!/assets/bumstrum/fps_animated_carbine/
+!/assets/bumstrum/fps_animated_carbine/**
+!/assets/bumstrum/fps_smg9_animated/
+!/assets/bumstrum/fps_smg9_animated/**
+!/assets/bumstrum/shotgun_animated/
+!/assets/bumstrum/shotgun_animated/**
+!/assets/bumstrum/sniper_animated/
+!/assets/bumstrum/sniper_animated/**
+
+# Package.bat ships only selected Meshy generated concept GLBs.
+/assets/meshy/enemy_inputs/meshy_generated_models/_*
+/assets/meshy/enemy_inputs/meshy_generated_models/pulse_enemy_concepts/*
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_enemy_concepts/002_enemy_gunner_vertical_armored_caster/
+/assets/meshy/enemy_inputs/meshy_generated_models/pulse_enemy_concepts/002_enemy_gunner_vertical_armored_caster/*
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_enemy_concepts/002_enemy_gunner_vertical_armored_caster/model_glb.glb
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_enemy_concepts/010_enemy_shielded_elite_gunner_integrated_defense/
+/assets/meshy/enemy_inputs/meshy_generated_models/pulse_enemy_concepts/010_enemy_shielded_elite_gunner_integrated_defense/*
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_enemy_concepts/010_enemy_shielded_elite_gunner_integrated_defense/model_glb.glb
+/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/*
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/015_boss_foundry_null_forge_marshal/
+/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/015_boss_foundry_null_forge_marshal/*
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/015_boss_foundry_null_forge_marshal/model_glb.glb
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/016_boss_furnace_crucible_tyrant/
+/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/016_boss_furnace_crucible_tyrant/*
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/016_boss_furnace_crucible_tyrant/model_glb.glb
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/017_boss_reliquary_saint_engine_oracle/
+/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/017_boss_reliquary_saint_engine_oracle/*
+!/assets/meshy/enemy_inputs/meshy_generated_models/pulse_boss_concepts/017_boss_reliquary_saint_engine_oracle/model_glb.glb
+
+# Package.bat ships only these Sketchfab sci-fi runtime kits.
+/assets/external/sketchfab_scifi/*
+!/assets/external/sketchfab_scifi/scifi_tileset/
+!/assets/external/sketchfab_scifi/scifi_tileset/**
+!/assets/external/sketchfab_scifi/power_reactor/
+!/assets/external/sketchfab_scifi/power_reactor/**
+!/assets/external/sketchfab_scifi/hallway_straight_01/
+!/assets/external/sketchfab_scifi/hallway_straight_01/**
+!/assets/external/sketchfab_scifi/hallway_cross/
+!/assets/external/sketchfab_scifi/hallway_cross/**
+!/assets/external/sketchfab_scifi/hallway_t/
+!/assets/external/sketchfab_scifi/hallway_t/**
+
+# Match Package.bat exclusions from the promoted environment runtime pack.
+/assets/packs/pulse_environment/**/*.fbx
+/assets/packs/pulse_environment/**/*.obj
+/assets/packs/pulse_environment/**/*.mtl
+/assets/packs/pulse_environment/**/*.blend
+/assets/packs/pulse_environment/**/*.blend1
+/assets/packs/pulse_environment/**/*.jsonl
+/assets/packs/pulse_environment/**/*.csv
+/assets/packs/pulse_environment/**/*.gif
+/assets/packs/pulse_environment/**/texture_0_*.png
+/assets/packs/pulse_environment/**/preview_*.png
+/assets/packs/pulse_environment/quaternius/Sci-Fi Essentials Kit[[]Pro[]]/Textures/
+/assets/packs/pulse_environment/quaternius/Sci-Fi Essentials Kit[[]Pro[]]/Planet Textures/
+/assets/packs/pulse_environment/quaternius/Modular SciFi MegaKit[[]Pro[]]/glTF (Godot)/
+/assets/packs/pulse_environment/quaternius/Modular SciFi MegaKit[[]Pro[]]/Textures[[]Pro[]]/
+
+# Meshy AI API key (local secret, never tracked)
+/tools/meshy/key.txt
+*.meshy.key
+
+# Sketchfab API token (local secret, never tracked)
+/tools/sketchfab.key
+*.sketchfab.key
+
+# Raw Meshy generation output is staging. Keep only runtime files visible here.
+/assets/meshy/raw/*
+!/assets/meshy/raw/slice_cyan_crystal.glb
+!/assets/meshy/raw/slice_monument_obelisk.glb
+!/assets/meshy/raw/slice_gateway_arch.glb

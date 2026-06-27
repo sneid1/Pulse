@@ -1,16 +1,21 @@
 # PULSE native tuning.
 # Edit while the game is running, then press F5 to reload.
 
-window.width = 1280
-window.height = 720
+window.width = 1920
+window.height = 1080
+
+# Run pacing. Each biome has at least 5 rooms before the boss, then rolls
+# 0..2 extra pre-boss rooms on the seeded run RNG.
+run.rooms_before_boss_min = 5
+run.rooms_before_boss_extra = 2
 
 camera.fov_degrees = 95
 camera.mouse_sensitivity = 0.0014
-camera.pitch_limit_degrees = 42
+camera.pitch_limit_degrees = 85
 camera.fire_impact_recovery = 18
 
 # Screen shake (render-only; does not affect aim). Degrees of view kick.
-camera.shake_fire = 0.72
+camera.shake_fire = 0.86
 camera.shake_kill = 1.10
 camera.shake_hurt = 2.4
 camera.shake_decay = 13.0
@@ -25,6 +30,9 @@ render.fog_density = 0.062
 # Kill crunch: micro hit-stop + impact burst.
 feel.hitstop_kill = 0.045
 feel.hitstop_scale = 0.08
+# Per-connect crunch: every shot that LANDS briefly bites the world (the main "weight
+# behind the shots" lever). Scaled by each weapon's impactScale and softened for autos.
+feel.hitstop_hit = 0.030
 feel.kill_burst_seconds = 0.30
 feel.impact_hit_seconds = 0.50
 feel.impact_wall_seconds = 0.62
@@ -35,7 +43,7 @@ feel.debris_speed = 5.5
 movement.walk_speed = 5.0
 movement.acceleration = 48.0
 movement.braking = 64.0
-movement.air_control = 0.35
+movement.air_control = 0.6
 movement.player_radius = 0.28
 
 player.max_health = 100
@@ -50,41 +58,69 @@ pickup.shield_amount = 40
 pickup.ammo_amount = 60
 pickup.collect_radius = 0.55
 
-dash.impulse = 11.0
-dash.duration = 0.12
+dash.impulse = 10.0
+dash.duration = 0.10
+# A dash started in the AIR covers this much more horizontal distance (air-mobility burst).
+dash.air_mult = 1.4
 dash.cooldown = 1.0
 dash.fov_punch = 1.5
 
-# Jump + gravity (heights are fractions of room height; eye rests at eye_height).
-movement.eye_height = 0.5
-movement.jump_velocity = 4.4
-movement.gravity = 27.0
+# Jump + gravity (heights are world units; eye rests at eye_height; a higher jump lets you
+# hop onto low rocks/cover - apex height scales with velocity squared). Outdoors the eye is
+# free to rise onto cover; indoors jump_apex_cap still keeps it under the ceiling.
+movement.eye_height = 0.78
+movement.jump_velocity = 12.0
+movement.gravity = 40.0
 movement.jump_apex_cap = 0.86
+# Jump arc FEEL: snappy + weighty + controllable, not a floaty hang. You fall fall_gravity_mult x
+# faster than you rise; releasing jump early while rising pulls down low_jump_mult x harder so a TAP
+# is a short hop and a HOLD is the full jump (variable height).
+movement.fall_gravity_mult = 1.5
+movement.low_jump_mult = 2.2
+# Proper jump ability: a mid-air DOUBLE JUMP (air_jump_count extra jumps, each resetting vertical
+# speed to air_jump_velocity), plus coyote_time (late ground jump after an edge) + jump_buffer_time
+# (a press just before landing still fires) so it feels responsive. Set air_jump_count = 0 for a
+# classic single jump, or 2 for a triple.
+movement.air_jump_count = 1
+movement.air_jump_velocity = 11.0
+movement.coyote_time = 0.10
+movement.jump_buffer_time = 0.12
 
-# PULSE carbine feel: heavy ~570 RPM cadence, strong climbing recoil, punchy round.
+# Legacy global weapon fallback. AK-47-specific feel now lives under [ak47] in
+# config/pulse.weapons; "carbine" is a separate tactical burst weapon.
 weapon.auto_fire = 1
-weapon.fire_rate = 9.7
+weapon.fire_rate = 10.0
 weapon.damage = 30.0
-weapon.spread_degrees = 1.05
-weapon.recoil_pitch_degrees = 0.86
-weapon.recoil_yaw_jitter_degrees = 0.22
+weapon.spread_degrees = 0.02
+weapon.first_shot_inaccuracy_degrees = 0.08
+weapon.spray_inaccuracy_degrees = 0.20
+weapon.move_inaccuracy_degrees = 1.35
+weapon.recoil_pitch_degrees = 0.92
+weapon.recoil_yaw_jitter_degrees = 0.46
 weapon.recoil_recovery_rate = 10.5
 weapon.recoil_residual_fraction = 0.16
+weapon.recoil_reset_seconds = 0.34
 weapon.magazine_capacity = 30
 weapon.reserve_ammo = 90
 weapon.reload_duration = 1.35
 weapon.fire_fov_punch = 4.8
 weapon.fire_camera_kick = 4.9
+weapon.fire_volume = 5.0
+weapon.viewmodel_fov_degrees = 74
+weapon.pistol_viewmodel_fov_degrees = 66
+weapon.pistol_idle_sway_scale = 0.35
 weapon.viewmodel_sway = 1.0
+weapon.viewmodel_kick_scale = 1.0
+weapon.viewmodel_kick_recovery = 18.0
 # Muzzle origin for the viewmodel flash (screen fractions): on the gun barrel.
 weapon.muzzle_screen_x = 0.57
 weapon.muzzle_screen_y = 0.62
 
 # Slower, tactical roster: fewer, tougher enemies that telegraph every attack.
-enemy.max_health = 120
+enemy.max_health = 135
 enemy.headshot_min_fraction = 0.34
-enemy.rusher_speed = 4.0
-enemy.ranged_speed = 3.0
+enemy.rusher_speed = 3.0
+enemy.ranged_speed = 2.4
 
 # Melee strike (rusher/tank): a telegraphed wind-up at contact range, your cue
 # to dash clear. Enemies no longer delete themselves on touch.
@@ -94,13 +130,16 @@ enemy.melee_telegraph = 0.45
 enemy.melee_recover = 1.0
 enemy.melee_lunge = 1.4
 
-# Ranged: fires a slow, dodgeable orb instead of an instant hitscan.
+# Ranged: fires a dodgeable orb instead of an instant hitscan. The orb is faster than the
+# player (walk 7.0) so it reads as INCOMING rather than a slow hazard the player outruns and
+# then strafes back into from the side; the short life keeps spent orbs from lingering across
+# the whole arena and hitting from unexpected directions (the "came from behind" feel).
 enemy.ranged_damage = 18
 enemy.ranged_cooldown = 2.6
 enemy.ranged_telegraph = 0.8
-enemy.projectile_speed = 8.0
+enemy.projectile_speed = 10.0
 enemy.projectile_radius = 0.30
-enemy.projectile_life = 5.0
+enemy.projectile_life = 2.6
 
 # Soft separation keeps the swarm spread out and individually readable.
 enemy.separation_radius = 1.4
@@ -108,22 +147,27 @@ enemy.separation_strength = 9.0
 
 # Type C tank brute.
 enemy.tank_health_mult = 3.6
-enemy.tank_speed = 2.2
+enemy.tank_speed = 1.8
 enemy.tank_melee_damage = 42
 enemy.tank_scale = 0.82
 # Rusher telegraphed lunge.
 enemy.rusher_lunge_range = 6.5
 enemy.rusher_lunge_speed = 11.0
+# Stalker: fast flanker, shorter telegraphed pounce.
+enemy.stalker_speed = 3.6
+enemy.stalker_pounce_range = 5.2
+enemy.stalker_pounce_speed = 13.0
 
 # On-screen directional hit indicator lifetime.
 hud.damage_indicator_seconds = 1.5
 
-spawning.interval = 2.8
-spawning.max_concurrent = 5
+spawning.interval = 0.85
+spawning.max_concurrent = 8
 spawning.ring_radius = 14.0
 spawning.ranged_chance = 0.30
 spawning.tank_chance = 0.18
+spawning.stalker_chance = 0.16
 
 techno.enabled = 1
-techno.bpm = 146
-techno.base_volume = 0.42
+techno.bpm = 140
+techno.base_volume = 0.26

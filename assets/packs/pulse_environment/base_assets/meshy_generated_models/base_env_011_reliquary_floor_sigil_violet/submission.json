@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_011_reliquary_floor_sigil_violet",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa25-f721-704a-9bd4-0934c6510839",
+    "submitted_at":  "2026-06-25T01:00:56.2222879+10:00",
+    "image":  "base_env_011_reliquary_floor_sigil_violet.png"
+}

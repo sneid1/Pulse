@@ -1,0 +1,97 @@
+PULSE player-feedback SFX producer
+work_sr=96000 out_sr=48000
+[hitmarker] stem=sfx_fb_hitmarker variants=4 length=0.080s targetPeak=-5.8dBFS
+sfx_fb_hitmarker.wav: peak=-5.80dBFS rms=-19.25dBFS frames=7680
+sfx_fb_hitmarker_1.wav: peak=-5.80dBFS rms=-18.77dBFS frames=7680
+sfx_fb_hitmarker_2.wav: peak=-5.80dBFS rms=-20.28dBFS frames=7680
+sfx_fb_hitmarker_3.wav: peak=-5.80dBFS rms=-17.95dBFS frames=7680
+[hit_crit] stem=sfx_fb_hit_crit variants=4 length=0.120s targetPeak=-5.0dBFS
+sfx_fb_hit_crit.wav: peak=-5.00dBFS rms=-19.59dBFS frames=11520
+sfx_fb_hit_crit_1.wav: peak=-5.00dBFS rms=-19.72dBFS frames=11520
+sfx_fb_hit_crit_2.wav: peak=-5.00dBFS rms=-20.50dBFS frames=11520
+sfx_fb_hit_crit_3.wav: peak=-5.00dBFS rms=-18.89dBFS frames=11520
+[kill] stem=sfx_fb_kill variants=4 length=0.220s targetPeak=-5.2dBFS
+sfx_fb_kill.wav: peak=-5.20dBFS rms=-17.42dBFS frames=21120
+sfx_fb_kill_1.wav: peak=-5.20dBFS rms=-17.28dBFS frames=21120
+sfx_fb_kill_2.wav: peak=-5.20dBFS rms=-17.38dBFS frames=21120
+sfx_fb_kill_3.wav: peak=-5.20dBFS rms=-17.26dBFS frames=21120
+[kill_elite] stem=sfx_fb_kill_elite variants=3 length=0.340s targetPeak=-4.7dBFS
+sfx_fb_kill_elite.wav: peak=-4.70dBFS rms=-16.69dBFS frames=32640
+sfx_fb_kill_elite_1.wav: peak=-4.70dBFS rms=-17.16dBFS frames=32640
+sfx_fb_kill_elite_2.wav: peak=-4.70dBFS rms=-16.40dBFS frames=32640
+[dash] stem=sfx_fb_dash variants=3 length=0.180s targetPeak=-7.2dBFS
+sfx_fb_dash.wav: peak=-7.20dBFS rms=-19.01dBFS frames=17280
+sfx_fb_dash_1.wav: peak=-7.20dBFS rms=-18.71dBFS frames=17280
+sfx_fb_dash_2.wav: peak=-7.20dBFS rms=-18.91dBFS frames=17280
+[jump] stem=sfx_fb_jump variants=3 length=0.155s targetPeak=-9.2dBFS
+sfx_fb_jump.wav: peak=-9.20dBFS rms=-19.85dBFS frames=14880
+sfx_fb_jump_1.wav: peak=-9.20dBFS rms=-19.79dBFS frames=14880
+sfx_fb_jump_2.wav: peak=-9.20dBFS rms=-20.28dBFS frames=14880
+[ability_tactical] stem=sfx_fb_ability_tactical variants=3 length=0.250s targetPeak=-5.7dBFS
+sfx_fb_ability_tactical.wav: peak=-5.70dBFS rms=-19.19dBFS frames=24000
+sfx_fb_ability_tactical_1.wav: peak=-5.70dBFS rms=-19.37dBFS frames=24000
+sfx_fb_ability_tactical_2.wav: peak=-5.70dBFS rms=-18.84dBFS frames=24000
+[ability_ultimate] stem=sfx_fb_ability_ultimate variants=3 length=0.600s targetPeak=-4.4dBFS
+sfx_fb_ability_ultimate.wav: peak=-4.40dBFS rms=-19.50dBFS frames=57600
+sfx_fb_ability_ultimate_1.wav: peak=-4.40dBFS rms=-19.72dBFS frames=57600
+sfx_fb_ability_ultimate_2.wav: peak=-4.40dBFS rms=-19.38dBFS frames=57600
+[charge_ready] stem=sfx_fb_charge_ready variants=3 length=0.260s targetPeak=-6.7dBFS
+sfx_fb_charge_ready.wav: peak=-6.70dBFS rms=-24.27dBFS frames=24960
+sfx_fb_charge_ready_1.wav: peak=-6.70dBFS rms=-23.92dBFS frames=24960
+sfx_fb_charge_ready_2.wav: peak=-6.70dBFS rms=-23.59dBFS frames=24960
+[explosion] stem=sfx_fb_explosion variants=4 length=0.480s targetPeak=-4.5dBFS
+sfx_fb_explosion.wav: peak=-4.50dBFS rms=-18.90dBFS frames=46080
+sfx_fb_explosion_1.wav: peak=-4.50dBFS rms=-18.18dBFS frames=46080
+sfx_fb_explosion_2.wav: peak=-4.50dBFS rms=-18.11dBFS frames=46080
+sfx_fb_explosion_3.wav: peak=-4.50dBFS rms=-18.85dBFS frames=46080
+[shield_absorb] stem=sfx_fb_shield_absorb variants=3 length=0.170s targetPeak=-7.0dBFS
+sfx_fb_shield_absorb.wav: peak=-7.00dBFS rms=-27.22dBFS frames=16320
+sfx_fb_shield_absorb_1.wav: peak=-7.00dBFS rms=-26.17dBFS frames=16320
+sfx_fb_shield_absorb_2.wav: peak=-7.00dBFS rms=-25.38dBFS frames=16320
+[shield_break] stem=sfx_fb_shield_break variants=3 length=0.340s targetPeak=-5.6dBFS
+sfx_fb_shield_break.wav: peak=-5.60dBFS rms=-24.23dBFS frames=32640
+sfx_fb_shield_break_1.wav: peak=-5.60dBFS rms=-23.56dBFS frames=32640
+sfx_fb_shield_break_2.wav: peak=-5.60dBFS rms=-24.06dBFS frames=32640
+[low_health] stem=sfx_fb_low_health variants=2 length=0.440s targetPeak=-9.0dBFS
+sfx_fb_low_health.wav: peak=-9.00dBFS rms=-18.57dBFS frames=42240
+sfx_fb_low_health_1.wav: peak=-9.00dBFS rms=-18.61dBFS frames=42240
+[pickup_health] stem=sfx_fb_pickup_health variants=3 length=0.210s targetPeak=-7.1dBFS
+sfx_fb_pickup_health.wav: peak=-7.10dBFS rms=-23.03dBFS frames=20160
+sfx_fb_pickup_health_1.wav: peak=-7.10dBFS rms=-21.50dBFS frames=20160
+sfx_fb_pickup_health_2.wav: peak=-7.10dBFS rms=-21.93dBFS frames=20160
+[pickup_shield] stem=sfx_fb_pickup_shield variants=3 length=0.220s targetPeak=-7.0dBFS
+sfx_fb_pickup_shield.wav: peak=-7.00dBFS rms=-22.90dBFS frames=21120
+sfx_fb_pickup_shield_1.wav: peak=-7.00dBFS rms=-25.09dBFS frames=21120
+sfx_fb_pickup_shield_2.wav: peak=-7.00dBFS rms=-23.88dBFS frames=21120
+[pickup_ammo] stem=sfx_fb_pickup_ammo variants=3 length=0.170s targetPeak=-8.0dBFS
+sfx_fb_pickup_ammo.wav: peak=-8.00dBFS rms=-25.78dBFS frames=16320
+sfx_fb_pickup_ammo_1.wav: peak=-8.00dBFS rms=-25.83dBFS frames=16320
+sfx_fb_pickup_ammo_2.wav: peak=-8.00dBFS rms=-25.82dBFS frames=16320
+[pickup_scrap] stem=sfx_fb_pickup_scrap variants=3 length=0.160s targetPeak=-8.3dBFS
+sfx_fb_pickup_scrap.wav: peak=-8.30dBFS rms=-31.62dBFS frames=15360
+sfx_fb_pickup_scrap_1.wav: peak=-8.30dBFS rms=-29.27dBFS frames=15360
+sfx_fb_pickup_scrap_2.wav: peak=-8.30dBFS rms=-28.94dBFS frames=15360
+[pickup_powerup] stem=sfx_fb_pickup_powerup variants=3 length=0.380s targetPeak=-6.0dBFS
+sfx_fb_pickup_powerup.wav: peak=-6.00dBFS rms=-19.52dBFS frames=36480
+sfx_fb_pickup_powerup_1.wav: peak=-6.00dBFS rms=-19.69dBFS frames=36480
+sfx_fb_pickup_powerup_2.wav: peak=-6.00dBFS rms=-18.82dBFS frames=36480
+[ui_move] stem=sfx_fb_ui_move variants=2 length=0.060s targetPeak=-13.0dBFS
+sfx_fb_ui_move.wav: peak=-13.00dBFS rms=-31.09dBFS frames=5760
+sfx_fb_ui_move_1.wav: peak=-13.00dBFS rms=-30.14dBFS frames=5760
+[ui_confirm] stem=sfx_fb_ui_confirm variants=2 length=0.145s targetPeak=-8.0dBFS
+sfx_fb_ui_confirm.wav: peak=-8.00dBFS rms=-28.80dBFS frames=13919
+sfx_fb_ui_confirm_1.wav: peak=-8.00dBFS rms=-27.23dBFS frames=13919
+[ui_cancel] stem=sfx_fb_ui_cancel variants=2 length=0.155s targetPeak=-8.8dBFS
+sfx_fb_ui_cancel.wav: peak=-8.80dBFS rms=-21.39dBFS frames=14880
+sfx_fb_ui_cancel_1.wav: peak=-8.80dBFS rms=-21.46dBFS frames=14880
+[ui_reward] stem=sfx_fb_ui_reward variants=3 length=0.420s targetPeak=-5.8dBFS
+sfx_fb_ui_reward.wav: peak=-5.80dBFS rms=-22.29dBFS frames=40320
+sfx_fb_ui_reward_1.wav: peak=-5.80dBFS rms=-22.28dBFS frames=40320
+sfx_fb_ui_reward_2.wav: peak=-5.80dBFS rms=-22.37dBFS frames=40320
+[run_win] stem=sfx_fb_run_win variants=2 length=0.950s targetPeak=-4.8dBFS
+sfx_fb_run_win.wav: peak=-4.80dBFS rms=-21.48dBFS frames=91200
+sfx_fb_run_win_1.wav: peak=-4.80dBFS rms=-21.53dBFS frames=91200
+[run_lose] stem=sfx_fb_run_lose variants=2 length=0.780s targetPeak=-5.8dBFS
+sfx_fb_run_lose.wav: peak=-5.80dBFS rms=-19.46dBFS frames=74880
+sfx_fb_run_lose_1.wav: peak=-5.80dBFS rms=-19.30dBFS frames=74880
+total_events=24 total_files=70

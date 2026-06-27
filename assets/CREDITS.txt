@@ -1,0 +1,53 @@
+PULSE - 3D asset credits
+=========================
+
+Audio credits are listed separately in assets/audio/CREDITS.txt.
+
+Sourced 3D models (CC-BY-4.0, commercial use allowed, attribution required).
+Per-asset license files live alongside each model under assets/bumstrum/<name>/license.txt.
+
+Modular Dungeon
+  This work is based on "Modular Dungeon"
+  (https://sketchfab.com/3d-models/modular-dungeon-c4d0cbde62b748caa58e40699477f8cd)
+  by DJMaesen (https://sketchfab.com/bumstrum)
+  licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/).
+  Used as the procedural tile kit assembled by the in-game Dungeon system.
+
+Weapon viewmodels (first-person pistol / AK-47 / tactical carbine / SMG), by DJMaesen
+  (https://sketchfab.com/bumstrum), licensed CC-BY-4.0. See the matching
+  license.txt under assets/bumstrum/<name>/ for the exact per-model credit string.
+
+Outdoor arena environment kits under assets/external/sketchfab/<name>/, all by
+DJMaesen (https://sketchfab.com/bumstrum), licensed CC-BY-4.0
+(http://creativecommons.org/licenses/by/4.0/). Per-asset credit strings live in the
+matching license.txt alongside each model. Assembled by the in-game Wasteland system
+into the procedural outdoor arenas:
+  Rocks set2, cave rocks, rockclusters, Cliffs, Rockwall, Background Mountains,
+  Trees (trees1), Tree, oak trees, Grass patches, forest tileable mats,
+  Gaurdian statue, Stone Entrance, Terrainground 2.
+Plus "medieval sceneray" (assets/bumstrum/medieval_sceneray) by the same author.
+
+Surface PBR sets under assets/external/polyhaven are CC0 (Poly Haven); no
+attribution required.
+
+Sci-fi modular environment kits under assets/external/sketchfab_scifi/<name>/,
+licensed CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/); per-asset
+license.txt lives alongside each model. Assembled by the in-game environment system
+into the sci-fi arenas + connecting corridors:
+  "Modular Hallway Straight/Cross/T-Connector Type 01" by Inditrion Dradnon
+    (https://sketchfab.com/3d-models/modular-hallway-straight-type-01-671ccfbf33ad422f85ba382af3238c47 and siblings).
+  "Modular Environment Parts" by NotARealStudio
+    (https://sketchfab.com/3d-models/modular-environment-parts-8695edc790a541ea97d2a1fe4af40cfb).
+  "Sci-Fi Power Reactor" by Just-Peeps
+    (https://sketchfab.com/3d-models/sci-fi-power-reactor-442645aaebe74e648ec1460f429ee1ba).
+  "Sci-Fi Game Tileset" by hamraj15
+    (https://sketchfab.com/3d-models/sci-fi-game-tileset-abe59cf8f6d64f8291104d3108a4fc88).
+    Floor + wall tiles extracted and tiled into the room WALL/FLOOR shell; the kit's seamless
+    wall/floor/ceiling tiles share one PBR atlas (baseColor + ORM + normal + emissive cyan traces).
+
+Quaternius "Modular SciFi MegaKit" (https://quaternius.com), by Quaternius. Licensed CC0 1.0
+Universal (public domain, https://creativecommons.org/publicdomain/zero/1.0/) - no attribution
+required; credited by courtesy. Under assets/quaternius/. The in-game modular assembler builds
+each arena from this one family on its native 4 m grid: floor platforms, wall panels + top caps,
+corner columns, door frames + sliding door leaves, and crate/barrel cover - so the whole world
+reads as one coherent kit.

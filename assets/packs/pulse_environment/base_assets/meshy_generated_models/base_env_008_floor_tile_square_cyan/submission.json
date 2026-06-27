@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_008_floor_tile_square_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa25-b926-7d93-a3cb-62cfb624213a",
+    "submitted_at":  "2026-06-25T01:00:40.2812452+10:00",
+    "image":  "base_env_008_floor_tile_square_cyan.png"
+}

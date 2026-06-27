@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_017_wall_seam_cover_tall_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa26-5d03-7ecc-894b-0718e7afdfc1",
+    "submitted_at":  "2026-06-25T01:01:21.4122599+10:00",
+    "image":  "base_env_017_wall_seam_cover_tall_cyan.png"
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Modular Hallway Straight Type 01
+* source:	https://sketchfab.com/3d-models/modular-hallway-straight-type-01-671ccfbf33ad422f85ba382af3238c47
+* author:	Inditrion Dradnon (https://sketchfab.com/dradnon)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Modular Hallway Straight Type 01" (https://sketchfab.com/3d-models/modular-hallway-straight-type-01-671ccfbf33ad422f85ba382af3238c47) by Inditrion Dradnon (https://sketchfab.com/dradnon) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

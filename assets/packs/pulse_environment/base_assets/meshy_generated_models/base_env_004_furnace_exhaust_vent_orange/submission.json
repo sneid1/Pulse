@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_004_furnace_exhaust_vent_orange",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa25-3846-7d70-b2a3-bf14ce41985c",
+    "submitted_at":  "2026-06-25T01:00:07.1550758+10:00",
+    "image":  "base_env_004_furnace_exhaust_vent_orange.png"
+}

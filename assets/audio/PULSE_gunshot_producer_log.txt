@@ -1,0 +1,84 @@
+PULSE layered gunshot producer
+work_sr=96000 out_sr=48000
+source ak_close: shots=3 first=[0.004, 0.115, 0.19] path=C:\Users\rq27\Pulse\assets\external\sonniss\gdc2020_ak74\AKSD0813_AK74_spot_A_close_burst_03_rounds.wav
+source ak_far: shots=4 first=[0.005, 0.103, 0.194, 0.277] path=C:\Users\rq27\Pulse\assets\external\sonniss\gdc2020_ak74\AKSD0854_AK74_spot_D_far_burst_03_rounds.wav
+source ak_rear: shots=12 first=[0.113, 0.207, 0.299, 0.393, 0.486, 0.574, 5.814, 5.907, 6.0, 6.092] path=C:\Users\rq27\Pulse\assets\external\sonniss\gdc2020_ak74\AK0405_AK74_rear_long_distance_burst_05_rounds.wav
+source m3: shots=10 first=[0.857, 3.239, 5.725, 7.929, 10.091, 12.477, 14.884, 16.885, 19.103, 21.094] path=C:\Users\rq27\Pulse\assets\external\sonniss\gdc2020_weapons\STSRC_WoWW2_Wep_SMG_M3_GreaseGun_Submachine_Gun_Single_Shot_X10_Comp_Full.wav
+source luger: shots=5 first=[0.048, 5.089, 9.958, 15.17, 20.031] path=C:\Users\rq27\Pulse\assets\external\sonniss\gdc2020_weapons\STDSGN_WoWW2_Wep_Pistol_Luger_Shot_X5.wav
+source future: shots=4 first=[0.03, 0.125, 0.238, 0.346] path=C:\Users\rq27\Pulse\assets\external\sonniss\gdc2020_weapons\PM_SFG_VOL1_WEAPON_4_4_GUN_GUNSHOT_FUTURISTIC.wav
+source sks: shots=38 first=[0.361, 0.54, 0.763, 2.32, 2.533, 3.345, 3.525, 3.701, 3.894, 4.073] path=C:\Users\rq27\Pulse\assets\external\gunshots\extracted\sounds\sks.wav
+source mosin: shots=23 first=[0.463, 0.968, 1.498, 1.985, 2.672, 3.583, 4.035, 4.623, 5.295, 6.008] path=C:\Users\rq27\Pulse\assets\external\gunshots\extracted\sounds\mosin.wav
+source shotty: shots=5 first=[0.032, 0.165, 0.294, 0.411, 0.535] path=C:\Users\rq27\Pulse\assets\external\gunshots\extracted\sounds\shotty.wav
+[default] stem=sfx_fire variants=8 length=0.142s targetPeak=-5.5dBFS
+sfx_fire.wav: peak=-5.50dBFS rms=-19.15dBFS low35-180=-21.15dB mid0.5-3.5k=-22.63dB high6-14k=-28.97dB
+sfx_fire_1.wav: peak=-5.50dBFS rms=-19.07dBFS low35-180=-19.36dB mid0.5-3.5k=-27.60dB high6-14k=-28.82dB
+sfx_fire_2.wav: peak=-5.50dBFS rms=-20.63dBFS low35-180=-19.43dB mid0.5-3.5k=-31.90dB high6-14k=-28.99dB
+sfx_fire_3.wav: peak=-5.50dBFS rms=-18.95dBFS low35-180=-21.07dB mid0.5-3.5k=-22.91dB high6-14k=-28.73dB
+sfx_fire_4.wav: peak=-5.50dBFS rms=-18.42dBFS low35-180=-18.40dB mid0.5-3.5k=-28.23dB high6-14k=-27.93dB
+sfx_fire_5.wav: peak=-5.50dBFS rms=-18.13dBFS low35-180=-21.92dB mid0.5-3.5k=-20.36dB high6-14k=-27.36dB
+sfx_fire_6.wav: peak=-5.50dBFS rms=-19.72dBFS low35-180=-20.30dB mid0.5-3.5k=-27.12dB high6-14k=-29.24dB
+sfx_fire_7.wav: peak=-5.50dBFS rms=-18.16dBFS low35-180=-19.73dB mid0.5-3.5k=-23.33dB high6-14k=-28.61dB
+[ak47] stem=sfx_fire_ak47 variants=8 length=0.145s targetPeak=-5.2dBFS
+sfx_fire_ak47.wav: peak=-5.20dBFS rms=-15.94dBFS low35-180=-17.32dB mid0.5-3.5k=-28.35dB high6-14k=-21.44dB
+sfx_fire_ak47_1.wav: peak=-5.20dBFS rms=-15.84dBFS low35-180=-17.35dB mid0.5-3.5k=-31.29dB high6-14k=-23.11dB
+sfx_fire_ak47_2.wav: peak=-5.20dBFS rms=-17.54dBFS low35-180=-17.01dB mid0.5-3.5k=-29.62dB high6-14k=-22.90dB
+sfx_fire_ak47_3.wav: peak=-5.20dBFS rms=-15.95dBFS low35-180=-17.25dB mid0.5-3.5k=-28.25dB high6-14k=-21.63dB
+sfx_fire_ak47_4.wav: peak=-5.20dBFS rms=-15.80dBFS low35-180=-17.26dB mid0.5-3.5k=-31.18dB high6-14k=-22.98dB
+sfx_fire_ak47_5.wav: peak=-5.20dBFS rms=-17.54dBFS low35-180=-17.03dB mid0.5-3.5k=-29.43dB high6-14k=-22.93dB
+sfx_fire_ak47_6.wav: peak=-5.20dBFS rms=-15.91dBFS low35-180=-17.26dB mid0.5-3.5k=-28.41dB high6-14k=-21.54dB
+sfx_fire_ak47_7.wav: peak=-5.20dBFS rms=-15.98dBFS low35-180=-17.51dB mid0.5-3.5k=-31.89dB high6-14k=-23.36dB
+[carbine] stem=sfx_fire_carbine variants=8 length=0.132s targetPeak=-7.0dBFS
+sfx_fire_carbine.wav: peak=-7.00dBFS rms=-20.55dBFS low35-180=-22.65dB mid0.5-3.5k=-24.13dB high6-14k=-30.47dB
+sfx_fire_carbine_1.wav: peak=-7.00dBFS rms=-20.25dBFS low35-180=-20.65dB mid0.5-3.5k=-29.00dB high6-14k=-30.68dB
+sfx_fire_carbine_2.wav: peak=-7.00dBFS rms=-22.32dBFS low35-180=-21.42dB mid0.5-3.5k=-33.91dB high6-14k=-30.80dB
+sfx_fire_carbine_3.wav: peak=-7.00dBFS rms=-20.33dBFS low35-180=-22.59dB mid0.5-3.5k=-24.50dB high6-14k=-30.13dB
+sfx_fire_carbine_4.wav: peak=-7.00dBFS rms=-19.86dBFS low35-180=-20.07dB mid0.5-3.5k=-29.76dB high6-14k=-29.58dB
+sfx_fire_carbine_5.wav: peak=-7.00dBFS rms=-19.51dBFS low35-180=-23.42dB mid0.5-3.5k=-21.92dB high6-14k=-28.75dB
+sfx_fire_carbine_6.wav: peak=-7.00dBFS rms=-21.34dBFS low35-180=-21.81dB mid0.5-3.5k=-28.67dB high6-14k=-30.97dB
+sfx_fire_carbine_7.wav: peak=-7.00dBFS rms=-19.60dBFS low35-180=-21.18dB mid0.5-3.5k=-24.94dB high6-14k=-30.33dB
+[pistol] stem=sfx_fire_pistol variants=6 length=0.168s targetPeak=-6.0dBFS
+sfx_fire_pistol.wav: peak=-6.00dBFS rms=-17.67dBFS low35-180=-18.12dB mid0.5-3.5k=-24.88dB high6-14k=-24.78dB
+sfx_fire_pistol_1.wav: peak=-6.00dBFS rms=-17.44dBFS low35-180=-17.79dB mid0.5-3.5k=-24.51dB high6-14k=-24.74dB
+sfx_fire_pistol_2.wav: peak=-6.00dBFS rms=-18.07dBFS low35-180=-18.85dB mid0.5-3.5k=-24.39dB high6-14k=-24.34dB
+sfx_fire_pistol_3.wav: peak=-6.00dBFS rms=-17.94dBFS low35-180=-16.84dB mid0.5-3.5k=-25.63dB high6-14k=-25.56dB
+sfx_fire_pistol_4.wav: peak=-6.00dBFS rms=-17.69dBFS low35-180=-17.03dB mid0.5-3.5k=-25.09dB high6-14k=-24.75dB
+sfx_fire_pistol_5.wav: peak=-6.00dBFS rms=-17.46dBFS low35-180=-16.56dB mid0.5-3.5k=-24.01dB high6-14k=-25.62dB
+[pulse_smg] stem=sfx_fire_pulse_smg variants=8 length=0.092s targetPeak=-9.0dBFS
+sfx_fire_pulse_smg.wav: peak=-9.00dBFS rms=-23.50dBFS low35-180=-29.37dB mid0.5-3.5k=-28.93dB high6-14k=-28.57dB
+sfx_fire_pulse_smg_1.wav: peak=-9.00dBFS rms=-22.84dBFS low35-180=-29.10dB mid0.5-3.5k=-28.25dB high6-14k=-26.99dB
+sfx_fire_pulse_smg_2.wav: peak=-9.00dBFS rms=-21.78dBFS low35-180=-26.97dB mid0.5-3.5k=-27.54dB high6-14k=-25.57dB
+sfx_fire_pulse_smg_3.wav: peak=-9.00dBFS rms=-22.60dBFS low35-180=-27.00dB mid0.5-3.5k=-28.53dB high6-14k=-26.90dB
+sfx_fire_pulse_smg_4.wav: peak=-9.00dBFS rms=-22.20dBFS low35-180=-26.68dB mid0.5-3.5k=-28.05dB high6-14k=-26.51dB
+sfx_fire_pulse_smg_5.wav: peak=-9.00dBFS rms=-22.47dBFS low35-180=-29.92dB mid0.5-3.5k=-27.54dB high6-14k=-26.26dB
+sfx_fire_pulse_smg_6.wav: peak=-9.00dBFS rms=-22.20dBFS low35-180=-27.07dB mid0.5-3.5k=-28.28dB high6-14k=-26.18dB
+sfx_fire_pulse_smg_7.wav: peak=-9.00dBFS rms=-22.54dBFS low35-180=-26.83dB mid0.5-3.5k=-28.34dB high6-14k=-27.19dB
+[machine_pistol] stem=sfx_fire_machine_pistol variants=8 length=0.094s targetPeak=-9.5dBFS
+sfx_fire_machine_pistol.wav: peak=-9.50dBFS rms=-24.12dBFS low35-180=-37.55dB mid0.5-3.5k=-30.07dB high6-14k=-26.23dB
+sfx_fire_machine_pistol_1.wav: peak=-9.50dBFS rms=-24.03dBFS low35-180=-38.31dB mid0.5-3.5k=-30.17dB high6-14k=-25.52dB
+sfx_fire_machine_pistol_2.wav: peak=-9.50dBFS rms=-23.31dBFS low35-180=-34.25dB mid0.5-3.5k=-29.66dB high6-14k=-24.90dB
+sfx_fire_machine_pistol_3.wav: peak=-9.50dBFS rms=-24.12dBFS low35-180=-32.89dB mid0.5-3.5k=-30.51dB high6-14k=-25.82dB
+sfx_fire_machine_pistol_4.wav: peak=-9.50dBFS rms=-23.97dBFS low35-180=-33.95dB mid0.5-3.5k=-30.68dB high6-14k=-25.25dB
+sfx_fire_machine_pistol_5.wav: peak=-9.50dBFS rms=-23.96dBFS low35-180=-33.51dB mid0.5-3.5k=-29.07dB high6-14k=-26.54dB
+sfx_fire_machine_pistol_6.wav: peak=-9.50dBFS rms=-23.27dBFS low35-180=-32.96dB mid0.5-3.5k=-30.49dB high6-14k=-24.62dB
+sfx_fire_machine_pistol_7.wav: peak=-9.50dBFS rms=-23.91dBFS low35-180=-33.19dB mid0.5-3.5k=-30.24dB high6-14k=-25.61dB
+[marksman] stem=sfx_fire_marksman variants=5 length=0.360s targetPeak=-11.5dBFS
+sfx_fire_marksman.wav: peak=-11.50dBFS rms=-25.18dBFS low35-180=-25.65dB mid0.5-3.5k=-28.41dB high6-14k=-29.68dB
+sfx_fire_marksman_1.wav: peak=-11.50dBFS rms=-24.66dBFS low35-180=-24.93dB mid0.5-3.5k=-27.83dB high6-14k=-32.08dB
+sfx_fire_marksman_2.wav: peak=-11.50dBFS rms=-25.15dBFS low35-180=-26.21dB mid0.5-3.5k=-28.17dB high6-14k=-30.52dB
+sfx_fire_marksman_3.wav: peak=-11.50dBFS rms=-24.55dBFS low35-180=-25.02dB mid0.5-3.5k=-28.04dB high6-14k=-28.92dB
+sfx_fire_marksman_4.wav: peak=-11.50dBFS rms=-24.66dBFS low35-180=-25.39dB mid0.5-3.5k=-27.74dB high6-14k=-31.23dB
+[scattergun] stem=sfx_fire_scattergun variants=8 length=0.420s targetPeak=-13.0dBFS
+sfx_fire_scattergun.wav: peak=-13.00dBFS rms=-26.21dBFS low35-180=-26.00dB mid0.5-3.5k=-27.28dB high6-14k=-34.82dB
+sfx_fire_scattergun_1.wav: peak=-13.00dBFS rms=-25.87dBFS low35-180=-25.55dB mid0.5-3.5k=-26.90dB high6-14k=-37.83dB
+sfx_fire_scattergun_2.wav: peak=-13.00dBFS rms=-25.99dBFS low35-180=-25.55dB mid0.5-3.5k=-27.04dB high6-14k=-35.24dB
+sfx_fire_scattergun_3.wav: peak=-13.00dBFS rms=-26.21dBFS low35-180=-25.77dB mid0.5-3.5k=-27.59dB high6-14k=-35.95dB
+sfx_fire_scattergun_4.wav: peak=-13.00dBFS rms=-25.73dBFS low35-180=-25.81dB mid0.5-3.5k=-26.56dB high6-14k=-37.47dB
+sfx_fire_scattergun_5.wav: peak=-13.00dBFS rms=-25.79dBFS low35-180=-25.45dB mid0.5-3.5k=-26.88dB high6-14k=-35.62dB
+sfx_fire_scattergun_6.wav: peak=-13.00dBFS rms=-26.30dBFS low35-180=-26.08dB mid0.5-3.5k=-27.30dB high6-14k=-35.07dB
+sfx_fire_scattergun_7.wav: peak=-13.00dBFS rms=-25.25dBFS low35-180=-24.67dB mid0.5-3.5k=-26.35dB high6-14k=-37.33dB
+[railbolt] stem=sfx_fire_railbolt variants=5 length=0.300s targetPeak=-9.0dBFS
+sfx_fire_railbolt.wav: peak=-9.00dBFS rms=-23.90dBFS low35-180=-24.69dB mid0.5-3.5k=-29.82dB high6-14k=-29.81dB
+sfx_fire_railbolt_1.wav: peak=-9.00dBFS rms=-23.75dBFS low35-180=-23.97dB mid0.5-3.5k=-30.70dB high6-14k=-33.17dB
+sfx_fire_railbolt_2.wav: peak=-9.00dBFS rms=-23.51dBFS low35-180=-23.29dB mid0.5-3.5k=-32.81dB high6-14k=-34.19dB
+sfx_fire_railbolt_3.wav: peak=-9.00dBFS rms=-24.13dBFS low35-180=-24.06dB mid0.5-3.5k=-33.79dB high6-14k=-40.44dB
+sfx_fire_railbolt_4.wav: peak=-9.00dBFS rms=-23.93dBFS low35-180=-24.92dB mid0.5-3.5k=-29.93dB high6-14k=-29.76dB

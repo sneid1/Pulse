@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_009_floor_access_hatch_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa25-c8b6-703b-9f42-382b8eca6765",
+    "submitted_at":  "2026-06-25T01:00:48.6817575+10:00",
+    "image":  "base_env_009_floor_access_hatch_cyan.png"
+}

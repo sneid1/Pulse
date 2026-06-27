@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_007_door_side_machinery_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa25-aa2d-7d91-a1ed-b317668aa56f",
+    "submitted_at":  "2026-06-25T01:00:36.4124409+10:00",
+    "image":  "base_env_007_door_side_machinery_cyan.png"
+}

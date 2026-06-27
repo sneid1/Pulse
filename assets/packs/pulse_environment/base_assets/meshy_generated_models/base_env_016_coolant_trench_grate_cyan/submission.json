@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_016_coolant_trench_grate_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa26-50a3-7ecc-9410-f410abb53c34",
+    "submitted_at":  "2026-06-25T01:01:18.1339860+10:00",
+    "image":  "base_env_016_coolant_trench_grate_cyan.png"
+}

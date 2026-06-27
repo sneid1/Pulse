@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_001_wall_panel_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa24-ee9c-78d7-92f8-b640e6b72cf4",
+    "submitted_at":  "2026-06-25T00:59:47.8771930+10:00",
+    "image":  "base_env_001_wall_panel_cyan.png"
+}

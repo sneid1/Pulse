@@ -1,0 +1,11 @@
+Model Information:
+* title:	shotgun animated
+* source:	https://sketchfab.com/3d-models/shotgun-animated-226237e0f49c4f69a9fc5a78df6a236c
+* author:	DJMaesen (https://sketchfab.com/bumstrum)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "shotgun animated" (https://sketchfab.com/3d-models/shotgun-animated-226237e0f49c4f69a9fc5a78df6a236c) by DJMaesen (https://sketchfab.com/bumstrum) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

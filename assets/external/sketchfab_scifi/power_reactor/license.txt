@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sci-Fi Power Reactor
+* source:	https://sketchfab.com/3d-models/sci-fi-power-reactor-442645aaebe74e648ec1460f429ee1ba
+* author:	Just-Peeps (https://sketchfab.com/Gatturnart)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sci-Fi Power Reactor" (https://sketchfab.com/3d-models/sci-fi-power-reactor-442645aaebe74e648ec1460f429ee1ba) by Just-Peeps (https://sketchfab.com/Gatturnart) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

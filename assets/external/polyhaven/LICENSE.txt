@@ -1,0 +1,5 @@
+PolyHaven textures - CC0 1.0 (Public Domain Dedication).
+Source: https://polyhaven.com  (downloaded via https://api.polyhaven.com)
+Free for any use, commercial or otherwise, no attribution required.
+Assets: concrete_floor_02, factory_wall, metal_plate_02 (diff / arm / nor_gl, 1K PNG).
+'arm' = AO (R) / Roughness (G) / Metallic (B). 'nor_gl' = OpenGL tangent-space normal.

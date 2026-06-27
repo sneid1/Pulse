@@ -1,0 +1,227 @@
+PULSE enemy combat SFX producer
+work_sr=96000 out_sr=48000
+[rusher:telegraph] stem=sfx_enemy_rusher_telegraph variants=4 length=0.409s targetPeak=-8.0dBFS
+sfx_enemy_rusher_telegraph.wav: peak=-12.00dBFS rms=-18.38dBFS low60-280=-22.89dB mid0.5-3.5k=-23.17dB high4.5-14k=-34.86dB
+sfx_enemy_rusher_telegraph_1.wav: peak=-12.00dBFS rms=-18.70dBFS low60-280=-23.25dB mid0.5-3.5k=-23.37dB high4.5-14k=-34.99dB
+sfx_enemy_rusher_telegraph_2.wav: peak=-12.00dBFS rms=-18.23dBFS low60-280=-22.55dB mid0.5-3.5k=-23.15dB high4.5-14k=-34.93dB
+sfx_enemy_rusher_telegraph_3.wav: peak=-12.00dBFS rms=-19.01dBFS low60-280=-23.71dB mid0.5-3.5k=-23.73dB high4.5-14k=-35.26dB
+[rusher:shot] stem=sfx_enemy_rusher_shot variants=4 length=0.273s targetPeak=-8.0dBFS
+sfx_enemy_rusher_shot.wav: peak=-8.70dBFS rms=-20.72dBFS low60-280=-33.14dB mid0.5-3.5k=-22.18dB high4.5-14k=-44.53dB
+sfx_enemy_rusher_shot_1.wav: peak=-8.70dBFS rms=-20.64dBFS low60-280=-32.87dB mid0.5-3.5k=-22.15dB high4.5-14k=-44.13dB
+sfx_enemy_rusher_shot_2.wav: peak=-8.70dBFS rms=-20.72dBFS low60-280=-33.39dB mid0.5-3.5k=-22.11dB high4.5-14k=-44.27dB
+sfx_enemy_rusher_shot_3.wav: peak=-8.70dBFS rms=-20.55dBFS low60-280=-32.59dB mid0.5-3.5k=-22.12dB high4.5-14k=-44.35dB
+[rusher:impact] stem=sfx_enemy_rusher_impact variants=4 length=0.331s targetPeak=-8.0dBFS
+sfx_enemy_rusher_impact.wav: peak=-8.30dBFS rms=-23.55dBFS low60-280=-24.45dB mid0.5-3.5k=-33.59dB high4.5-14k=-37.75dB
+sfx_enemy_rusher_impact_1.wav: peak=-8.30dBFS rms=-23.08dBFS low60-280=-23.99dB mid0.5-3.5k=-33.10dB high4.5-14k=-37.07dB
+sfx_enemy_rusher_impact_2.wav: peak=-8.30dBFS rms=-23.16dBFS low60-280=-24.10dB mid0.5-3.5k=-32.87dB high4.5-14k=-37.31dB
+sfx_enemy_rusher_impact_3.wav: peak=-8.30dBFS rms=-23.26dBFS low60-280=-24.21dB mid0.5-3.5k=-32.91dB high4.5-14k=-37.32dB
+[rusher:beam] stem=sfx_enemy_rusher_beam variants=4 length=0.370s targetPeak=-8.0dBFS
+sfx_enemy_rusher_beam.wav: peak=-8.80dBFS rms=-21.88dBFS low60-280=-31.79dB mid0.5-3.5k=-23.92dB high4.5-14k=-31.35dB
+sfx_enemy_rusher_beam_1.wav: peak=-8.80dBFS rms=-22.41dBFS low60-280=-32.18dB mid0.5-3.5k=-24.45dB high4.5-14k=-31.89dB
+sfx_enemy_rusher_beam_2.wav: peak=-8.80dBFS rms=-22.11dBFS low60-280=-32.23dB mid0.5-3.5k=-24.12dB high4.5-14k=-31.65dB
+sfx_enemy_rusher_beam_3.wav: peak=-8.80dBFS rms=-22.29dBFS low60-280=-31.92dB mid0.5-3.5k=-24.36dB high4.5-14k=-31.74dB
+[rusher:lunge] stem=sfx_enemy_rusher_lunge variants=4 length=0.292s targetPeak=-8.0dBFS
+sfx_enemy_rusher_lunge.wav: peak=-9.30dBFS rms=-22.74dBFS low60-280=-26.06dB mid0.5-3.5k=-28.71dB high4.5-14k=-32.19dB
+sfx_enemy_rusher_lunge_1.wav: peak=-9.30dBFS rms=-22.61dBFS low60-280=-26.02dB mid0.5-3.5k=-28.28dB high4.5-14k=-32.59dB
+sfx_enemy_rusher_lunge_2.wav: peak=-9.30dBFS rms=-22.79dBFS low60-280=-26.30dB mid0.5-3.5k=-28.44dB high4.5-14k=-32.72dB
+sfx_enemy_rusher_lunge_3.wav: peak=-9.30dBFS rms=-22.91dBFS low60-280=-26.24dB mid0.5-3.5k=-28.71dB high4.5-14k=-32.81dB
+[rusher:melee_hit] stem=sfx_enemy_rusher_melee_hit variants=4 length=0.292s targetPeak=-8.0dBFS
+sfx_enemy_rusher_melee_hit.wav: peak=-8.00dBFS rms=-22.28dBFS low60-280=-22.72dB mid0.5-3.5k=-37.76dB high4.5-14k=-39.50dB
+sfx_enemy_rusher_melee_hit_1.wav: peak=-8.00dBFS rms=-21.88dBFS low60-280=-22.32dB mid0.5-3.5k=-37.37dB high4.5-14k=-39.24dB
+sfx_enemy_rusher_melee_hit_2.wav: peak=-8.00dBFS rms=-22.11dBFS low60-280=-22.55dB mid0.5-3.5k=-37.28dB high4.5-14k=-39.51dB
+sfx_enemy_rusher_melee_hit_3.wav: peak=-8.00dBFS rms=-22.45dBFS low60-280=-22.91dB mid0.5-3.5k=-37.82dB high4.5-14k=-39.85dB
+[rusher:hurt] stem=sfx_enemy_rusher_hurt variants=4 length=0.214s targetPeak=-8.0dBFS
+sfx_enemy_rusher_hurt.wav: peak=-11.20dBFS rms=-25.65dBFS low60-280=-27.36dB mid0.5-3.5k=-33.93dB high4.5-14k=-43.47dB
+sfx_enemy_rusher_hurt_1.wav: peak=-11.20dBFS rms=-25.18dBFS low60-280=-26.86dB mid0.5-3.5k=-33.45dB high4.5-14k=-43.34dB
+sfx_enemy_rusher_hurt_2.wav: peak=-11.20dBFS rms=-25.43dBFS low60-280=-27.13dB mid0.5-3.5k=-33.52dB high4.5-14k=-43.11dB
+sfx_enemy_rusher_hurt_3.wav: peak=-11.20dBFS rms=-25.59dBFS low60-280=-27.29dB mid0.5-3.5k=-33.69dB high4.5-14k=-43.20dB
+[rusher:death] stem=sfx_enemy_rusher_death variants=4 length=0.604s targetPeak=-8.0dBFS
+sfx_enemy_rusher_death.wav: peak=-8.00dBFS rms=-16.04dBFS low60-280=-19.70dB mid0.5-3.5k=-21.50dB high4.5-14k=-33.26dB
+sfx_enemy_rusher_death_1.wav: peak=-8.00dBFS rms=-15.90dBFS low60-280=-19.23dB mid0.5-3.5k=-21.70dB high4.5-14k=-33.56dB
+sfx_enemy_rusher_death_2.wav: peak=-8.00dBFS rms=-16.19dBFS low60-280=-19.97dB mid0.5-3.5k=-21.38dB high4.5-14k=-33.15dB
+sfx_enemy_rusher_death_3.wav: peak=-8.00dBFS rms=-15.70dBFS low60-280=-19.16dB mid0.5-3.5k=-21.52dB high4.5-14k=-33.29dB
+[rusher:boss_burst] stem=sfx_enemy_rusher_boss_burst variants=4 length=0.702s targetPeak=-8.0dBFS
+sfx_enemy_rusher_boss_burst.wav: peak=-8.40dBFS rms=-18.79dBFS low60-280=-21.48dB mid0.5-3.5k=-28.44dB high4.5-14k=-35.62dB
+sfx_enemy_rusher_boss_burst_1.wav: peak=-8.40dBFS rms=-18.78dBFS low60-280=-21.41dB mid0.5-3.5k=-28.53dB high4.5-14k=-35.52dB
+sfx_enemy_rusher_boss_burst_2.wav: peak=-8.40dBFS rms=-18.84dBFS low60-280=-21.57dB mid0.5-3.5k=-28.38dB high4.5-14k=-35.74dB
+sfx_enemy_rusher_boss_burst_3.wav: peak=-8.40dBFS rms=-18.74dBFS low60-280=-21.28dB mid0.5-3.5k=-28.68dB high4.5-14k=-35.61dB
+[ranged:telegraph] stem=sfx_enemy_ranged_telegraph variants=4 length=0.386s targetPeak=-8.6dBFS
+sfx_enemy_ranged_telegraph.wav: peak=-12.60dBFS rms=-19.49dBFS low60-280=-31.06dB mid0.5-3.5k=-21.46dB high4.5-14k=-28.55dB
+sfx_enemy_ranged_telegraph_1.wav: peak=-12.60dBFS rms=-19.47dBFS low60-280=-31.30dB mid0.5-3.5k=-21.43dB high4.5-14k=-28.42dB
+sfx_enemy_ranged_telegraph_2.wav: peak=-12.60dBFS rms=-19.42dBFS low60-280=-31.03dB mid0.5-3.5k=-21.40dB high4.5-14k=-28.50dB
+sfx_enemy_ranged_telegraph_3.wav: peak=-12.60dBFS rms=-19.53dBFS low60-280=-31.59dB mid0.5-3.5k=-21.46dB high4.5-14k=-28.47dB
+[ranged:shot] stem=sfx_enemy_ranged_shot variants=4 length=0.257s targetPeak=-8.6dBFS
+sfx_enemy_ranged_shot.wav: peak=-9.30dBFS rms=-20.10dBFS low60-280=-48.26dB mid0.5-3.5k=-20.38dB high4.5-14k=-34.93dB
+sfx_enemy_ranged_shot_1.wav: peak=-9.30dBFS rms=-20.10dBFS low60-280=-48.59dB mid0.5-3.5k=-20.39dB high4.5-14k=-34.82dB
+sfx_enemy_ranged_shot_2.wav: peak=-9.30dBFS rms=-20.12dBFS low60-280=-48.01dB mid0.5-3.5k=-20.41dB high4.5-14k=-34.93dB
+sfx_enemy_ranged_shot_3.wav: peak=-9.30dBFS rms=-20.12dBFS low60-280=-48.47dB mid0.5-3.5k=-20.41dB high4.5-14k=-34.92dB
+[ranged:impact] stem=sfx_enemy_ranged_impact variants=4 length=0.312s targetPeak=-8.6dBFS
+sfx_enemy_ranged_impact.wav: peak=-8.90dBFS rms=-24.77dBFS low60-280=-31.63dB mid0.5-3.5k=-29.91dB high4.5-14k=-32.58dB
+sfx_enemy_ranged_impact_1.wav: peak=-8.90dBFS rms=-24.43dBFS low60-280=-31.54dB mid0.5-3.5k=-29.55dB high4.5-14k=-32.32dB
+sfx_enemy_ranged_impact_2.wav: peak=-8.90dBFS rms=-24.59dBFS low60-280=-31.35dB mid0.5-3.5k=-29.68dB high4.5-14k=-32.30dB
+sfx_enemy_ranged_impact_3.wav: peak=-8.90dBFS rms=-24.28dBFS low60-280=-31.31dB mid0.5-3.5k=-29.36dB high4.5-14k=-32.12dB
+[ranged:beam] stem=sfx_enemy_ranged_beam variants=4 length=0.349s targetPeak=-8.6dBFS
+sfx_enemy_ranged_beam.wav: peak=-9.40dBFS rms=-19.24dBFS low60-280=-46.95dB mid0.5-3.5k=-21.99dB high4.5-14k=-24.95dB
+sfx_enemy_ranged_beam_1.wav: peak=-9.40dBFS rms=-19.75dBFS low60-280=-47.88dB mid0.5-3.5k=-22.62dB high4.5-14k=-25.35dB
+sfx_enemy_ranged_beam_2.wav: peak=-9.40dBFS rms=-19.59dBFS low60-280=-47.12dB mid0.5-3.5k=-22.29dB high4.5-14k=-25.37dB
+sfx_enemy_ranged_beam_3.wav: peak=-9.40dBFS rms=-19.38dBFS low60-280=-47.33dB mid0.5-3.5k=-22.16dB high4.5-14k=-25.08dB
+[ranged:lunge] stem=sfx_enemy_ranged_lunge variants=4 length=0.276s targetPeak=-8.6dBFS
+sfx_enemy_ranged_lunge.wav: peak=-9.90dBFS rms=-22.83dBFS low60-280=-33.23dB mid0.5-3.5k=-26.84dB high4.5-14k=-27.64dB
+sfx_enemy_ranged_lunge_1.wav: peak=-9.90dBFS rms=-22.97dBFS low60-280=-33.24dB mid0.5-3.5k=-26.87dB high4.5-14k=-27.86dB
+sfx_enemy_ranged_lunge_2.wav: peak=-9.90dBFS rms=-22.68dBFS low60-280=-32.85dB mid0.5-3.5k=-26.56dB high4.5-14k=-27.61dB
+sfx_enemy_ranged_lunge_3.wav: peak=-9.90dBFS rms=-22.83dBFS low60-280=-33.17dB mid0.5-3.5k=-26.83dB high4.5-14k=-27.65dB
+[ranged:melee_hit] stem=sfx_enemy_ranged_melee_hit variants=4 length=0.276s targetPeak=-8.6dBFS
+sfx_enemy_ranged_melee_hit.wav: peak=-8.60dBFS rms=-25.05dBFS low60-280=-27.26dB mid0.5-3.5k=-34.29dB high4.5-14k=-35.76dB
+sfx_enemy_ranged_melee_hit_1.wav: peak=-8.60dBFS rms=-24.73dBFS low60-280=-27.00dB mid0.5-3.5k=-34.08dB high4.5-14k=-35.88dB
+sfx_enemy_ranged_melee_hit_2.wav: peak=-8.60dBFS rms=-24.75dBFS low60-280=-26.87dB mid0.5-3.5k=-34.09dB high4.5-14k=-35.97dB
+sfx_enemy_ranged_melee_hit_3.wav: peak=-8.60dBFS rms=-24.64dBFS low60-280=-26.86dB mid0.5-3.5k=-33.92dB high4.5-14k=-35.87dB
+[ranged:hurt] stem=sfx_enemy_ranged_hurt variants=4 length=0.202s targetPeak=-8.6dBFS
+sfx_enemy_ranged_hurt.wav: peak=-11.80dBFS rms=-28.24dBFS low60-280=-35.68dB mid0.5-3.5k=-32.33dB high4.5-14k=-36.88dB
+sfx_enemy_ranged_hurt_1.wav: peak=-11.80dBFS rms=-28.27dBFS low60-280=-35.95dB mid0.5-3.5k=-32.26dB high4.5-14k=-36.86dB
+sfx_enemy_ranged_hurt_2.wav: peak=-11.80dBFS rms=-28.35dBFS low60-280=-35.61dB mid0.5-3.5k=-32.44dB high4.5-14k=-36.95dB
+sfx_enemy_ranged_hurt_3.wav: peak=-11.80dBFS rms=-28.06dBFS low60-280=-35.53dB mid0.5-3.5k=-32.09dB high4.5-14k=-36.61dB
+[ranged:death] stem=sfx_enemy_ranged_death variants=4 length=0.570s targetPeak=-8.6dBFS
+sfx_enemy_ranged_death.wav: peak=-8.60dBFS rms=-16.77dBFS low60-280=-27.34dB mid0.5-3.5k=-19.07dB high4.5-14k=-25.52dB
+sfx_enemy_ranged_death_1.wav: peak=-8.60dBFS rms=-16.64dBFS low60-280=-28.05dB mid0.5-3.5k=-18.88dB high4.5-14k=-25.27dB
+sfx_enemy_ranged_death_2.wav: peak=-8.60dBFS rms=-16.68dBFS low60-280=-27.56dB mid0.5-3.5k=-18.98dB high4.5-14k=-25.58dB
+sfx_enemy_ranged_death_3.wav: peak=-8.60dBFS rms=-16.68dBFS low60-280=-27.44dB mid0.5-3.5k=-19.03dB high4.5-14k=-25.35dB
+[ranged:boss_burst] stem=sfx_enemy_ranged_boss_burst variants=4 length=0.662s targetPeak=-8.6dBFS
+sfx_enemy_ranged_boss_burst.wav: peak=-9.00dBFS rms=-20.13dBFS low60-280=-33.82dB mid0.5-3.5k=-22.25dB high4.5-14k=-30.49dB
+sfx_enemy_ranged_boss_burst_1.wav: peak=-9.00dBFS rms=-19.99dBFS low60-280=-33.74dB mid0.5-3.5k=-22.02dB high4.5-14k=-30.79dB
+sfx_enemy_ranged_boss_burst_2.wav: peak=-9.00dBFS rms=-20.12dBFS low60-280=-33.81dB mid0.5-3.5k=-22.24dB high4.5-14k=-30.60dB
+sfx_enemy_ranged_boss_burst_3.wav: peak=-9.00dBFS rms=-20.11dBFS low60-280=-33.84dB mid0.5-3.5k=-22.19dB high4.5-14k=-30.70dB
+[tank:telegraph] stem=sfx_enemy_tank_telegraph variants=4 length=0.458s targetPeak=-7.0dBFS
+sfx_enemy_tank_telegraph.wav: peak=-11.00dBFS rms=-14.69dBFS low60-280=-15.78dB mid0.5-3.5k=-27.45dB high4.5-14k=-40.66dB
+sfx_enemy_tank_telegraph_1.wav: peak=-11.00dBFS rms=-14.71dBFS low60-280=-15.84dB mid0.5-3.5k=-27.68dB high4.5-14k=-40.97dB
+sfx_enemy_tank_telegraph_2.wav: peak=-11.00dBFS rms=-14.31dBFS low60-280=-15.36dB mid0.5-3.5k=-27.20dB high4.5-14k=-41.23dB
+sfx_enemy_tank_telegraph_3.wav: peak=-11.00dBFS rms=-14.66dBFS low60-280=-15.82dB mid0.5-3.5k=-27.23dB high4.5-14k=-40.72dB
+[tank:shot] stem=sfx_enemy_tank_shot variants=4 length=0.305s targetPeak=-7.0dBFS
+sfx_enemy_tank_shot.wav: peak=-7.70dBFS rms=-17.43dBFS low60-280=-19.26dB mid0.5-3.5k=-28.70dB high4.5-14k=-45.99dB
+sfx_enemy_tank_shot_1.wav: peak=-7.70dBFS rms=-17.35dBFS low60-280=-19.20dB mid0.5-3.5k=-28.92dB high4.5-14k=-46.62dB
+sfx_enemy_tank_shot_2.wav: peak=-7.70dBFS rms=-17.38dBFS low60-280=-19.23dB mid0.5-3.5k=-28.76dB high4.5-14k=-46.19dB
+sfx_enemy_tank_shot_3.wav: peak=-7.70dBFS rms=-17.46dBFS low60-280=-19.29dB mid0.5-3.5k=-28.66dB high4.5-14k=-46.45dB
+[tank:impact] stem=sfx_enemy_tank_impact variants=4 length=0.371s targetPeak=-7.0dBFS
+sfx_enemy_tank_impact.wav: peak=-7.30dBFS rms=-20.10dBFS low60-280=-21.52dB mid0.5-3.5k=-36.90dB high4.5-14k=-39.70dB
+sfx_enemy_tank_impact_1.wav: peak=-7.30dBFS rms=-20.11dBFS low60-280=-21.72dB mid0.5-3.5k=-36.97dB high4.5-14k=-39.71dB
+sfx_enemy_tank_impact_2.wav: peak=-7.30dBFS rms=-20.10dBFS low60-280=-21.59dB mid0.5-3.5k=-36.85dB high4.5-14k=-39.65dB
+sfx_enemy_tank_impact_3.wav: peak=-7.30dBFS rms=-20.08dBFS low60-280=-21.44dB mid0.5-3.5k=-36.84dB high4.5-14k=-39.52dB
+[tank:beam] stem=sfx_enemy_tank_beam variants=4 length=0.414s targetPeak=-7.0dBFS
+sfx_enemy_tank_beam.wav: peak=-7.80dBFS rms=-22.28dBFS low60-280=-24.61dB mid0.5-3.5k=-28.24dB high4.5-14k=-33.20dB
+sfx_enemy_tank_beam_1.wav: peak=-7.80dBFS rms=-22.22dBFS low60-280=-24.54dB mid0.5-3.5k=-28.26dB high4.5-14k=-33.07dB
+sfx_enemy_tank_beam_2.wav: peak=-7.80dBFS rms=-22.30dBFS low60-280=-24.63dB mid0.5-3.5k=-28.28dB high4.5-14k=-33.22dB
+sfx_enemy_tank_beam_3.wav: peak=-7.80dBFS rms=-22.28dBFS low60-280=-24.63dB mid0.5-3.5k=-28.21dB high4.5-14k=-33.18dB
+[tank:lunge] stem=sfx_enemy_tank_lunge variants=4 length=0.327s targetPeak=-7.0dBFS
+sfx_enemy_tank_lunge.wav: peak=-8.30dBFS rms=-18.89dBFS low60-280=-20.59dB mid0.5-3.5k=-31.78dB high4.5-14k=-34.01dB
+sfx_enemy_tank_lunge_1.wav: peak=-8.30dBFS rms=-18.67dBFS low60-280=-20.27dB mid0.5-3.5k=-31.68dB high4.5-14k=-33.96dB
+sfx_enemy_tank_lunge_2.wav: peak=-8.30dBFS rms=-18.82dBFS low60-280=-20.45dB mid0.5-3.5k=-31.65dB high4.5-14k=-34.24dB
+sfx_enemy_tank_lunge_3.wav: peak=-8.30dBFS rms=-18.90dBFS low60-280=-20.59dB mid0.5-3.5k=-31.61dB high4.5-14k=-34.25dB
+[tank:melee_hit] stem=sfx_enemy_tank_melee_hit variants=4 length=0.327s targetPeak=-7.0dBFS
+sfx_enemy_tank_melee_hit.wav: peak=-7.00dBFS rms=-17.77dBFS low60-280=-22.55dB mid0.5-3.5k=-42.06dB high4.5-14k=-41.97dB
+sfx_enemy_tank_melee_hit_1.wav: peak=-7.00dBFS rms=-17.85dBFS low60-280=-22.92dB mid0.5-3.5k=-41.72dB high4.5-14k=-42.17dB
+sfx_enemy_tank_melee_hit_2.wav: peak=-7.00dBFS rms=-17.82dBFS low60-280=-22.71dB mid0.5-3.5k=-41.83dB high4.5-14k=-42.19dB
+sfx_enemy_tank_melee_hit_3.wav: peak=-7.00dBFS rms=-17.74dBFS low60-280=-22.42dB mid0.5-3.5k=-41.64dB high4.5-14k=-42.31dB
+[tank:hurt] stem=sfx_enemy_tank_hurt variants=4 length=0.240s targetPeak=-7.0dBFS
+sfx_enemy_tank_hurt.wav: peak=-10.20dBFS rms=-20.87dBFS low60-280=-22.13dB mid0.5-3.5k=-39.78dB high4.5-14k=-47.50dB
+sfx_enemy_tank_hurt_1.wav: peak=-10.20dBFS rms=-20.72dBFS low60-280=-22.02dB mid0.5-3.5k=-39.66dB high4.5-14k=-47.17dB
+sfx_enemy_tank_hurt_2.wav: peak=-10.20dBFS rms=-20.85dBFS low60-280=-22.15dB mid0.5-3.5k=-39.59dB high4.5-14k=-47.38dB
+sfx_enemy_tank_hurt_3.wav: peak=-10.20dBFS rms=-20.87dBFS low60-280=-22.10dB mid0.5-3.5k=-39.55dB high4.5-14k=-46.93dB
+[tank:death] stem=sfx_enemy_tank_death variants=4 length=0.676s targetPeak=-7.0dBFS
+sfx_enemy_tank_death.wav: peak=-7.00dBFS rms=-11.90dBFS low60-280=-12.81dB mid0.5-3.5k=-26.05dB high4.5-14k=-40.01dB
+sfx_enemy_tank_death_1.wav: peak=-7.00dBFS rms=-12.31dBFS low60-280=-13.26dB mid0.5-3.5k=-26.52dB high4.5-14k=-40.23dB
+sfx_enemy_tank_death_2.wav: peak=-7.00dBFS rms=-11.94dBFS low60-280=-12.91dB mid0.5-3.5k=-26.01dB high4.5-14k=-39.80dB
+sfx_enemy_tank_death_3.wav: peak=-7.00dBFS rms=-11.87dBFS low60-280=-12.82dB mid0.5-3.5k=-26.44dB high4.5-14k=-40.38dB
+[tank:boss_burst] stem=sfx_enemy_tank_boss_burst variants=4 length=0.785s targetPeak=-7.0dBFS
+sfx_enemy_tank_boss_burst.wav: peak=-7.40dBFS rms=-15.95dBFS low60-280=-16.23dB mid0.5-3.5k=-34.29dB high4.5-14k=-38.78dB
+sfx_enemy_tank_boss_burst_1.wav: peak=-7.40dBFS rms=-15.94dBFS low60-280=-16.21dB mid0.5-3.5k=-34.51dB high4.5-14k=-38.68dB
+sfx_enemy_tank_boss_burst_2.wav: peak=-7.40dBFS rms=-15.94dBFS low60-280=-16.22dB mid0.5-3.5k=-34.46dB high4.5-14k=-38.91dB
+sfx_enemy_tank_boss_burst_3.wav: peak=-7.40dBFS rms=-15.95dBFS low60-280=-16.24dB mid0.5-3.5k=-34.34dB high4.5-14k=-38.90dB
+[stalker:telegraph] stem=sfx_enemy_stalker_telegraph variants=4 length=0.394s targetPeak=-8.8dBFS
+sfx_enemy_stalker_telegraph.wav: peak=-12.80dBFS rms=-19.78dBFS low60-280=-29.31dB mid0.5-3.5k=-21.76dB high4.5-14k=-31.14dB
+sfx_enemy_stalker_telegraph_1.wav: peak=-12.80dBFS rms=-19.71dBFS low60-280=-29.44dB mid0.5-3.5k=-21.59dB high4.5-14k=-31.07dB
+sfx_enemy_stalker_telegraph_2.wav: peak=-12.80dBFS rms=-19.77dBFS low60-280=-29.03dB mid0.5-3.5k=-21.86dB high4.5-14k=-31.16dB
+sfx_enemy_stalker_telegraph_3.wav: peak=-12.80dBFS rms=-19.89dBFS low60-280=-29.95dB mid0.5-3.5k=-21.79dB high4.5-14k=-30.96dB
+[stalker:shot] stem=sfx_enemy_stalker_shot variants=4 length=0.263s targetPeak=-8.8dBFS
+sfx_enemy_stalker_shot.wav: peak=-9.50dBFS rms=-20.70dBFS low60-280=-45.43dB mid0.5-3.5k=-20.92dB high4.5-14k=-38.15dB
+sfx_enemy_stalker_shot_1.wav: peak=-9.50dBFS rms=-20.65dBFS low60-280=-45.85dB mid0.5-3.5k=-20.87dB high4.5-14k=-37.97dB
+sfx_enemy_stalker_shot_2.wav: peak=-9.50dBFS rms=-20.66dBFS low60-280=-44.97dB mid0.5-3.5k=-20.88dB high4.5-14k=-38.46dB
+sfx_enemy_stalker_shot_3.wav: peak=-9.50dBFS rms=-20.68dBFS low60-280=-45.61dB mid0.5-3.5k=-20.89dB high4.5-14k=-38.40dB
+[stalker:impact] stem=sfx_enemy_stalker_impact variants=4 length=0.319s targetPeak=-8.8dBFS
+sfx_enemy_stalker_impact.wav: peak=-9.10dBFS rms=-25.04dBFS low60-280=-29.18dB mid0.5-3.5k=-30.71dB high4.5-14k=-34.26dB
+sfx_enemy_stalker_impact_1.wav: peak=-9.10dBFS rms=-25.19dBFS low60-280=-29.53dB mid0.5-3.5k=-30.79dB high4.5-14k=-34.63dB
+sfx_enemy_stalker_impact_2.wav: peak=-9.10dBFS rms=-24.91dBFS low60-280=-28.92dB mid0.5-3.5k=-30.46dB high4.5-14k=-34.25dB
+sfx_enemy_stalker_impact_3.wav: peak=-9.10dBFS rms=-24.30dBFS low60-280=-28.60dB mid0.5-3.5k=-29.79dB high4.5-14k=-33.65dB
+[stalker:beam] stem=sfx_enemy_stalker_beam variants=4 length=0.357s targetPeak=-8.8dBFS
+sfx_enemy_stalker_beam.wav: peak=-9.60dBFS rms=-20.36dBFS low60-280=-43.90dB mid0.5-3.5k=-22.17dB high4.5-14k=-27.75dB
+sfx_enemy_stalker_beam_1.wav: peak=-9.60dBFS rms=-20.61dBFS low60-280=-44.62dB mid0.5-3.5k=-22.51dB high4.5-14k=-27.85dB
+sfx_enemy_stalker_beam_2.wav: peak=-9.60dBFS rms=-20.78dBFS low60-280=-43.91dB mid0.5-3.5k=-22.57dB high4.5-14k=-28.14dB
+sfx_enemy_stalker_beam_3.wav: peak=-9.60dBFS rms=-20.45dBFS low60-280=-44.23dB mid0.5-3.5k=-22.32dB high4.5-14k=-27.68dB
+[stalker:lunge] stem=sfx_enemy_stalker_lunge variants=4 length=0.282s targetPeak=-8.8dBFS
+sfx_enemy_stalker_lunge.wav: peak=-10.10dBFS rms=-23.49dBFS low60-280=-31.32dB mid0.5-3.5k=-27.31dB high4.5-14k=-29.90dB
+sfx_enemy_stalker_lunge_1.wav: peak=-10.10dBFS rms=-23.47dBFS low60-280=-31.36dB mid0.5-3.5k=-27.32dB high4.5-14k=-29.82dB
+sfx_enemy_stalker_lunge_2.wav: peak=-10.10dBFS rms=-23.48dBFS low60-280=-31.15dB mid0.5-3.5k=-27.24dB high4.5-14k=-29.72dB
+sfx_enemy_stalker_lunge_3.wav: peak=-10.10dBFS rms=-23.37dBFS low60-280=-30.86dB mid0.5-3.5k=-27.25dB high4.5-14k=-29.82dB
+[stalker:melee_hit] stem=sfx_enemy_stalker_melee_hit variants=4 length=0.282s targetPeak=-8.8dBFS
+sfx_enemy_stalker_melee_hit.wav: peak=-8.80dBFS rms=-24.78dBFS low60-280=-26.06dB mid0.5-3.5k=-35.04dB high4.5-14k=-37.58dB
+sfx_enemy_stalker_melee_hit_1.wav: peak=-8.80dBFS rms=-25.36dBFS low60-280=-26.67dB mid0.5-3.5k=-35.76dB high4.5-14k=-37.77dB
+sfx_enemy_stalker_melee_hit_2.wav: peak=-8.80dBFS rms=-25.17dBFS low60-280=-26.34dB mid0.5-3.5k=-35.94dB high4.5-14k=-37.98dB
+sfx_enemy_stalker_melee_hit_3.wav: peak=-8.80dBFS rms=-24.69dBFS low60-280=-25.97dB mid0.5-3.5k=-35.06dB high4.5-14k=-37.33dB
+[stalker:hurt] stem=sfx_enemy_stalker_hurt variants=4 length=0.207s targetPeak=-8.8dBFS
+sfx_enemy_stalker_hurt.wav: peak=-12.00dBFS rms=-27.93dBFS low60-280=-33.12dB mid0.5-3.5k=-32.16dB high4.5-14k=-39.26dB
+sfx_enemy_stalker_hurt_1.wav: peak=-12.00dBFS rms=-27.88dBFS low60-280=-33.38dB mid0.5-3.5k=-32.13dB high4.5-14k=-39.63dB
+sfx_enemy_stalker_hurt_2.wav: peak=-12.00dBFS rms=-28.21dBFS low60-280=-33.46dB mid0.5-3.5k=-32.63dB high4.5-14k=-39.68dB
+sfx_enemy_stalker_hurt_3.wav: peak=-12.00dBFS rms=-27.93dBFS low60-280=-33.33dB mid0.5-3.5k=-32.34dB high4.5-14k=-39.59dB
+[stalker:death] stem=sfx_enemy_stalker_death variants=4 length=0.582s targetPeak=-8.8dBFS
+sfx_enemy_stalker_death.wav: peak=-8.80dBFS rms=-17.15dBFS low60-280=-25.79dB mid0.5-3.5k=-19.46dB high4.5-14k=-28.36dB
+sfx_enemy_stalker_death_1.wav: peak=-8.80dBFS rms=-16.95dBFS low60-280=-25.63dB mid0.5-3.5k=-19.31dB high4.5-14k=-28.40dB
+sfx_enemy_stalker_death_2.wav: peak=-8.80dBFS rms=-17.21dBFS low60-280=-25.67dB mid0.5-3.5k=-19.58dB high4.5-14k=-28.45dB
+sfx_enemy_stalker_death_3.wav: peak=-8.80dBFS rms=-17.09dBFS low60-280=-25.97dB mid0.5-3.5k=-19.40dB high4.5-14k=-28.34dB
+[stalker:boss_burst] stem=sfx_enemy_stalker_boss_burst variants=4 length=0.676s targetPeak=-8.8dBFS
+sfx_enemy_stalker_boss_burst.wav: peak=-9.20dBFS rms=-19.93dBFS low60-280=-29.37dB mid0.5-3.5k=-23.17dB high4.5-14k=-32.72dB
+sfx_enemy_stalker_boss_burst_1.wav: peak=-9.20dBFS rms=-19.90dBFS low60-280=-29.85dB mid0.5-3.5k=-22.92dB high4.5-14k=-32.58dB
+sfx_enemy_stalker_boss_burst_2.wav: peak=-9.20dBFS rms=-20.14dBFS low60-280=-29.26dB mid0.5-3.5k=-23.55dB high4.5-14k=-32.90dB
+sfx_enemy_stalker_boss_burst_3.wav: peak=-9.20dBFS rms=-19.99dBFS low60-280=-29.64dB mid0.5-3.5k=-23.14dB high4.5-14k=-32.73dB
+[boss:telegraph] stem=sfx_enemy_boss_telegraph variants=4 length=0.586s targetPeak=-6.4dBFS
+sfx_enemy_boss_telegraph.wav: peak=-10.40dBFS rms=-14.21dBFS low60-280=-15.50dB mid0.5-3.5k=-26.78dB high4.5-14k=-39.73dB
+sfx_enemy_boss_telegraph_1.wav: peak=-10.40dBFS rms=-13.99dBFS low60-280=-15.19dB mid0.5-3.5k=-26.96dB high4.5-14k=-39.87dB
+sfx_enemy_boss_telegraph_2.wav: peak=-10.40dBFS rms=-13.79dBFS low60-280=-14.96dB mid0.5-3.5k=-25.95dB high4.5-14k=-39.38dB
+sfx_enemy_boss_telegraph_3.wav: peak=-10.40dBFS rms=-14.22dBFS low60-280=-15.66dB mid0.5-3.5k=-26.74dB high4.5-14k=-39.73dB
+[boss:shot] stem=sfx_enemy_boss_shot variants=4 length=0.351s targetPeak=-6.4dBFS
+sfx_enemy_boss_shot.wav: peak=-7.10dBFS rms=-16.84dBFS low60-280=-18.29dB mid0.5-3.5k=-30.62dB high4.5-14k=-46.13dB
+sfx_enemy_boss_shot_1.wav: peak=-7.10dBFS rms=-16.81dBFS low60-280=-18.31dB mid0.5-3.5k=-30.92dB high4.5-14k=-45.27dB
+sfx_enemy_boss_shot_2.wav: peak=-7.10dBFS rms=-16.83dBFS low60-280=-18.31dB mid0.5-3.5k=-30.72dB high4.5-14k=-46.68dB
+sfx_enemy_boss_shot_3.wav: peak=-7.10dBFS rms=-16.85dBFS low60-280=-18.28dB mid0.5-3.5k=-30.59dB high4.5-14k=-46.55dB
+[boss:impact] stem=sfx_enemy_boss_impact variants=4 length=0.427s targetPeak=-6.4dBFS
+sfx_enemy_boss_impact.wav: peak=-6.70dBFS rms=-20.05dBFS low60-280=-23.48dB mid0.5-3.5k=-37.09dB high4.5-14k=-39.19dB
+sfx_enemy_boss_impact_1.wav: peak=-6.70dBFS rms=-20.16dBFS low60-280=-23.93dB mid0.5-3.5k=-37.23dB high4.5-14k=-38.85dB
+sfx_enemy_boss_impact_2.wav: peak=-6.70dBFS rms=-20.01dBFS low60-280=-23.60dB mid0.5-3.5k=-36.92dB high4.5-14k=-39.13dB
+sfx_enemy_boss_impact_3.wav: peak=-6.70dBFS rms=-20.04dBFS low60-280=-23.42dB mid0.5-3.5k=-36.93dB high4.5-14k=-38.99dB
+[boss:beam] stem=sfx_enemy_boss_beam variants=4 length=0.477s targetPeak=-6.4dBFS
+sfx_enemy_boss_beam.wav: peak=-7.20dBFS rms=-21.63dBFS low60-280=-23.91dB mid0.5-3.5k=-28.47dB high4.5-14k=-32.90dB
+sfx_enemy_boss_beam_1.wav: peak=-7.20dBFS rms=-21.55dBFS low60-280=-23.85dB mid0.5-3.5k=-28.53dB high4.5-14k=-32.88dB
+sfx_enemy_boss_beam_2.wav: peak=-7.20dBFS rms=-21.63dBFS low60-280=-23.92dB mid0.5-3.5k=-28.54dB high4.5-14k=-32.79dB
+sfx_enemy_boss_beam_3.wav: peak=-7.20dBFS rms=-21.59dBFS low60-280=-23.86dB mid0.5-3.5k=-28.40dB high4.5-14k=-32.93dB
+[boss:lunge] stem=sfx_enemy_boss_lunge variants=4 length=0.376s targetPeak=-6.4dBFS
+sfx_enemy_boss_lunge.wav: peak=-7.70dBFS rms=-19.27dBFS low60-280=-22.26dB mid0.5-3.5k=-31.24dB high4.5-14k=-32.85dB
+sfx_enemy_boss_lunge_1.wav: peak=-7.70dBFS rms=-18.82dBFS low60-280=-20.82dB mid0.5-3.5k=-31.42dB high4.5-14k=-33.15dB
+sfx_enemy_boss_lunge_2.wav: peak=-7.70dBFS rms=-19.02dBFS low60-280=-21.49dB mid0.5-3.5k=-31.47dB high4.5-14k=-32.94dB
+sfx_enemy_boss_lunge_3.wav: peak=-7.70dBFS rms=-19.19dBFS low60-280=-22.09dB mid0.5-3.5k=-31.09dB high4.5-14k=-32.84dB
+[boss:melee_hit] stem=sfx_enemy_boss_melee_hit variants=4 length=0.376s targetPeak=-6.4dBFS
+sfx_enemy_boss_melee_hit.wav: peak=-6.40dBFS rms=-16.77dBFS low60-280=-23.28dB mid0.5-3.5k=-41.49dB high4.5-14k=-42.25dB
+sfx_enemy_boss_melee_hit_1.wav: peak=-6.40dBFS rms=-16.88dBFS low60-280=-23.77dB mid0.5-3.5k=-42.11dB high4.5-14k=-41.90dB
+sfx_enemy_boss_melee_hit_2.wav: peak=-6.40dBFS rms=-16.76dBFS low60-280=-23.40dB mid0.5-3.5k=-41.23dB high4.5-14k=-41.65dB
+sfx_enemy_boss_melee_hit_3.wav: peak=-6.40dBFS rms=-16.69dBFS low60-280=-23.13dB mid0.5-3.5k=-41.79dB high4.5-14k=-42.08dB
+[boss:hurt] stem=sfx_enemy_boss_hurt variants=4 length=0.276s targetPeak=-6.4dBFS
+sfx_enemy_boss_hurt.wav: peak=-9.60dBFS rms=-20.35dBFS low60-280=-22.14dB mid0.5-3.5k=-39.79dB high4.5-14k=-46.83dB
+sfx_enemy_boss_hurt_1.wav: peak=-9.60dBFS rms=-20.78dBFS low60-280=-22.66dB mid0.5-3.5k=-40.42dB high4.5-14k=-46.21dB
+sfx_enemy_boss_hurt_2.wav: peak=-9.60dBFS rms=-20.59dBFS low60-280=-22.44dB mid0.5-3.5k=-40.07dB high4.5-14k=-46.20dB
+sfx_enemy_boss_hurt_3.wav: peak=-9.60dBFS rms=-20.41dBFS low60-280=-22.29dB mid0.5-3.5k=-39.87dB high4.5-14k=-46.81dB
+[boss:death] stem=sfx_enemy_boss_death variants=4 length=0.865s targetPeak=-6.4dBFS
+sfx_enemy_boss_death.wav: peak=-6.40dBFS rms=-12.34dBFS low60-280=-13.18dB mid0.5-3.5k=-28.09dB high4.5-14k=-41.50dB
+sfx_enemy_boss_death_1.wav: peak=-6.40dBFS rms=-12.48dBFS low60-280=-13.38dB mid0.5-3.5k=-27.65dB high4.5-14k=-40.82dB
+sfx_enemy_boss_death_2.wav: peak=-6.40dBFS rms=-12.47dBFS low60-280=-13.42dB mid0.5-3.5k=-27.62dB high4.5-14k=-40.98dB
+sfx_enemy_boss_death_3.wav: peak=-6.40dBFS rms=-12.41dBFS low60-280=-13.27dB mid0.5-3.5k=-27.95dB high4.5-14k=-41.17dB
+[boss:boss_burst] stem=sfx_enemy_boss_boss_burst variants=4 length=1.004s targetPeak=-6.4dBFS
+sfx_enemy_boss_boss_burst.wav: peak=-6.00dBFS rms=-15.23dBFS low60-280=-15.51dB mid0.5-3.5k=-35.56dB high4.5-14k=-38.29dB
+sfx_enemy_boss_boss_burst_1.wav: peak=-6.00dBFS rms=-15.25dBFS low60-280=-15.55dB mid0.5-3.5k=-35.73dB high4.5-14k=-38.19dB
+sfx_enemy_boss_boss_burst_2.wav: peak=-6.00dBFS rms=-15.20dBFS low60-280=-15.49dB mid0.5-3.5k=-35.71dB high4.5-14k=-38.31dB
+sfx_enemy_boss_boss_burst_3.wav: peak=-6.00dBFS rms=-15.25dBFS low60-280=-15.54dB mid0.5-3.5k=-35.59dB high4.5-14k=-38.31dB

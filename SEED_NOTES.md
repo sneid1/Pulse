@@ -1,18 +1,18 @@
-# Seed notes — what this clean-sheet repo contains, and what it deliberately doesn't
+# Seed notes, what this clean-sheet repo contains, and what it deliberately doesn't
 
 This repo is a clean-sheet start built against the plan. It carries the *method* and
 the *game*, and builds the *engine* and all *content* from scratch. Nothing prior is
-referenced at runtime or build time — the repo is fully self-contained.
+referenced at runtime or build time, the repo is fully self-contained.
 
 ## In the seed
 
-- **Docs / method:** the canonical plan (`docs/Plan — PULSE engine and assets.txt`,
+- **Docs / method:** the canonical plan (`docs/Plan_PULSE_engine_and_assets.txt`,
   engine + asset pipeline in one) and the spec (`docs/PROTOTYPE_SPEC.md`).
 - **Gameplay source, to PORT:** `src/Game/PulseGame.{hpp,cpp}`, `src/Game/Tunables.hpp`,
   `src/main.cpp`. These hold the actual game (movement, combat, enemies, the bot
   test, scripted captures, CLI flags). Their render/audio submission still uses the
-  old engine's types, so **they do not compile as-is** — that layer is rewritten
-  against the new engine in M0 (Part II of the plan has the old→new mapping).
+  old engine's types, so **they do not compile as-is**, that layer is rewritten
+  against the new engine in M0 (Part II of the plan has the old->new mapping).
 - **Engine-agnostic utilities:** `src/Engine/Config.{hpp,cpp}` (tuning loader),
   `src/Engine/Input.hpp`, `src/Engine/Math.hpp`.
 - **Game config:** `config/pulse.tuning`.

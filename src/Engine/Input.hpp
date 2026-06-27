@@ -12,6 +12,8 @@ struct InputState {
     std::array<bool, 5> mousePressed{};
     int mouseDeltaX = 0;
     int mouseDeltaY = 0;
+    int mouseX = 0;
+    int mouseY = 0;
     bool quitRequested = false;
     bool hasFocus = false;
 

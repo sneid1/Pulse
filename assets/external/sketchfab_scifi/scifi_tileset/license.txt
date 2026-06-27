@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sci-Fi Game Tileset
+* source:	https://sketchfab.com/3d-models/sci-fi-game-tileset-abe59cf8f6d64f8291104d3108a4fc88
+* author:	hamraj15 (https://sketchfab.com/hamraj15)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sci-Fi Game Tileset" (https://sketchfab.com/3d-models/sci-fi-game-tileset-abe59cf8f6d64f8291104d3108a4fc88) by hamraj15 (https://sketchfab.com/hamraj15) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

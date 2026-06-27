@@ -1,0 +1,398 @@
+[
+  {
+    "id": "001",
+    "category": "round_2_environment",
+    "name": "env_broken_maintenance_alcove_insert",
+    "source": "env_broken_maintenance_alcove_insert.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_broken_maintenance_alcove_insert.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "002",
+    "category": "round_2_environment",
+    "name": "env_ceiling_duct_cluster_cyan",
+    "source": "env_ceiling_duct_cluster_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_ceiling_duct_cluster_cyan.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "003",
+    "category": "round_2_environment",
+    "name": "env_ceiling_service_spine_vented",
+    "source": "env_ceiling_service_spine_vented.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_ceiling_service_spine_vented.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "004",
+    "category": "round_2_environment",
+    "name": "env_corner_filler_column_cyan",
+    "source": "env_corner_filler_column_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_corner_filler_column_cyan.png",
+    "mesh_ready_size": [
+      1145,
+      1374
+    ]
+  },
+  {
+    "id": "005",
+    "category": "round_2_environment",
+    "name": "env_corner_utility_cabinet_cluster",
+    "source": "env_corner_utility_cabinet_cluster.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_corner_utility_cabinet_cluster.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "006",
+    "category": "round_2_environment",
+    "name": "env_door_overhead_lintel_machine_cyan",
+    "source": "env_door_overhead_lintel_machine_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_door_overhead_lintel_machine_cyan.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "007",
+    "category": "round_2_environment",
+    "name": "env_door_side_machinery_stack_red",
+    "source": "env_door_side_machinery_stack_red.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_door_side_machinery_stack_red.png",
+    "mesh_ready_size": [
+      1024,
+      1536
+    ]
+  },
+  {
+    "id": "008",
+    "category": "round_2_environment",
+    "name": "env_door_threshold_kit_cyan",
+    "source": "env_door_threshold_kit_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_door_threshold_kit_cyan.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "009",
+    "category": "round_2_environment",
+    "name": "env_floor_access_hatch_cyan",
+    "source": "env_floor_access_hatch_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_floor_access_hatch_cyan.png",
+    "mesh_ready_size": [
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "010",
+    "category": "round_2_environment",
+    "name": "env_floor_wall_base_trim_long",
+    "source": "env_floor_wall_base_trim_long.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_floor_wall_base_trim_long.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "011",
+    "category": "round_2_environment",
+    "name": "env_foundry_control_console_large",
+    "source": "env_foundry_control_console_large.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_foundry_control_console_large.png",
+    "mesh_ready_size": [
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "012",
+    "category": "round_2_environment",
+    "name": "env_foundry_coolant_pump_module_cyan",
+    "source": "env_foundry_coolant_pump_module_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_foundry_coolant_pump_module_cyan.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "013",
+    "category": "round_2_environment",
+    "name": "env_foundry_wall_power_spine_cyan",
+    "source": "env_foundry_wall_power_spine_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_foundry_wall_power_spine_cyan.png",
+    "mesh_ready_size": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "id": "014",
+    "category": "round_2_environment",
+    "name": "env_furnace_exhaust_manifold_wall",
+    "source": "env_furnace_exhaust_manifold_wall.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_furnace_exhaust_manifold_wall.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "015",
+    "category": "round_2_environment",
+    "name": "env_furnace_heat_exchanger_bank",
+    "source": "env_furnace_heat_exchanger_bank.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_furnace_heat_exchanger_bank.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "016",
+    "category": "round_2_environment",
+    "name": "env_furnace_molten_valve_station",
+    "source": "env_furnace_molten_valve_station.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_furnace_molten_valve_station.png",
+    "mesh_ready_size": [
+      1254,
+      1254
+    ]
+  },
+  {
+    "id": "017",
+    "category": "round_2_environment",
+    "name": "env_furnace_pipe_arch_gate",
+    "source": "env_furnace_pipe_arch_gate.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_furnace_pipe_arch_gate.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "018",
+    "category": "round_2_environment",
+    "name": "env_furnace_service_tank_cluster",
+    "source": "env_furnace_service_tank_cluster.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_furnace_service_tank_cluster.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "019",
+    "category": "round_2_environment",
+    "name": "env_furnace_slag_trough_floor",
+    "source": "env_furnace_slag_trough_floor.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_furnace_slag_trough_floor.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "020",
+    "category": "round_2_environment",
+    "name": "env_industrial_wall_light_cluster_rgb",
+    "source": "env_industrial_wall_light_cluster_rgb.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_industrial_wall_light_cluster_rgb.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "021",
+    "category": "round_2_environment",
+    "name": "env_low_floor_machinery_island",
+    "source": "env_low_floor_machinery_island.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_low_floor_machinery_island.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "022",
+    "category": "round_2_environment",
+    "name": "env_platform_edge_rail_pair_cyan",
+    "source": "env_platform_edge_rail_pair_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_platform_edge_rail_pair_cyan.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "023",
+    "category": "round_2_environment",
+    "name": "env_platform_underside_support_truss",
+    "source": "env_platform_underside_support_truss.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_platform_underside_support_truss.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "024",
+    "category": "round_2_environment",
+    "name": "env_raised_platform_rail_module_cyan",
+    "source": "env_raised_platform_rail_module_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_raised_platform_rail_module_cyan.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "025",
+    "category": "round_2_environment",
+    "name": "env_raised_platform_stair_finisher_cyan",
+    "source": "env_raised_platform_stair_finisher_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_raised_platform_stair_finisher_cyan.png",
+    "mesh_ready_size": [
+      1448,
+      1086
+    ]
+  },
+  {
+    "id": "026",
+    "category": "round_2_environment",
+    "name": "env_reliquary_floor_sigil_emitter",
+    "source": "env_reliquary_floor_sigil_emitter.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_reliquary_floor_sigil_emitter.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "027",
+    "category": "round_2_environment",
+    "name": "env_reliquary_glyph_wall_tablet_violet",
+    "source": "env_reliquary_glyph_wall_tablet_violet.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_reliquary_glyph_wall_tablet_violet.png",
+    "mesh_ready_size": [
+      1145,
+      1374
+    ]
+  },
+  {
+    "id": "028",
+    "category": "round_2_environment",
+    "name": "env_reliquary_light_shaft_emitter",
+    "source": "env_reliquary_light_shaft_emitter.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_reliquary_light_shaft_emitter.png",
+    "mesh_ready_size": [
+      1402,
+      1122
+    ]
+  },
+  {
+    "id": "029",
+    "category": "round_2_environment",
+    "name": "env_reliquary_relic_cabinet_cylindrical",
+    "source": "env_reliquary_relic_cabinet_cylindrical.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_reliquary_relic_cabinet_cylindrical.png",
+    "mesh_ready_size": [
+      1536,
+      1024
+    ]
+  },
+  {
+    "id": "030",
+    "category": "round_2_environment",
+    "name": "env_reliquary_suspended_lantern_violet",
+    "source": "env_reliquary_suspended_lantern_violet.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_reliquary_suspended_lantern_violet.png",
+    "mesh_ready_size": [
+      1024,
+      1536
+    ]
+  },
+  {
+    "id": "031",
+    "category": "round_2_environment",
+    "name": "env_reliquary_wall_buttress_violet",
+    "source": "env_reliquary_wall_buttress_violet.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_reliquary_wall_buttress_violet.png",
+    "mesh_ready_size": [
+      1122,
+      1402
+    ]
+  },
+  {
+    "id": "032",
+    "category": "round_2_environment",
+    "name": "env_wall_ceiling_corner_duct_elbow",
+    "source": "env_wall_ceiling_corner_duct_elbow.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_wall_ceiling_corner_duct_elbow.png",
+    "mesh_ready_size": [
+      1149,
+      1369
+    ]
+  },
+  {
+    "id": "033",
+    "category": "round_2_environment",
+    "name": "env_wall_seam_cover_tall_cyan",
+    "source": "env_wall_seam_cover_tall_cyan.png",
+    "crop_box_xyxy": null,
+    "mesh_ready_file": "env_wall_seam_cover_tall_cyan.png",
+    "mesh_ready_size": [
+      1122,
+      1402
+    ]
+  }
+]

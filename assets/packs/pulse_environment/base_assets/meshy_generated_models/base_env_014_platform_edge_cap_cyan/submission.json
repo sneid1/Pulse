@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_014_platform_edge_cap_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa26-31fe-7069-bab1-c5dd978212cf",
+    "submitted_at":  "2026-06-25T01:01:10.9712749+10:00",
+    "image":  "base_env_014_platform_edge_cap_cyan.png"
+}

@@ -1,0 +1,20 @@
+﻿{
+    "stem":  "base_env_012_ramp_stair_finisher_cyan",
+    "request":  {
+                    "ai_model":  "meshy-6",
+                    "topology":  "triangle",
+                    "auto_size":  true,
+                    "should_remesh":  true,
+                    "should_texture":  true,
+                    "target_formats":  [
+                                           "glb"
+                                       ],
+                    "target_polycount":  30000,
+                    "enable_pbr":  true,
+                    "origin_at":  "bottom",
+                    "model_type":  "standard"
+                },
+    "task_id":  "019efa26-0737-7db7-a277-5e7ab97a08e9",
+    "submitted_at":  "2026-06-25T01:01:04.0505904+10:00",
+    "image":  "base_env_012_ramp_stair_finisher_cyan.png"
+}
