@@ -1,47 +1,149 @@
-# Pulse
+# PULSE
 
-![PULSE title screen](docs/title.png)
+**A fast, momentum-driven first-person roguelite shooter on a custom Direct3D 12 engine.**
 
-A contained, atmospheric arena FPS on a clean-sheet custom engine: **Direct3D 12 +
-DXR**, a render-graph RHI, bindless resources, and an AI build/run/verify loop
-(all-text source, headless capture, vision-model critique).
+![Platform](https://img.shields.io/badge/platform-Windows-0a84ff?style=flat-square)
+![Engine](https://img.shields.io/badge/engine-Direct3D%2012%20%2B%20DXR-7a5cff?style=flat-square)
+![Language](https://img.shields.io/badge/language-C%2B%2B-00a3a3?style=flat-square)
+![Genre](https://img.shields.io/badge/genre-FPS%20Roguelite-ff4d6d?style=flat-square)
+![Status](https://img.shields.io/badge/status-in%20development-f5a623?style=flat-square)
 
-This is a clean-sheet repo. It inherits no prior renderer and no prebuilt assets ,
-the engine and all content are built from scratch against the plan, so nothing old
-can be incorrectly reused.
+This is the source project for PULSE. The public game-page repository is
+[`sneid1/pulsegame`](https://github.com/sneid1/pulsegame); it carries the player-facing
+overview, screenshots, and release links. This repo carries the native engine,
+game code, tools, configuration, and the runtime asset set required to build and
+package the game.
 
-## Start here
+## The Game
 
-- **The plan:** [`docs/Plan_PULSE_engine_and_assets.txt`](docs/Plan_PULSE_engine_and_assets.txt)
- , engine design (Part I), the concrete M0 interface (Part II), and the asset
-  pipeline (Part III).
-- **Spec:** [`docs/PROTOTYPE_SPEC.md`](docs/PROTOTYPE_SPEC.md), the experience target
-  (the plan's `section ` references point here).
-- **Rules:** [`docs/PROJECT_RULES.md`](docs/PROJECT_RULES.md).
-- **What's in the seed and what isn't:** [`SEED_NOTES.md`](SEED_NOTES.md).
+PULSE is built around short, readable arena fights, strong weapon feel, and
+aggressive movement. Runs move through neon-brutalist rooms across the Foundry,
+Furnace, and Reliquary biomes. You clear waves, choose doors, buy from shops,
+upgrade weapons at the forge, take event risks, stack passives, and push toward
+elite fights and bosses.
 
-## Status
+The core loop is simple: move fast, shoot clean, build pressure, die, rebuild,
+and run it back.
 
-M0 (engine foundation) is not built yet, **the project does not compile.** The
-seeded gameplay (`src/Game/PulseGame.*`, `src/main.cpp`) holds the game and is the
-source to port; its render/audio submission layer is rewritten against the new engine
-in M0. See SEED_NOTES.md.
+## Gameplay Systems
 
-## Build
+- **Pulse meter:** aggression raises Pulse, retreat cools it, and higher bands
+  increase combat intensity, element output, and adaptive music pressure.
+- **Room-based roguelite structure:** authored combat rooms, shops, events,
+  reward choices, pacing rules, elites, and sector bosses.
+- **Six live weapon profiles:** pistol, AK-47, tactical carbine, Pulse SMG,
+  scattergun, and marksman rifle, each with distinct recoil, reload behavior,
+  and audio identity.
+- **Element stack effects:** burn, shock, cryo, and corrode create status damage,
+  control, vulnerability, and pair reactions.
+- **Affinity builds:** passives and weapon aspects stack toward set bonuses that
+  shape each run.
+- **Readable enemies:** rushers, ranged attackers, stalkers, tanks, elites, and
+  bosses use wind-ups and dedicated audio tells.
+
+## Controls
+
+| Action | Input |
+| --- | --- |
+| Move | WASD |
+| Look | Mouse |
+| Fire | Left mouse |
+| Dash | Shift |
+| Jump / double jump | Space |
+| Reload | R |
+| Swap weapon | Q |
+| Quick-swap pistol | V |
+| Cycle weapon aspect | X |
+| Grenade | G |
+| Ultimate | F |
+| Menu / pause / back | Esc |
+
+## Build From Source
+
+Requirements:
+
+- Windows with Visual Studio C++ build tools.
+- CMake and Ninja.
+- Git LFS for runtime binary assets.
+- Python for audio/asset validation tools.
+- Node.js plus `@gltf-transform/cli` for `Package.bat` asset baking.
+
+Fresh checkout:
 
 ```bat
-Author-Assets.bat   :: author meshes + textures (once; uses the bundled Blender + Python)
-Build.bat           :: cmake configure + build (MSVC + Ninja) -> build\pulse.exe
-build\pulse.exe     :: windowed play (WASD + mouse, ESC to quit)
+git lfs install
+git lfs pull
+tools\Provision-ThirdParty.bat
 ```
 
-Provision vendored deps once with `tools\Provision-ThirdParty.bat`; package a
-self-contained `dist\` with `Package.bat`.
+Build and run the development executable:
+
+```bat
+Build.bat RelWithDebInfo pulse
+build\pulse.exe
+```
+
+Create a self-contained runtime folder:
+
+```bat
+Package.bat Release
+dist\PULSE.exe
+```
+
+`Author-Assets.bat` is for regenerating authored content. Normal builds use the
+runtime assets tracked in this repo.
 
 ## Assets
 
-There are **no runtime assets** in this repo by design. Every model, texture, and
-sound is authored from scratch to the glTF + BC7/BC5 PBR contract in Part III of the
-plan and validated in-engine via the headless capture + vision-critique loop. Asset
-creation uses the bundled Blender (`tools/blender/`, gitignored) and the
-`sneidgame-asset-forge` skill.
+The tracked `assets/` tree is the build-required runtime set. It is intentionally
+kept in line with what `Package.bat` copies to `dist/assets`; raw downloads,
+authoring workspaces, caches, captures, and obsolete source exports are ignored.
+
+Large binary assets are stored with Git LFS. If a clone is missing models, audio,
+or textures, run:
+
+```bat
+git lfs pull
+```
+
+See [`assets/README.md`](assets/README.md) and [`assets/CREDITS.txt`](assets/CREDITS.txt)
+for asset layout and licensing notes.
+
+## Tech
+
+PULSE runs on a clean-sheet native C++ engine:
+
+- Direct3D 12 renderer with DXR-capable ray-tracing support.
+- Bindless Shader Model 6.6 resource access.
+- Render graph with automatic barriers, pass culling, and transient resource
+  pooling.
+- Reverse-Z depth.
+- Data-driven weapons, rooms, content, style, and tuning through `config/`.
+- WASAPI audio with authored weapon, enemy, UI, ambience, and adaptive music
+  banks.
+- Headless capture, validation, and asset-review tooling for iteration.
+
+## Repository Map
+
+- `src/` - engine, platform, rendering, audio, UI, and game code.
+- `assets/` - runtime assets required by the build/package path.
+- `config/` - data-driven game content, rooms, style, and weapon definitions.
+- `tools/` - provisioning, asset, audio, Blender, Meshy, and validation tools.
+- `docs/` - design plans, prototype specs, audio specs, and playtest prompts.
+- `Package.bat` - source of truth for what ships in `dist/`.
+
+## Status
+
+The project is in active development. This source repo is intended to build and
+package the current Windows runtime, while [`sneid1/pulsegame`](https://github.com/sneid1/pulsegame)
+serves as the lightweight public game page.
+
+## Credits
+
+PULSE combines original engine/game work with original and openly licensed game
+content. Per-asset details live in [`assets/CREDITS.txt`](assets/CREDITS.txt).
+
+Notable asset sources include Quaternius sci-fi kits, DJMaesen / bumstrum
+first-person weapon rigs, Poly Haven materials, Vincent Sevedge gunshot source
+recordings, and Sonniss GameAudioGDC source material. Most adaptive music and
+many gameplay sound effects are produced specifically for PULSE.
